@@ -12,12 +12,16 @@ export function HeroWash({ className, accent, sparkles = true, variant = "page" 
   return (
     <div aria-hidden className={cn("pointer-events-none absolute inset-0 -z-10 overflow-hidden [mask-image:linear-gradient(180deg,#000_0%,#000_72%,transparent_100%)]", className)}>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,#FDF6EC_0%,#FCF5EE_60%,rgb(251_244_242/0)_100%)]" />
-      <div
-        className="absolute -top-[22%] right-[-12%] h-[72%] w-[56%] rounded-full blur-2xl"
-        style={{ background: `radial-gradient(closest-side, ${accent ?? "rgb(197 178 255 / 0.55)"}, rgb(176 210 255 / 0.32) 55%, transparent)` }}
-      />
-      <div className="absolute top-[-10%] right-[-6%] h-[46%] w-[34%] rounded-full bg-[radial-gradient(closest-side,rgb(150_196_255/0.5),transparent)] blur-3xl" />
-      <div className="absolute bottom-[-32%] left-[-18%] h-[75%] w-[42%] rounded-full bg-[radial-gradient(closest-side,rgb(150_190_255/0.6),rgb(176_210_255/0.35)_60%,transparent)] blur-xl" />
+      {!home && (
+        <>
+        <div
+          className="absolute -top-[22%] right-[-12%] h-[72%] w-[56%] rounded-full blur-2xl"
+          style={{ background: `radial-gradient(closest-side, ${accent ?? "rgb(197 178 255 / 0.55)"}, rgb(176 210 255 / 0.32) 55%, transparent)` }}
+        />
+        <div className="absolute top-[-10%] right-[-6%] h-[46%] w-[34%] rounded-full bg-[radial-gradient(closest-side,rgb(150_196_255/0.5),transparent)] blur-3xl" />
+        <div className="absolute bottom-[-32%] left-[-18%] h-[75%] w-[42%] rounded-full bg-[radial-gradient(closest-side,rgb(150_190_255/0.6),rgb(176_210_255/0.35)_60%,transparent)] blur-xl" />
+        </>
+      )}
       <div className="absolute right-[-8%] bottom-[-30%] h-[60%] w-[40%] rounded-full bg-[radial-gradient(closest-side,rgb(197_178_255/0.5),rgb(244_185_209/0.3)_60%,transparent)] blur-2xl" />
       {sparkles && (
         <>
