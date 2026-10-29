@@ -1,0 +1,133 @@
+@theme {
+  --gradient-brand: linear-gradient(135deg, #219bfb 0%, #0177f2 100%);
+  /* 2026-10-29 palette: Electric Blue → Periwinkle (selective use only) */
+  --gradient-duo: linear-gradient(120deg, #219bfb 0%, #6565f5 100%);
+  --gradient-lilac-cream: linear-gradient(160deg, #efeaff 0%, #fff6e8 100%);
+  --color-electric: #219bfb;
+  --color-deep-blue: #0875d1;
+  --color-charcoal: #202124;
+  --color-warm-cream: #fff1d9;
+  --color-periwinkle: #6565f5;
+  --color-periwinkle-50: #f2f2ff;
+  --color-periwinkle-100: #e4e4fe;
+  --color-periwinkle-200: #cbcbfc;
+  --color-periwinkle-700: #3e3eb8;
+  --color-deep-blue-50: #eaf3fc;
+  --color-deep-blue-100: #d3e6f8;
+  --color-deep-blue-200: #a7cdf1;
+  --color-deep-blue-700: #065da6;
+
+  --color-brand-50: #eef7fe;
+  --color-brand-100: #ceeffd;
+  --color-brand-200: #a6dbfb;
+  --color-brand-300: #6fc0fa;
+  --color-brand-400: #219bfb;
+  --color-brand-500: #0177f2;
+  --color-brand: #1088f6;
+  --color-brand-700: #0875d1;
+  --color-brand-800: #003f7d;
+  --color-brand-900: #062b52;
+
+  --color-surface: #ffffff;
+  --color-canvas: #fdf8ef;
+  --color-canvas-2: #fff1d9;
+  --color-canvas-line: #ece8f2;
+  --color-sky-wash: #e4f1fd;
+  --color-surface-2: #f6f6fb;
+  --color-line: #e6e8f0;
+
+  --color-ink: #202124;
+  --color-ink-700: #44494f;
+  --color-ink-muted: #5c636c;
+  --color-ink-subtle: #7a818b;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --shadow-soft: 0 1px 2px rgb(6 43 82 / 0.05), 0 6px 20px -8px rgb(6 43 82 / 0.14);
+  --shadow-card: 0 1px 2px rgb(6 43 82 / 0.05), 0 18px 40px -18px rgb(6 43 82 / 0.22);
+  --shadow-float: 0 2px 6px rgb(6 43 82 / 0.06), 0 30px 60px -24px rgb(6 43 82 / 0.35);
+  --shadow-glow: 0 18px 50px -12px rgb(1 119 242 / 0.45);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.1, 1);
+  --ease-curtain: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --container-site: 86rem;
+  --animate-marquee: marquee var(--marquee-duration, 60s) linear infinite;
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  --spacing-section: clamp(2.25rem, 5.5svh, 4rem);
+  --spacing-section-tight: clamp(1.75rem, 4svh, 3rem);
+  --spacing-section-gap: clamp(2rem, 5svh, 3.5rem);
+}
+
+@theme inline {
+  --animate-review-scroll: review-scroll var(--dur, 80s) linear infinite;
+  @keyframes review-scroll {
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+}
+@theme {
+  --color-cream: #fff1d9;
+  --color-cream-50: #fffcf6;
+  --color-cream-100: #fff8ec;
+  --color-cream-200: #fff1d9;
+  --color-cream-300: #f5e2be;
+
+  --color-cobalt: #1088f6;
+  --color-cobalt-50: #eef7fe;
+  --color-cobalt-100: #ceeffd;
+  --color-cobalt-200: #a6dbfb;
+  --color-cobalt-300: #6fc0fa;
+  --color-cobalt-400: #219bfb;
+  --color-cobalt-600: #0a6fd1;
+  --color-cobalt-700: #0066ca;
+  --color-cobalt-800: #003f7d;
+  --color-cobalt-900: #062b52;
+
+  --color-navy: #13294b;
+  --color-navy-800: #12345e;
+  --color-navy-700: #2a4466;
+
+  /* coral remapped to the Blush Pink accent (restrained) */
+  --color-coral: #f4b9d1;
+  --color-coral-50: #fdf3f7;
+  --color-coral-100: #fbe6ef;
+  --color-coral-200: #f4b9d1;
+  --color-coral-700: #b23a6e;
+  --color-peach: #fff1d9;
+  --color-lavender: #c5b2ff;
+  --color-lavender-50: #f6f2ff;
+  --color-lavender-100: #ece4ff;
+  --color-lavender-200: #ddd0ff;
+  --color-lavender-700: #6a4fd6;
+  --color-mint: #bfe7d0;
+  --color-mint-50: #effaf3;
+  --color-mint-100: #dcf3e5;
+  --color-mint-200: #c9ecd8;
+  --color-mint-700: #1b6a46;
+  --color-blush: #f4b9d1;
+  --color-blush-50: #fdf3f7;
+  --color-blush-100: #fbe6ef;
+  --color-blush-700: #b23a6e;
+  --color-sky: #219bfb;
+  --color-sky-50: #eef6ff;
+  --color-sky-100: #d9ecfe;
+  --color-sky-200: #a6d5fd;
+  --color-sky-700: #0875d1;
+
+  --shadow-hairline: 0 0 0 1px rgb(6 43 82 / 0.06);
+  --spacing-gutter: 1.25rem;
+}
+
+@theme inline {
+  --animate-partner-scroll: partner-scroll var(--dur, 30s) linear infinite;
+  @keyframes partner-scroll {
+    to { transform: translate3d(-33.3333%, 0, 0); }
+  }
+}
