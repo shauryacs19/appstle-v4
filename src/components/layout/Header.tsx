@@ -33,7 +33,7 @@ export function Header() {
     >
       <div className="flex h-[3.75rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-5 xl:px-10">
         <Link href="/" className="shrink-0 rounded-lg" aria-label="Appstle home">
-          <AppstleLogo tone="dark" />
+          <AppstleLogo tone="dark" tagline={false} />
         </Link>
 
         <MegaMenu />

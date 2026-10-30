@@ -25,7 +25,7 @@ export function SubscriptionWidgetDemo({ onOpenPortal }: { onOpenPortal?: () => 
     <div className="w-full rounded-3xl bg-white p-5 shadow-float ring-1 ring-ink/8 sm:p-6">
       <div className="flex items-start justify-between gap-3">
         <p className="font-display text-lg font-bold text-ink">Purchase options</p>
-        <DemoBadge label="Demo" />
+        <DemoBadge />
       </div>
 
       <fieldset className="mt-4">
@@ -68,7 +68,7 @@ export function SubscriptionWidgetDemo({ onOpenPortal }: { onOpenPortal?: () => 
                     key={x.id}
                     className={cn(
                       "cursor-pointer rounded-full px-3.5 py-1.5 text-sm font-medium ring-1 transition has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand",
-                      freq === x.id ? "bg-brand text-white ring-brand" : "bg-white text-ink ring-ink/15 hover:ring-ink/30",
+                      freq === x.id ? "bg-brand-700 text-white ring-brand" : "bg-white text-ink ring-ink/15 hover:ring-ink/30",
                     )}
                   >
                     <input
@@ -86,7 +86,7 @@ export function SubscriptionWidgetDemo({ onOpenPortal }: { onOpenPortal?: () => 
             </fieldset>
             <div className="mt-4 rounded-2xl bg-brand-50 p-3.5 text-sm text-ink">
               <p className="flex items-center gap-2 font-semibold">
-                <Gift aria-hidden className="size-4 text-brand" /> Subscriber rewards
+                <Gift aria-hidden className="size-4 text-brand-ink" /> Subscriber rewards
               </p>
               <p className="mt-1 text-ink-muted">After the 3rd order, get a free product.</p>
             </div>
@@ -162,7 +162,7 @@ function Option({
       </span>
       <span className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 text-[0.95rem] font-semibold text-ink">
         {label}
-        {tag && <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-[0.68rem] font-bold text-brand-700">{tag}</span>}
+        {tag && <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-xs font-bold text-brand-800">{tag}</span>}
       </span>
       <span className="flex flex-col items-end text-sm leading-tight">
         <span className="font-semibold text-ink">{price}</span>

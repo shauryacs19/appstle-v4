@@ -42,7 +42,7 @@ function Tile({ item, i, side, progress, still }: { item: Integration; i: number
           <Image src={item.logo} alt={item.name} title={item.name} fill sizes="100px" className="object-contain" />
         </span>
       ) : (
-        <span className="text-[11px] font-semibold text-ink">{item.name}</span>
+        <span className="text-xs font-semibold text-ink">{item.name}</span>
       )}
     </motion.li>
   );
@@ -67,7 +67,7 @@ function GroupCard({
 }) {
   const Icon = icons[group.icon];
   return (
-    <Reveal delay={0.08 * (index % 3)} className="min-w-0">
+    <Reveal delay={0.08 * (index % 3)} className="h-full min-w-0">
       <article
         data-int-card={index}
         data-side={side < 0 ? "left" : "right"}
@@ -79,12 +79,12 @@ function GroupCard({
         )}
       >
         <div className="flex items-center gap-2.5">
-          <span className={cn("grid size-9 place-items-center rounded-xl transition-colors duration-500", active ? "bg-brand text-white" : "bg-brand-50 text-brand")}>
+          <span className={cn("grid size-9 place-items-center rounded-xl transition-colors duration-500", active ? "bg-brand-700 text-white" : "bg-brand-50 text-brand-ink")}>
             <Icon aria-hidden className="size-[18px]" strokeWidth={2.1} />
           </span>
           <div className="min-w-0">
             <h3 className="font-display text-[1.05rem] leading-tight font-bold text-ink">{group.title}</h3>
-            <p className="text-[0.8rem] text-ink-muted">{group.blurb}</p>
+            <p className="text-sm text-ink-muted">{group.blurb}</p>
           </div>
         </div>
         <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${group.title} integrations`}>
@@ -132,7 +132,7 @@ function Hub() {
                   className="flex items-center gap-1.5 rounded-full bg-white py-1 pr-2.5 pl-1 shadow-soft ring-1 ring-[#D7E1EE] transition hover:-translate-y-0.5 hover:ring-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                 >
                   <ProductIcon id={p.id} size="sm" className="size-6 rounded-full" />
-                  <span className="text-[11.5px] font-semibold whitespace-nowrap text-ink">{p.shortName.split(" &")[0]}</span>
+                  <span className="text-xs font-semibold whitespace-nowrap text-ink">{p.shortName.split(" &")[0]}</span>
                 </SmartLink>
               </div>
             </li>
@@ -211,7 +211,7 @@ export function ConnectedIntegrations() {
   const right = integrationGroups.slice(3);
 
   return (
-    <section id="integrations" aria-labelledby="int-title" className="int-stage relative overflow-x-clip py-[clamp(4rem,10svh,7rem)]">
+    <section id="integrations" aria-labelledby="int-title" className="int-stage relative overflow-x-clip py-band">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal className="flex justify-center">
@@ -271,12 +271,12 @@ export function ConnectedIntegrations() {
           </motion.div>
 
           {left.map((g, i) => (
-            <div key={g.title} className={cn("relative lg:col-start-1", rows[i])}>
+            <div key={g.title} className={cn("relative h-full lg:col-start-1", rows[i])}>
               <GroupCard group={g} index={i} side={-1} progress={scrollYProgress} still={reduce} active={active === i} onHover={setActive} />
             </div>
           ))}
           {right.map((g, i) => (
-            <div key={g.title} className={cn("relative lg:col-start-3", rows[i])}>
+            <div key={g.title} className={cn("relative h-full lg:col-start-3", rows[i])}>
               <GroupCard group={g} index={i + 3} side={1} progress={scrollYProgress} still={reduce} active={active === i + 3} onHover={setActive} />
             </div>
           ))}
@@ -289,7 +289,7 @@ export function ConnectedIntegrations() {
             </ButtonLink>
             <SmartLink
               href={links.contact}
-              className="group inline-flex h-[46px] items-center gap-2 rounded-[10px] bg-white px-[18px] font-semibold text-brand ring-1 ring-[#D3DDEA] transition hover:ring-brand/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              className="group inline-flex h-[46px] items-center gap-2 rounded-[10px] bg-white px-[18px] font-semibold text-brand-ink ring-1 ring-[#D3DDEA] transition hover:ring-brand/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               Request an integration
               <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />

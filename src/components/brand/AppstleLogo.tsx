@@ -42,7 +42,7 @@ export function AppstleMark({ className, title }: { className?: string; title?: 
   );
 }
 
-export function AppstleLogo({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
+export function AppstleLogo({ className, tone = "dark", tagline = true }: { className?: string; tone?: "dark" | "light"; tagline?: boolean }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <AppstleMark className="size-8 shrink-0 rounded-[8px] shadow-[0_6px_14px_-6px_rgb(1_119_242_/_0.7)]" />
@@ -56,14 +56,16 @@ export function AppstleLogo({ className, tone = "dark" }: { className?: string; 
           Appstle
           <sup className="ml-0.5 align-super text-[0.5rem] font-semibold tracking-normal opacity-70">SM</sup>
         </span>
-        <span
-          className={cn(
-            "mt-1 hidden text-[0.62rem] font-medium tracking-[0.01em] sm:block lg:hidden xl:block",
-            tone === "dark" ? "text-ink-subtle" : "text-white/70",
-          )}
-        >
-          Compelling apps at compelling prices
-        </span>
+        {tagline && (
+          <span
+            className={cn(
+              "mt-1 hidden text-xs font-medium tracking-[0.01em] sm:block lg:hidden xl:block",
+              tone === "dark" ? "text-ink-subtle" : "text-white/70",
+            )}
+          >
+            Compelling apps at compelling prices
+          </span>
+        )}
       </span>
     </span>
   );

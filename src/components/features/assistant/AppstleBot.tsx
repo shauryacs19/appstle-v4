@@ -176,7 +176,7 @@ export function AppstleBot() {
   const empty = messages.length === 0;
 
   return (
-    <div className="fixed right-4 bottom-4 z-[90] flex flex-col items-end sm:right-6 sm:bottom-6">
+    <div className="fixed right-4 bottom-4 z-[90] flex flex-col items-end sm:right-6 sm:bottom-6" data-bot-root="">
       <AnimatePresence>
         {open && (
           <motion.section
@@ -292,7 +292,7 @@ export function AppstleBot() {
                   <ArrowUp className="size-4.5" strokeWidth={2.5} />
                 </button>
               </div>
-              <p className="mt-2 text-center text-[0.68rem] text-ink-subtle">
+              <p className="mt-2 text-center text-xs text-ink-subtle">
                 Preview only — not connected to an AI model yet.
               </p>
             </form>

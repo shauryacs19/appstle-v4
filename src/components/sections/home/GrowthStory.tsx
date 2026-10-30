@@ -31,13 +31,13 @@ function ReturnVisual() {
         transition={{ duration: 0.8, ease: ease.out }}
       >
         <div className="flex items-center gap-2">
-          <span className="grid size-7 place-items-center rounded-lg bg-brand text-white">
+          <span className="grid size-7 place-items-center rounded-lg bg-brand-700 text-white">
             <Bell className="size-3.5" />
           </span>
           <p className="text-[12px] font-semibold text-ink">Your rewards are waiting</p>
         </div>
-        <p className="mt-2 text-[11px] leading-snug text-ink-muted">You have points ready to use on your next order.</p>
-        <span className="mt-2.5 inline-flex rounded-lg bg-ink px-2.5 py-1 text-[10.5px] font-semibold text-white">Shop again</span>
+        <p className="mt-2 text-xs leading-snug text-ink-muted">You have points ready to use on your next order.</p>
+        <span className="mt-2.5 inline-flex rounded-lg bg-ink px-2.5 py-1 text-xs font-semibold text-white">Shop again</span>
       </motion.div>
       <motion.div
         className={cn(mini, "absolute right-0 bottom-2 flex items-center gap-2 p-2.5 pr-3.5")}
@@ -49,7 +49,7 @@ function ReturnVisual() {
           <Gift className="size-4" />
         </span>
         <span>
-          <span className="block text-[10px] text-ink-subtle">Reward unlocked</span>
+          <span className="block text-xs text-ink-subtle">Reward unlocked</span>
           <span className="block text-[12px] font-semibold text-ink">Free shipping</span>
         </span>
       </motion.div>
@@ -68,7 +68,7 @@ function RepeatVisual() {
     <div ref={ref} className={cn(mini, "relative h-44 p-3.5")}>
       <div className="flex items-center justify-between">
         <p className="text-[12px] font-semibold text-ink">Next delivery</p>
-        <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">
+        <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700">
           <Repeat2 className="size-3" /> Every 4 weeks
         </span>
       </div>
@@ -90,10 +90,10 @@ function RepeatVisual() {
             animate={on ? { opacity: 1, x: 0 } : undefined}
             transition={{ duration: 0.6, delay: 0.25 + i * 0.4, ease: ease.out }}
           >
-            <span className={cn("grid size-[27px] place-items-center rounded-full ring-4 ring-white", i === 2 ? "bg-[#22C55E] text-white" : "bg-brand text-white")}>
+            <span className={cn("grid size-[27px] place-items-center rounded-full ring-4 ring-white", i === 2 ? "bg-[#22C55E] text-white" : "bg-brand-700 text-white")}>
               {i === 2 ? <Check className="size-3.5" strokeWidth={3} /> : <s.icon className="size-3.5" />}
             </span>
-            <span className="text-[11.5px] font-medium text-ink">{s.label}</span>
+            <span className="text-xs font-medium text-ink">{s.label}</span>
           </motion.li>
         ))}
       </ol>
@@ -108,7 +108,7 @@ function ValueVisual() {
     <div ref={ref} className={cn(mini, "relative h-44 p-3.5")}>
       <div className="flex items-center justify-between">
         <p className="text-[12px] font-semibold text-ink">Value per customer</p>
-        <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-[#1F8A57]">
+        <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#1F8A57]">
           <TrendingUp className="size-3" /> grows with every order
         </span>
       </div>
@@ -124,7 +124,7 @@ function ValueVisual() {
           </div>
         ))}
       </div>
-      <div className="mt-1.5 flex gap-2 text-center text-[9px] text-ink-subtle">
+      <div className="mt-1.5 flex gap-2 text-center text-xs text-ink-subtle">
         {["1st", "2nd", "3rd", "4th", "5th"].map((l) => (
           <span key={l} className="flex-1">
             {l} order
@@ -163,7 +163,7 @@ export function GrowthStory() {
   const line = useRef<HTMLDivElement>(null);
   const inView = useInView(line, { once: true, amount: 0.3 });
   return (
-    <section id="how-it-works" aria-labelledby="growth-title" className="relative isolate overflow-x-clip bg-[#EEF6FE] py-[clamp(4rem,10svh,7rem)]">
+    <section id="how-it-works" aria-labelledby="growth-title" className="relative isolate overflow-x-clip bg-[#EEF6FE] py-band">
       <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[42rem] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -189,7 +189,7 @@ export function GrowthStory() {
           <ol className="relative grid gap-5 lg:grid-cols-3 lg:gap-6">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.n} delay={0.12 * i} className="relative flex flex-col">
-                <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full bg-white font-display text-sm font-bold text-brand shadow-soft ring-1 ring-[#CFE4F8] transition-[scale,background-color,color] duration-500 ease-[var(--ease-spring)] [li:hover>&]:scale-115 [li:hover>&]:bg-brand [li:hover>&]:text-white">
+                <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full bg-white font-display text-sm font-bold text-brand-ink shadow-soft ring-1 ring-[#CFE4F8] transition-[scale,background-color,color] duration-500 ease-[var(--ease-spring)] [li:hover>&]:scale-115 [li:hover>&]:bg-brand [li:hover>&]:text-white">
                   {s.n}
                 </span>
                 <div data-spotlight="" className="group mt-4 flex flex-1 flex-col overflow-hidden rounded-[1.75rem] bg-white/70 p-5 ring-1 ring-white backdrop-blur transition-[translate,box-shadow,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:bg-white hover:shadow-float sm:p-6">

@@ -22,12 +22,12 @@ export function SupportCard() {
             <span className="absolute inset-0 rounded-full bg-[#4ADE80] motion-safe:animate-[pulse-ring_2s_ease-out_infinite]" />
             <span className="relative size-2 rounded-full bg-[#4ADE80]" />
           </span>
-          Available 24/7/365
+          Available 24x7x365
         </span>
       </div>
       <div className="flex flex-col p-7 sm:p-8">
         <h3 className="text-3xl leading-tight font-bold sm:text-[2.1rem]">Customer service you can count on.</h3>
-        <p className="mt-3 leading-relaxed text-white/75">
+        <p className="mt-3 leading-relaxed text-white/90">
           You’re only a few minutes away from Appstle’s merchant success engineers — ready to help with setup,
           migrations and quick customizations.
         </p>

@@ -110,7 +110,7 @@ function MegaMenuPanel({ group, pathname, onNavigate, onBlurOut }: { group: NavG
             : "w-[min(34rem,calc(100vw-3rem))]",
       )}
     >
-      <div className="overflow-hidden rounded-xl bg-white shadow-[0_12px_28px_rgb(0_0_0/0.2),0_2px_4px_rgb(0_0_0/0.1)]">
+      <div className="overflow-hidden rounded-xl bg-white shadow-[0_2px_6px_rgb(6_43_82/0.06),0_24px_48px_-20px_rgb(6_43_82/0.35)]">
         <div className={cn("grid gap-2 p-2", withIcons ? "grid-cols-[1.6fr_1fr]" : "grid-cols-2")}>
           {group.columns.map((col, ci) => (
             <div key={col.title} className={cn("rounded-lg p-3", ci === 1 && "bg-surface-2")}>

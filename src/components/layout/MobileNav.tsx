@@ -54,7 +54,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
   return (
     <AnimatePresence>
       {open && (
-        <motion.div className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div data-mobile-nav="" className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <button type="button" tabIndex={-1} aria-hidden className="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onClick={onClose} />
           <motion.div
             id="mobile-menu"

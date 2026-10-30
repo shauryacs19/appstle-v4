@@ -33,7 +33,7 @@ export function TrustStrip() {
           <li className="eyebrow text-ink-subtle">As seen on</li>
           {press.map((p) => (
             <li key={p.outlet}>
-              <SmartLink href={p.href} aria-label={`Appstle on ${p.outlet}`} className="block rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
+              <SmartLink href={p.href} aria-label={`Appstle on ${p.outlet}`} className="hit-area block rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
                 <Image
                   src={pressLogos[p.outlet]}
                   alt={p.outlet}

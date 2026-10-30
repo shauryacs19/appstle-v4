@@ -159,7 +159,7 @@ export function BundleBuilderDemo() {
       <button
         type="button"
         onClick={() => setPicked([])}
-        className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
+        className="hit-area mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
       >
         <RotateCcw aria-hidden className="size-3.5" /> Clear bundle
       </button>

@@ -123,3 +123,37 @@ export function DeliveryLane({ className }: { className?: string }) {
     </div>
   );
 }
+
+const riseSlots: Array<[string, number, number]> = [
+  ["4%", 22, 2],
+  ["18%", 26, 15],
+  ["32%", 19, 8],
+  ["47%", 24, 20],
+  ["61%", 21, 4],
+  ["76%", 25, 12],
+  ["90%", 20, 17],
+];
+
+function GlyphRise({ glyphs, className }: { glyphs: DoodleName[]; className?: string }) {
+  return (
+    <div aria-hidden className={cn("pointer-events-none absolute inset-0 -z-10 overflow-hidden [container-type:size] motion-reduce:hidden", className)}>
+      {riseSlots.map(([left, duration, at], i) => (
+        <div
+          key={left}
+          className="absolute top-full text-brand-300/35 motion-safe:animate-[rise_22s_linear_infinite]"
+          style={{ left, animationDuration: `${duration}s`, animationDelay: `${-at}s` }}
+        >
+          <Glyph name={glyphs[i % glyphs.length]} className="size-11" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function LoyaltyRise({ className }: { className?: string }) {
+  return <GlyphRise glyphs={["gift", "star", "heart", "crown"]} className={className} />;
+}
+
+export function PickupRise({ className }: { className?: string }) {
+  return <GlyphRise glyphs={["pin", "van", "clock", "parcel"]} className={className} />;
+}

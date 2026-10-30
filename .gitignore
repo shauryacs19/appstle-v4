@@ -45,3 +45,4 @@ next-env.d.ts
 
 # restore points (local snapshots)
 restore-points/
+.impeccable/

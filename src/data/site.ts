@@ -42,7 +42,7 @@ export const proof = {
     value: 70000,
     display: "70,000+",
     label: "Shopify & Shopify Plus merchants",
-    note: "Merchant count provided by Appstle.",
+    note: "Merchant count published by Appstle (as of Dec 2024).",
     source: "https://appstle.com/merchants/",
   },
   reviews: {

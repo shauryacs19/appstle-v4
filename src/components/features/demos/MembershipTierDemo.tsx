@@ -44,7 +44,7 @@ export function MembershipTierDemo() {
     <div className="rounded-3xl bg-white p-5 shadow-float ring-1 ring-ink/8 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <p className="font-display text-lg font-bold text-ink">Choose a tier</p>
-        <DemoBadge label="Demo" />
+        <DemoBadge />
       </div>
 
       <LayoutGroup id="tiers">
@@ -106,7 +106,7 @@ export function MembershipTierDemo() {
         <div className="relative mt-6 flex items-end justify-between">
           <span className="text-xs font-medium opacity-80">Example product</span>
           <span className="text-right" aria-live="polite">
-            <span className="mr-2 text-sm line-through opacity-60">${EXAMPLE_PRICE.toFixed(2)}</span>
+            <span className="mr-2 text-sm line-through opacity-80">${EXAMPLE_PRICE.toFixed(2)}</span>
             <span className="font-display text-2xl font-bold">${memberPrice.toFixed(2)}</span>
           </span>
         </div>
@@ -124,7 +124,7 @@ export function MembershipTierDemo() {
               className="flex items-start gap-2.5 text-[0.92rem] text-ink"
             >
               <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#EEF1F5]">
-                <Check aria-hidden className="size-3 text-brand" strokeWidth={3} />
+                <Check aria-hidden className="size-3 text-brand-ink" strokeWidth={3} />
               </span>
               {p}
             </motion.li>

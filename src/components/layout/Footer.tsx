@@ -88,8 +88,8 @@ export function Footer() {
           </ul>
         </div>
         <p className="mt-6 text-xs leading-relaxed text-white/55">
-          Ratings and review counts are from the Shopify App Store as of 22 Oct 2026; the 70,000+ merchant figure is
-          provided by Appstle. Interactive demos on this site use illustrative values and do not create
+          Ratings and review counts are from the Shopify App Store as of 22 Oct 2026; the 70,000+ merchant figure is as
+          published by Appstle (Dec 2024). Interactive demos on this site use illustrative values and do not create
           orders, bookings or accounts.
         </p>
       </div>

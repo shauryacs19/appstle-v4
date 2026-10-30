@@ -1,21 +1,23 @@
 import type { ReactNode } from "react";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { BundleBuilderDemo } from "@/components/features/demos/BundleBuilderDemo";
 import { LoyaltyPointsDemo } from "@/components/features/demos/LoyaltyPointsDemo";
-import { MembershipTierDemo } from "@/components/features/demos/MembershipTierDemo";
+import { MembershipAccountDemo } from "@/components/features/demos/MembershipAccountDemo";
 import { PickupSchedulerDemo } from "@/components/features/demos/PickupSchedulerDemo";
 import { SubscriptionWidgetDemo } from "@/components/features/demos/SubscriptionWidgetDemo";
 import { Confetti } from "@/components/motion/Confetti";
 import { Doodles, type DoodleSpot } from "@/components/features/backdrops/Doodles";
-import { BundleRise, DeliveryLane, RenewOrbit, Sparkles } from "@/components/features/backdrops/scenes";
+import { BundleRise, DeliveryLane, LoyaltyRise, PickupRise, RenewOrbit, Sparkles } from "@/components/features/backdrops/scenes";
+import { Stars } from "@/components/ui/Stars";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProductIcon } from "@/components/ui/ProductIcon";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { suiteCopy } from "@/data/productCopy";
 import { productById, type ProductId } from "@/data/products";
-import { cn } from "@/lib/cn";
-import { FitDemos } from "./suite/FitDemos";
+import { cn, formatNumber } from "@/lib/cn";
+import { SmartLink } from "@/components/ui/SmartLink";
+import { StackTabs } from "./suite/StackTabs";
 
 type Tone = "light" | "mist" | "sky" | "navy";
 const tones: Record<Tone, { card: string; text: string; muted: string; frame: string; doodle: string; dark?: boolean }> = {
@@ -87,7 +89,7 @@ const demo: Record<ProductId, ReactNode> = {
       <SubscriptionWidgetDemo />
     </>
   ),
-  memberships: <MembershipTierDemo />,
+  memberships: <MembershipAccountDemo />,
   loyalty: (
     <div className="relative">
       <LoyaltyPointsDemo />
@@ -106,11 +108,13 @@ const demo: Record<ProductId, ReactNode> = {
 const stageScene: Partial<Record<ProductId, ReactNode>> = {
   memberships: <Sparkles />,
   bundles: <BundleRise />,
+  loyalty: <LoyaltyRise />,
+  pickup: <PickupRise />,
 };
 
 const demoWidth: Record<ProductId, string> = {
   subscriptions: "max-w-sm",
-  memberships: "max-w-sm",
+  memberships: "max-w-md",
   loyalty: "max-w-lg",
   bundles: "max-w-xl",
   pickup: "max-w-md",
@@ -122,7 +126,7 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
   const t = tones[tone];
   const dark = !!t.dark;
   const ctas = (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="grid gap-2 sm:flex sm:flex-wrap sm:items-center max-sm:[&>a]:h-11">
       <ButtonLink href={p.href} size="sm" variant={dark ? "light" : "primary"}>
         Learn <strong>more</strong>
       </ButtonLink>
@@ -144,12 +148,20 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
           id={id}
           size="md"
           className={cn(
-            "transition-[rotate,scale] duration-500 ease-[var(--ease-spring)] group-hover:scale-110 group-hover:-rotate-8",
-            dark ? "bg-white/12 text-white ring-white/15" : "bg-white",
+            
+            dark ? "bg-white/12 text-white ring-white/15" : cn(p.accent.chip, p.accent.text, "ring-0"),
           )}
         />
         <div className="min-w-0">
           <p className={cn("text-[0.95rem] font-semibold", t.text)}>{p.shortName}</p>
+          <SmartLink
+            href={`${p.installHref}/reviews`}
+            className={cn("hit-area inline-flex items-center gap-1.5 text-xs hover:underline", dark ? "text-white/70" : "text-ink-subtle")}
+          >
+            <Stars value={p.rating.value} className="[&>span]:size-3 [&_svg]:size-3" />
+            {p.rating.value.toFixed(1)} · {formatNumber(p.rating.count)} reviews
+            <span className="sr-only"> of {p.name} on the Shopify App Store</span>
+          </SmartLink>
         </div>
       </div>
       <h3 id={`app-${id}`} className={cn("mt-4 short:mt-3 font-bold tracking-[-0.03em] text-balance", t.text, wide ? "text-[1.6rem] leading-[1.08] sm:text-[1.9rem] short:text-[1.5rem]" : "text-[1.3rem] leading-[1.12] short:text-[1.15rem]")}>
@@ -162,7 +174,19 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
     <div data-fit-stage="" className={cn("relative isolate flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.5rem] p-4 ring-1 sm:p-6 short:p-3.5", t.frame)}>
       <div aria-hidden className={cn("absolute inset-0 -z-20 rounded-[inherit] opacity-40", dark ? "bg-dots" : "bg-dots-ink")} />
       {stageScene[id]}
-      <div data-fit-demo="" data-fit-max="0.92" className={cn("relative isolate mx-auto my-auto w-full min-w-0 lg:[zoom:0.86] xl:[zoom:0.92] short:[zoom:0.7]", demoWidth[id])}>
+      <p
+        className={cn(
+          "absolute top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-semibold shadow-soft ring-1 backdrop-blur",
+          dark ? "bg-white/10 text-white/85 ring-white/15" : "bg-white/90 text-ink-muted ring-[#E1E9F3]",
+        )}
+      >
+        <span className="relative flex size-2">
+          <span className="absolute inset-0 rounded-full bg-[#22C55E] motion-safe:animate-[pulse-ring_2s_ease-out_infinite]" />
+          <span className="relative size-2 rounded-full bg-[#22C55E]" />
+        </span>
+        Try it live
+      </p>
+      <div data-fit-demo="" data-fit-max="0.92" className={cn("relative isolate mx-auto my-auto w-full min-w-0 pt-8", demoWidth[id])}>
         <div>{demo[id]}</div>
       </div>
     </div>
@@ -171,9 +195,9 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
     <article
       aria-labelledby={`app-${id}`}
       data-fit-card=""
-      data-spotlight={dark ? "dark" : ""}
+      
       className={cn(
-        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-soft transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:shadow-float sm:p-6 short:p-4",
+        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-soft sm:p-6 short:p-4",
         t.card,
         className,
       )}
@@ -181,8 +205,8 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
       {dark && <div aria-hidden className="absolute inset-0 -z-20 bg-dots opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000)]" />}
       <Doodles autoplay spots={doodleSpots[id]} className={t.doodle} />
       {wide ? (
-        <div className={cn("grid h-full gap-6 md:gap-8", flip ? "md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]" : "md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]")}>
-          <div className={cn("flex flex-col justify-center gap-6", flip && "md:order-2")}>
+        <div className={cn("grid h-full gap-6 lg:gap-8", flip ? "lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]" : "lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]")}>
+          <div className={cn("flex flex-col justify-center gap-6", flip && "lg:order-2")}>
             {head}
             {ctas}
           </div>
@@ -203,7 +227,7 @@ const order: ProductId[] = ["subscriptions", "memberships", "loyalty", "bundles"
 
 export function RetentionStack() {
   return (
-    <section id="products" aria-labelledby="products-title" className="relative scroll-mt-24 bg-[#F7F9FC] py-[clamp(4rem,10svh,7rem)]">
+    <section id="products" aria-labelledby="products-title" className="relative scroll-mt-24 bg-[#F7F9FC] py-band">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
@@ -223,15 +247,15 @@ export function RetentionStack() {
           </Reveal>
         </div>
 
-        <Stagger className="mt-12 grid grid-cols-1 gap-4 sm:gap-5" interval={0.08} amount={0.05}>
-          {order.map((id, i) => (
-            <StaggerItem key={id}>
-              <AppCard id={id} tone={i % 2 ? "mist" : "light"} wide flip={i % 2 === 1} className="lg:h-[clamp(30rem,calc(100svh-10rem),36rem)]" />
-            </StaggerItem>
-          ))}
-        </Stagger>
-        <FitDemos />
-        <p className="mt-6 text-center text-xs text-ink-subtle">Demos use illustrative values and don’t create orders or bookings.</p>
+        <StackTabs
+          panels={order.map((id, i) => ({
+            id,
+            label: productById[id].shortName,
+            accent: cn(productById[id].accent.chip, productById[id].accent.text, "ring-0"),
+            node: <AppCard id={id} tone="light" wide flip={i % 2 === 1} className="lg:min-h-[clamp(30rem,calc(100svh-10rem),36rem)]" />,
+          }))}
+        />
+        <p className="mt-6 text-center text-xs text-ink-subtle">Demos use illustrative values and don’t create orders or bookings. Ratings from the Shopify App Store.</p>
       </div>
     </section>
   );

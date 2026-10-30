@@ -30,7 +30,7 @@ const script: Message[] = [
       <ol className="space-y-1.5">
         {steps.map((s, i) => (
           <li key={s} className="flex gap-1.5">
-            <span className="mt-px grid size-[0.95rem] shrink-0 place-items-center rounded-full bg-brand text-[0.52rem] font-bold text-white">
+            <span className="mt-px grid size-[0.95rem] shrink-0 place-items-center rounded-full bg-brand text-xs font-bold text-white">
               {i + 1}
             </span>
             <span>{s}</span>
@@ -116,7 +116,7 @@ export function SupportChatPhone({ className }: { className?: string }) {
         <span className="absolute top-[22%] -right-[3px] h-14 w-[3px] rounded-r-sm bg-[#2D3754]" />
 
         <div className="relative flex h-full flex-col overflow-hidden rounded-[1.95rem] bg-surface-2 font-sans">
-          <div className="relative flex h-8 shrink-0 items-center justify-between bg-white px-5 pt-1 text-[0.6rem] font-semibold text-ink">
+          <div className="relative flex h-8 shrink-0 items-center justify-between bg-white px-5 pt-1 text-xs font-semibold text-ink">
             <span>9:41</span>
             <span className="absolute top-[7px] left-1/2 h-[18px] w-[60px] -translate-x-1/2 rounded-full bg-[#05070E]" />
             <span className="flex items-center gap-1">
@@ -133,13 +133,13 @@ export function SupportChatPhone({ className }: { className?: string }) {
               <span className="absolute -right-0.5 -bottom-0.5 size-2.5 rounded-full bg-[#2FBF71] ring-2 ring-white" />
             </span>
             <span className="min-w-0 flex-1 leading-tight">
-              <span className="block truncate text-[0.7rem] font-bold text-ink">Appstle Support</span>
-              <span className="block truncate text-[0.56rem] text-ink-subtle">Alex is online</span>
+              <span className="block truncate text-xs font-bold text-ink">Appstle Support</span>
+              <span className="block truncate text-xs text-ink-subtle">Alex is online</span>
             </span>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col justify-end overflow-hidden px-2.5 pb-2 text-[0.68rem] leading-[1.38]">
-            <p className="mx-auto mb-1 rounded-full bg-ink/5 px-2 py-0.5 text-[0.5rem] font-semibold tracking-[0.08em] text-ink-subtle uppercase">
+          <div className="flex min-h-0 flex-1 flex-col justify-end overflow-hidden px-2.5 pb-2 text-xs leading-[1.38]">
+            <p className="mx-auto mb-1 rounded-full bg-ink/5 px-2 py-0.5 text-xs font-semibold tracking-[0.08em] text-ink-subtle uppercase">
               Example chat · Today
             </p>
             <AnimatePresence initial={false}>
@@ -170,7 +170,7 @@ export function SupportChatPhone({ className }: { className?: string }) {
                     </div>
                   ) : (
                     <div className="mr-auto max-w-[88%]">
-                      {m.label && <p className="mb-0.5 ml-1 text-[0.52rem] font-semibold text-ink-subtle">{m.label}</p>}
+                      {m.label && <p className="mb-0.5 ml-1 text-xs font-semibold text-ink-subtle">{m.label}</p>}
                       <div className="rounded-[1rem] rounded-bl-[0.35rem] bg-white px-2.5 py-1.5 text-ink shadow-[0_2px_5px_-3px_rgb(32_43_69/0.3)] ring-1 ring-ink/6">
                         {m.body}
                       </div>
@@ -196,7 +196,7 @@ export function SupportChatPhone({ className }: { className?: string }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-1.5 border-t border-ink/6 bg-white px-2.5 pt-2 pb-4">
-            <span className="flex h-7 min-w-0 flex-1 items-center rounded-full bg-brand-50 px-3 text-[0.6rem] text-ink-subtle ring-1 ring-ink/8">
+            <span className="flex h-7 min-w-0 flex-1 items-center rounded-full bg-brand-50 px-3 text-xs text-ink-subtle ring-1 ring-ink/8">
               Message Alex…
             </span>
             <span className="grid size-7 shrink-0 place-items-center rounded-full bg-brand text-white">
@@ -239,11 +239,11 @@ function DocCard() {
           <BookOpen className="size-3.5" />
         </span>
         <span className="min-w-0 leading-tight">
-          <span className="block text-[0.5rem] font-bold tracking-[0.08em] text-brand uppercase">Help Center guide</span>
-          <span className="block text-[0.64rem] font-bold text-ink">Customize your subscription widget</span>
+          <span className="block text-xs font-bold tracking-[0.08em] text-brand uppercase">Help Center guide</span>
+          <span className="block text-xs font-bold text-ink">Customize your subscription widget</span>
         </span>
       </div>
-      <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 text-[0.56rem] text-ink-subtle">
+      <div className="flex items-center justify-between gap-2 px-2.5 py-1.5 text-xs text-ink-subtle">
         <span className="truncate">
           <span className="font-semibold text-brand underline decoration-brand/30 underline-offset-2">help.appstle.com</span> · 4 min read
         </span>

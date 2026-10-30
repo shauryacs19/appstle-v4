@@ -8,8 +8,8 @@ import { proof } from "@/data/site";
 
 export function ClosingCta() {
   return (
-    <section aria-labelledby="cta-title" className="bg-[#F7F9FC] px-3 pb-[clamp(3.5rem,9svh,6rem)] sm:px-5 lg:px-6">
-      <Reveal className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-[linear-gradient(140deg,#1F96FB_0%,#1088F6_35%,#0A6FD1_70%,#0052A3_100%)] text-white shadow-[0_30px_70px_-30px_rgb(1_82_163/0.7)] sm:rounded-[2.5rem]">
+    <section aria-labelledby="cta-title" className="bg-[#F7F9FC] px-3 pb-band sm:px-5 lg:px-6">
+      <Reveal className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#0066CA_45%,#0052A3_100%)] text-white shadow-[0_30px_70px_-30px_rgb(1_82_163/0.7)] sm:rounded-[2.5rem]">
         <div aria-hidden className="absolute inset-0 -z-10 bg-dots opacity-25 [mask-image:radial-gradient(ellipse_at_right,#000,transparent_65%)]" />
         <div aria-hidden className="absolute -bottom-32 -left-32 -z-10 size-96 rounded-full border-[40px] border-white/6" />
         <div className="grid items-center gap-10 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14 lg:py-16">
@@ -17,7 +17,7 @@ export function ClosingCta() {
             <h2 id="cta-title" className="text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] sm:text-[3.2rem]">
               Ready to grow your Shopify store?
             </h2>
-            <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/82">
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/92">
               Join {proof.merchants.display} Shopify and Shopify Plus brands building repeat business with Appstle — or partner with us to bring Appstle to your clients.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">

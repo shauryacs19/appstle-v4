@@ -19,10 +19,10 @@ const rest = testimonials.filter((t) => t !== featured);
 
 export function TestimonialsSection() {
   return (
-    <section id="stories" aria-labelledby="stories-title" className="relative overflow-x-clip bg-surface py-[clamp(4rem,10svh,7rem)]">
+    <section id="stories" aria-labelledby="stories-title" className="relative overflow-x-clip bg-surface py-band">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
+          <div className="min-w-0 max-w-2xl">
             <Reveal>
               <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#D7E1EE]">Merchant reviews</Eyebrow>
             </Reveal>
@@ -32,7 +32,7 @@ export function TestimonialsSection() {
               </SplitText>
             </h2>
           </div>
-          <Reveal delay={0.1} className="flex flex-wrap gap-3">
+          <Reveal delay={0.1} className="flex flex-wrap gap-3 lg:shrink-0 lg:flex-nowrap">
             <ButtonLink href={`${productById.subscriptions.installHref}/reviews`}>
               Read all <strong>Reviews</strong>
             </ButtonLink>
@@ -44,7 +44,7 @@ export function TestimonialsSection() {
 
         <div className="mt-12 grid gap-5 lg:grid-cols-12">
           <Reveal className="lg:col-span-7">
-            <figure data-spotlight="dark" className="group relative isolate flex h-full flex-col justify-between overflow-hidden rounded-[1.75rem] bg-[linear-gradient(150deg,#1F96FB,#0A6FD1_65%,#0052A3)] p-7 text-white shadow-card transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-24px_rgb(1_82_163/0.7)] sm:p-9">
+            <figure data-spotlight="dark" className="group relative isolate flex h-full flex-col justify-between overflow-hidden rounded-[1.75rem] bg-[linear-gradient(150deg,#0A6FD1,#0058B0_65%,#003F7D)] p-7 text-white shadow-card transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:shadow-[0_30px_60px_-24px_rgb(1_82_163/0.7)] sm:p-9">
               <Quote aria-hidden className="absolute -top-2 right-6 size-28 text-white/10 transition-[rotate,scale,color] duration-700 ease-[var(--ease-spring)] group-hover:-rotate-8 group-hover:scale-110 group-hover:text-white/20" strokeWidth={1.4} />
               <div aria-hidden className="absolute -right-24 -bottom-24 size-72 rounded-full border-[32px] border-white/6" />
               <div>
@@ -59,7 +59,7 @@ export function TestimonialsSection() {
                 </span>
                 <span>
                   <span className="block font-semibold">{featured.merchant}</span>
-                  <span className="block text-sm text-white/70">{productById[featured.product].name} · review on appstle.com</span>
+                  <span className="block text-sm text-white/90">{productById[featured.product].name} · review on appstle.com</span>
                 </span>
               </figcaption>
             </figure>

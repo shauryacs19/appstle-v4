@@ -15,7 +15,7 @@ const help = [
 
 export function SupportSection() {
   return (
-    <section id="support" aria-labelledby="support-title" className="bg-[#F7F9FC] px-3 py-[clamp(3.5rem,9svh,6rem)] sm:px-5 lg:px-6">
+    <section id="support" aria-labelledby="support-title" className="bg-[#F7F9FC] px-3 py-band sm:px-5 lg:px-6">
       <div className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-white shadow-card ring-1 ring-[#D7E1EE] sm:rounded-[2.5rem]">
         <div aria-hidden className="absolute inset-0 -z-10 bg-[url('/patterns/commerce.svg')] [background-size:300px_300px] opacity-[0.14] [mask-image:linear-gradient(90deg,#000,transparent_70%)]" />
         <div className="grid lg:grid-cols-12">
@@ -30,14 +30,14 @@ export function SupportSection() {
             </h2>
             <Reveal delay={0.1}>
               <dl className="mt-6 flex flex-wrap gap-2.5">
-                <div className="inline-flex items-center gap-2 rounded-full bg-brand py-2 pr-4 pl-3 text-sm font-semibold text-white">
+                <div className="inline-flex items-center gap-2 rounded-full bg-brand-700 py-2 pr-4 pl-3 text-sm font-semibold text-white">
                   <dt className="sr-only">Availability</dt>
                   <Clock3 aria-hidden className="size-4" />
-                  <dd>Available 24/7/365</dd>
+                  <dd>Available 24x7x365</dd>
                 </div>
                 <div className="inline-flex items-center gap-2 rounded-full bg-brand-50 py-2 pr-4 pl-3 text-sm font-semibold text-brand-800 ring-1 ring-brand-100">
                   <dt className="sr-only">Reply time</dt>
-                  <Zap aria-hidden className="size-4 fill-brand text-brand" />
+                  <Zap aria-hidden className="size-4 fill-brand text-brand-ink" />
                   <dd>Replies in under 1 minute</dd>
                 </div>
               </dl>
@@ -52,7 +52,7 @@ export function SupportSection() {
                   key={h.title}
                   className="flex items-start gap-3 rounded-2xl bg-[#F7F9FC] p-4 ring-1 ring-[#E3EAF3] transition-[box-shadow,translate] duration-300 hover:-translate-y-0.5 hover:shadow-soft"
                 >
-                  <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white text-brand ring-1 ring-[#D7E1EE]">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white text-brand-ink ring-1 ring-[#D7E1EE]">
                     <h.icon aria-hidden className="size-[1.1rem]" />
                   </span>
                   <span>

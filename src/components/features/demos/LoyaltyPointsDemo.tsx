@@ -108,7 +108,7 @@ export function LoyaltyPointsDemo() {
                   className="group flex w-full items-center gap-2 rounded-xl px-2.5 py-2.5 text-left ring-1 ring-ink/10 transition hover:bg-brand-50 hover:ring-brand-200"
                 >
                   <a.icon aria-hidden className="size-4 shrink-0 text-brand-700" />
-                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-[0.8125rem] font-medium text-ink">{a.label}</span>
+                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium text-ink">{a.label}</span>
                   <span className="shrink-0 text-xs font-bold text-brand-700">+{a.points}</span>
                 </motion.button>
               </li>
@@ -136,7 +136,7 @@ export function LoyaltyPointsDemo() {
                     )}
                   >
                     <r.icon aria-hidden className="size-4 shrink-0" />
-                    <span className="min-w-0 flex-1 truncate whitespace-nowrap text-[0.8125rem] font-medium">{r.label}</span>
+                    <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium">{r.label}</span>
                     <span className="shrink-0 text-xs font-bold">{r.cost.toLocaleString("en-US")}</span>
                   </button>
                   <AnimatePresence>
@@ -161,7 +161,7 @@ export function LoyaltyPointsDemo() {
               setUnlocked([]);
               animate(shown, START, { duration: 0.6 });
             }}
-            className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
+            className="hit-area mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
           >
             <RotateCcw aria-hidden className="size-3.5" /> Reset demo
           </button>

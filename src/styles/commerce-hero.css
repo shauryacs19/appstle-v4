@@ -119,7 +119,7 @@
 .hero-ring { --sw: 11.75rem; }
 .hero-ring .hero-card { --cz: 0.92 !important; }
 .hero-lens { display: none; }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hero-window { padding: 4.5rem 2.75rem 4rem; }
   .hero-lens {
     display: block;
@@ -175,16 +175,13 @@
   .hero-lens, .hero-lens::after, .hero-orb { animation: none !important; }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hero-shell {
-    --hs: clamp(0.45, min(tan(atan2(100vw, 90rem)), tan(atan2(calc(100svh - var(--header-h)), 53.75rem))), 1.3);
+    --hs: clamp(0.45, min(tan(atan2(100vw, 90rem)), tan(atan2(calc(100svh - var(--header-h)), 46rem))), 1.3);
   }
   .hero-stage {
     width: 90rem;
-    height: 53.75rem;
+    height: 46rem;
     zoom: var(--hs);
   }
-}
-@media (min-width: 1440px) {
-  .hero-shell { --hs: 1.1111; }
 }

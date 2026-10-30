@@ -121,7 +121,7 @@ export function PickupSchedulerDemo() {
               >
                 <span className="font-medium opacity-80">{fmt(d.date, { weekday: "short" })}</span>
                 <span className="font-display text-lg font-bold">{fmt(d.date, { day: "numeric" })}</span>
-                {d.blackout && <span className="text-[0.62rem] font-semibold">Closed</span>}
+                {d.blackout && <span className="text-xs font-semibold">Closed</span>}
               </button>
             );
           })}
@@ -157,7 +157,7 @@ export function PickupSchedulerDemo() {
                     )}
                   >
                     {s}
-                    {full && <span className="rounded-full bg-line px-2 py-0.5 text-[0.62rem]">Full</span>}
+                    {full && <span className="rounded-full bg-line px-2 py-0.5 text-xs">Full</span>}
                   </button>
                 );
               })}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PauseToggle } from "@/components/ui/PauseToggle";
 import { productById } from "@/data/products";
 import type { Testimonial } from "@/data/testimonials";
 
@@ -27,7 +28,8 @@ export function ReviewWall({ items }: { items: Testimonial[] }) {
   );
 
   return (
-    <div className="group/wall relative" role="region" aria-label="Merchant reviews">
+    <div data-pausable="" className="group/wall relative" role="region" aria-label="Merchant reviews">
+      <PauseToggle label="scrolling reviews" className="absolute -top-11 right-0 z-10" />
       <div className="grid gap-3 sm:gap-4">{[items.slice(0, half), items.slice(half)].map(row)}</div>
     </div>
   );
@@ -56,7 +58,7 @@ function ReviewCard({ t }: { t: Testimonial }) {
           <Image src={t.logo} alt="" sizes="44px" className="max-h-6 w-auto max-w-7 object-contain" />
         </span>
         <span className="min-w-0 flex-1 truncate text-[0.88rem] leading-tight font-semibold text-ink">{t.merchant}</span>
-        <span className="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-[0.68rem] font-semibold text-brand-700">{productById[t.product].shortName}</span>
+        <span className="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700">{productById[t.product].shortName}</span>
       </figcaption>
     </figure>
   );

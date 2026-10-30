@@ -25,7 +25,7 @@ const factIcons: LucideIcon[] = [CalendarDays, MapPin, Store, Headset];
 export function AboutSection() {
   const { hero, facts } = aboutPage;
   return (
-    <section id="about" aria-labelledby="about-title" className="relative isolate scroll-mt-24 overflow-x-clip bg-surface py-[clamp(3.5rem,9svh,6rem)]">
+    <section id="about" aria-labelledby="about-title" className="relative isolate scroll-mt-24 overflow-x-clip bg-surface py-band">
       <div className="relative mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <Doodles autoplay spots={doodleSpots} />
         <ScrollLines stops={[{ section: "#about", color: "#6FC0FA", line: { around: "[data-about-photo]" } }]} />
@@ -41,7 +41,7 @@ export function AboutSection() {
             </h2>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-[36rem] text-lg leading-relaxed text-ink-muted">{hero.intro}</p>
-              <SmartLink href={links.about} className="group mt-4 inline-flex items-center gap-2 font-semibold text-brand hover:text-brand-700">
+              <SmartLink href={links.about} className="hit-area group mt-4 inline-flex items-center gap-2 font-semibold text-brand-ink hover:text-brand-700">
                 Read our story
                 <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
               </SmartLink>
@@ -59,20 +59,20 @@ export function AboutSection() {
                     data-tilt="3"
                     className={cn(
                       "group relative isolate h-full overflow-hidden rounded-2xl p-3.5 shadow-soft transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-float",
-                      blue ? "bg-[linear-gradient(150deg,#1F96FB,#0A6FD1_70%,#0052A3)] text-white ring-1 ring-white/10" : "bg-white ring-1 ring-[#D7E1EE]",
+                      blue ? "bg-[linear-gradient(150deg,#0A6FD1,#0058B0_70%,#003F7D)] text-white ring-1 ring-white/10" : "bg-white ring-1 ring-[#D7E1EE]",
                     )}
                   >
                     <span
                       aria-hidden
                       className={cn(
                         "grid size-7 place-items-center rounded-lg ring-1 transition-[rotate,scale] duration-500 ease-[var(--ease-spring)] group-hover:scale-110 group-hover:-rotate-8",
-                        blue ? "bg-white/14 text-white ring-white/15" : "bg-brand-50 text-brand ring-brand/10",
+                        blue ? "bg-white/14 text-white ring-white/15" : "bg-brand-50 text-brand-ink ring-brand/10",
                       )}
                     >
                       <Icon className="size-3.5" strokeWidth={2.2} />
                     </span>
                     <p className={cn("mt-3 font-display text-[1.25rem] leading-none font-bold tracking-[-0.02em]", blue ? "text-white" : "text-ink")}>{f.value}</p>
-                    <p className={cn("mt-1 text-xs leading-snug", blue ? "text-white/80" : "text-ink-subtle")}>{f.label}</p>
+                    <p className={cn("mt-1 text-xs leading-snug", blue ? "text-white/90" : "text-ink-subtle")}>{f.label}</p>
                   </div>
                   </StaggerItem>
                 );
@@ -98,7 +98,7 @@ export function AboutSection() {
                     style={{ rotate: `${[-3, 2, -1][i]}deg` }}
                     className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-ink shadow-soft ring-1 ring-[#D7E1EE] backdrop-blur"
                   >
-                    <MapPin aria-hidden className="size-3.5 text-brand" />
+                    <MapPin aria-hidden className="size-3.5 text-brand-ink" />
                     {o}
                   </span>
                 ))}

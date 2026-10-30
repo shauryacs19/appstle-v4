@@ -44,7 +44,7 @@ function Thumb({ icon: Icon, tone = "blue", className }: { icon: LucideIcon; ton
 function CardHead({ icon: Icon, title, aside, light }: { icon: LucideIcon; title: string; aside?: ReactNode; light?: boolean }) {
   return (
     <div className="flex items-center gap-2">
-      <span className={cn("grid size-6 place-items-center rounded-lg", light ? "bg-white/18 text-white" : "bg-brand-50 text-brand")}>
+      <span className={cn("grid size-6 place-items-center rounded-lg", light ? "bg-white/18 text-white" : "bg-brand-50 text-brand-ink")}>
         <Icon className="size-3.5" strokeWidth={2.2} />
       </span>
       <span className={cn("text-[12.5px] font-semibold whitespace-nowrap", light ? "text-white" : "text-ink")}>{title}</span>
@@ -68,7 +68,7 @@ export function SubscriptionCard({ className }: { className?: string }) {
         <Thumb icon={Coffee} tone="sand" className="size-11" />
         <div className="min-w-0">
           <p className="truncate text-[13px] font-semibold text-ink">House Blend Coffee</p>
-          <p className="text-[11.5px] text-ink-subtle">Whole bean · 340 g</p>
+          <p className="text-xs text-ink-subtle">Whole bean · 340 g</p>
         </div>
       </div>
       <LayoutGroup id={group}>
@@ -93,7 +93,7 @@ export function SubscriptionCard({ className }: { className?: string }) {
                   <span className={cn("ml-auto text-[12px] font-semibold", o.key === "sub" ? "text-brand-700" : "text-ink-muted")}>{o.price}</span>
                 </div>
                 {o.note && (
-                  <p className="relative mt-1 flex items-center gap-1 pl-[22px] text-[10.5px] text-ink-muted">
+                  <p className="relative mt-1 flex items-center gap-1 pl-[22px] text-xs text-ink-muted">
                     {o.note}
                     <ChevronDown className="size-3" />
                   </p>
@@ -104,8 +104,8 @@ export function SubscriptionCard({ className }: { className?: string }) {
         </div>
       </LayoutGroup>
       <div className="mt-2.5 flex items-center justify-between">
-        <span className="inline-flex items-center gap-1 rounded-full bg-surface-2 px-2 py-0.5 text-[10.5px] font-medium text-ink-muted">
-          <Repeat2 className="size-3 text-brand" />
+        <span className="inline-flex items-center gap-1 rounded-full bg-surface-2 px-2 py-0.5 text-xs font-medium text-ink-muted">
+          <Repeat2 className="size-3 text-brand-ink" />
           Skip, swap or pause anytime
         </span>
       </div>
@@ -135,7 +135,7 @@ export function LoyaltyCard({ className }: { className?: string }) {
       <CardHead
         icon={Gift}
         title="Rewards"
-        aside={<span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-700">VIP · Silver</span>}
+        aside={<span className="rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700">VIP · Silver</span>}
       />
       <div className="relative mt-3 flex items-end gap-1.5">
         <span className="font-display text-[1.9rem] leading-none font-bold tracking-[-0.03em] text-ink">
@@ -150,7 +150,7 @@ export function LoyaltyCard({ className }: { className?: string }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.5, ease: ease.out }}
-              className="absolute right-0 bottom-1 rounded-full bg-[#E8F8EF] px-2 py-0.5 text-[10.5px] font-bold text-[#1F8A57]"
+              className="absolute right-0 bottom-1 rounded-full bg-[#E8F8EF] px-2 py-0.5 text-xs font-bold text-[#1F8A57]"
             >
               +{earned} pts
             </motion.span>
@@ -165,7 +165,7 @@ export function LoyaltyCard({ className }: { className?: string }) {
           transition={{ duration: 0.9, ease: ease.out }}
         />
       </div>
-      <div className="mt-2 h-4 text-[11px]">
+      <div className="mt-2 h-4 text-xs">
         <AnimatePresence mode="wait" initial={false}>
           {done ? (
             <motion.p key="done" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="flex items-center gap-1 font-semibold text-[#1F8A57]">
@@ -187,13 +187,13 @@ export function MembershipCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#1F96FB_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white shadow-[0_18px_40px_-18px_rgb(1_82_163/0.65)] ring-1 ring-white/10 [container-type:inline-size]",
+        "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white shadow-[0_18px_40px_-18px_rgb(1_82_163/0.65)] ring-1 ring-white/10 [container-type:inline-size]",
         className,
       )}
     >
       <span aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-1/3 animate-[shine_7s_var(--ease-smooth)_2.5s_infinite] bg-linear-to-r from-transparent via-white/22 to-transparent" />
       <span aria-hidden className="pointer-events-none absolute -top-10 -right-10 size-28 rounded-full border-[14px] border-white/8" />
-      <CardHead icon={Crown} title="Gold Club" light aside={<span className="rounded-full bg-white/16 px-2 py-0.5 text-[10px] font-semibold">Member</span>} />
+      <CardHead icon={Crown} title="Gold Club" light aside={<span className="rounded-full bg-white/16 px-2 py-0.5 text-xs font-semibold">Member</span>} />
       <p className="mt-3 font-display text-[1.25rem] leading-tight font-bold tracking-[-0.02em]">Your member perks</p>
       <ul className="mt-2.5 space-y-1.5">
         {perks.map((p) => (
@@ -205,7 +205,7 @@ export function MembershipCard({ className }: { className?: string }) {
           </li>
         ))}
       </ul>
-      <div className="mt-3 flex items-center justify-between border-t border-white/15 pt-2.5 text-[11px] text-white/80">
+      <div className="mt-3 flex items-center justify-between border-t border-white/15 pt-2.5 text-xs text-white/80">
         <span>Renews monthly</span>
         <span className="font-semibold text-white">$9.99 / mo</span>
       </div>
@@ -234,7 +234,7 @@ export function BundleCard({ className }: { className?: string }) {
                 initial={{ opacity: 0, scale: 0.7 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={spring.snappy}
-                className="rounded-full bg-brand px-2 py-0.5 text-[10px] font-bold whitespace-nowrap text-white"
+                className="rounded-full bg-brand px-2 py-0.5 text-xs font-bold whitespace-nowrap text-white"
               >
                 Save 20%
               </motion.span>
@@ -265,8 +265,8 @@ export function BundleCard({ className }: { className?: string }) {
         ))}
       </div>
       <div className="mt-3 flex items-center justify-between rounded-xl bg-ink px-3 py-2 text-white">
-        <span className="text-[11.5px] font-semibold">Add bundle</span>
-        <span className="text-[11.5px]">
+        <span className="text-xs font-semibold">Add bundle</span>
+        <span className="text-xs">
           {full && <s className="mr-1.5 text-white/50">$60.00</s>}
           <motion.span key={String(full)} initial={{ opacity: 0.4 }} animate={{ opacity: 1 }} className="font-bold">
             {full ? "$48.00" : "$40.00"}
@@ -287,13 +287,13 @@ export function PickupCard({ className }: { className?: string }) {
   return (
     <div ref={ref} className={cn(shell, "p-3.5", className)}>
       <CardHead icon={Store} title="Pickup & delivery" />
-      <div className="mt-3 grid grid-cols-2 rounded-lg bg-surface-2 p-0.5 text-center text-[11px] font-semibold">
+      <div className="mt-3 grid grid-cols-2 rounded-lg bg-surface-2 p-0.5 text-center text-xs font-semibold">
         <span className="rounded-md bg-white py-1 text-ink shadow-soft">Store pickup</span>
         <span className="py-1 text-ink-subtle">Local delivery</span>
       </div>
       <div className="mt-2.5 flex gap-1.5">
         {days.map((d, n) => (
-          <span key={d} className={cn("flex-1 rounded-lg py-1 text-center text-[11px] font-semibold", n === 0 ? "bg-ink text-white" : "text-ink-muted ring-1 ring-[#E1E8F1]")}>
+          <span key={d} className={cn("flex-1 rounded-lg py-1 text-center text-xs font-semibold", n === 0 ? "bg-ink text-white" : "text-ink-muted ring-1 ring-[#E1E8F1]")}>
             {d}
           </span>
         ))}
@@ -301,7 +301,7 @@ export function PickupCard({ className }: { className?: string }) {
       <LayoutGroup id={group}>
         <div className="mt-1.5 grid grid-cols-3 gap-1.5">
           {slots.map((s, n) => (
-            <span key={s} className="relative rounded-lg py-1.5 text-center text-[10.5px] font-semibold">
+            <span key={s} className="relative rounded-lg py-1.5 text-center text-xs font-semibold">
               {n === slot ? (
                 <motion.span layoutId="slot" transition={spring.soft} className="absolute inset-0 rounded-lg bg-brand-50 ring-[1.5px] ring-brand" />
               ) : (
@@ -312,8 +312,8 @@ export function PickupCard({ className }: { className?: string }) {
           ))}
         </div>
       </LayoutGroup>
-      <p className="mt-2.5 flex items-center gap-1 text-[11px] text-ink-muted">
-        <MapPin className="size-3.5 text-brand" /> Downtown store · ready in 2 hrs
+      <p className="mt-2.5 flex items-center gap-1 text-xs text-ink-muted">
+        <MapPin className="size-3.5 text-brand-ink" /> Downtown store · ready in 2 hrs
       </p>
     </div>
   );
