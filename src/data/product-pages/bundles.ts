@@ -23,7 +23,7 @@ export const bundlesPage: ProductPageData = {
         { product: "bundles", title: "Next tier unlocked", meta: "Tiered bundle discount" },
       ],
       description: "Appstle Bundles bundle types (mix and match, fixed, volume and more) and a Buy 2, save 20% bundle widget on a phone.",
-      stage: "bg-lavender",
+      stage: "bg-gradient-to-br from-mint-200 via-mint to-mint-700",
     },
   },
   overview: {

@@ -3,7 +3,6 @@ import type { Toast } from "@/components/features/FloatingToast";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { HeroWash } from "@/components/features/backdrops/HeroWash";
 import { BuiltForShopify, Stars } from "@/components/ui/Badges";
 import { ButtonLink } from "@/components/ui/Button";
 import { ProductIcon } from "@/components/ui/ProductIcon";
@@ -30,7 +29,11 @@ export function ProductHero({
 }) {
   return (
     <section id="hero" aria-labelledby="page-title" data-section="hero" data-section-fit="screen" className="relative isolate overflow-hidden">
-      <HeroWash />
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_60%_30%,#000_30%,transparent_75%)]" />
+        <div className={cn("absolute -top-40 right-[-10%] size-[40rem] rounded-full opacity-70 blur-3xl", product.accent.soft)} />
+        <div className="absolute top-[45%] left-[-12%] size-[28rem] rounded-full bg-cream-200/70 blur-3xl" />
+      </div>
 
       <div className="mx-auto grid grid-cols-1 max-w-site items-center gap-10 px-5 pt-6 pb-section sm:px-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6 xl:col-span-5">
@@ -45,7 +48,7 @@ export function ProductHero({
           <h1
             id="page-title"
             className={cn(
-              "mt-5 text-[2.4rem] leading-[1.04] font-extrabold tracking-[-0.04em] text-ink sm:text-[3.1rem] short:mt-3",
+              "mt-5 text-[2.4rem] leading-[1.03] font-extrabold tracking-[-0.035em] text-navy sm:text-[3.1rem] short:mt-3",
               title.length > 48 ? "xl:text-[3.2rem] short:text-[2.35rem]" : "xl:text-[3.75rem] short:text-[2.9rem]",
             )}
           >

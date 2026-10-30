@@ -15,8 +15,14 @@
     scroll-padding-top: calc(var(--header-h) + 0.75rem);
     -webkit-text-size-adjust: 100%;
   }
+  @media (min-width: 1024px) {
+    html { font-size: 90%; }
+  }
+  @media (min-width: 1440px) {
+    html { font-size: 1vw; }
+  }
   body {
-    background: var(--color-canvas);
+    background: var(--color-surface);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01";
@@ -53,16 +59,12 @@
     text-transform: uppercase;
   }
 }
-:root { --pattern-alpha: 0.09; --pattern-size: 300px; }
-.home-pattern {
-  position: relative;
-  isolation: isolate;
-}
+:root { --pattern-alpha: 0.1; --pattern-size: 300px; }
 .home-pattern > section {
   position: relative;
   isolation: isolate;
 }
-.home-pattern::before {
+.home-pattern > section:not(.int-stage)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -239,69 +241,4 @@ body::after {
 .bot-sparkle { transform-box: fill-box; transform-origin: center; animation: bot-sparkle 3.2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   .bot-eyes, .bot-sparkle { animation: none; }
-}
-
-/* v4 type (2026-10-29 hero reference): bold sans titles in deep navy; the accent word
-   (.text-brand inside a title) switches to an italic serif in electric blue — like "Retention". */
-main :is(h1, h2):not(.font-sans),
-main [data-serif]:not(blockquote) {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-}
-main [data-serif]:not(blockquote) { font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; }
-main blockquote[data-serif] {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-variation-settings: "SOFT" 30, "opsz" 48;
-  letter-spacing: -0.02em;
-}
-main :is(h1, h2, h3, [data-serif]) :is(.text-brand, .text-brand-500, .text-brand-700) {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  font-variation-settings: "SOFT" 50, "opsz" 120;
-  letter-spacing: -0.025em;
-  /* solid colour: a background-clip gradient isn't painted on words that are mid-animation
-     (SplitText transforms them), which made accent words appear later than the rest */
-  background: none;
-  color: #1a7ff0;
-  padding-right: 0.08em;
-}
-.sky-frame {
-  background:
-    radial-gradient(60rem 22rem at 85% 8%, rgb(255 255 255 / 0.9), transparent 60%),
-    radial-gradient(40rem 14rem at 12% 30%, rgb(255 255 255 / 0.75), transparent 65%),
-    radial-gradient(50rem 18rem at 60% 62%, rgb(255 255 255 / 0.55), transparent 70%),
-    linear-gradient(180deg, #bcdcfb 0%, #d6eafd 28%, #ebf5fe 58%, #f8fbff 82%, #ffffff 100%);
-}
-
-@layer components {
-.eyebrow-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-brand-500);
-}
-.eyebrow-line::before {
-  content: "";
-  width: 1.5rem;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-}
-}
-
-/* Skio-style tonal brand: headings in a deep shade of the logo blue */
-main :is(h1, h2, h3, [data-serif]).text-ink { color: #13294b; }
-
-/* Accent words on dark/blue bands stay white (italic serif keeps the accent) */
-main .on-dark :is(h1, h2, h3, [data-serif]) :is(.text-brand, .text-brand-500, .text-brand-700) {
-  background: none;
-  color: #ffffff;
 }

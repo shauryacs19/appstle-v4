@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { SectionLines } from "@/components/features/backdrops/SectionLines";
 import { Bell, Check, Gift, MousePointerClick, Repeat2, ShoppingBag, TrendingUp, type LucideIcon } from "lucide-react";
 import { useRef, type ReactNode } from "react";
 import { Reveal } from "@/components/motion/Reveal";
@@ -19,7 +18,7 @@ function useOn() {
   return [ref, inView || reduce] as const;
 }
 
-const mini = "rounded-2xl bg-white ring-1 ring-canvas-line shadow-[0_14px_30px_-18px_rgb(6_43_82/0.35)]";
+const mini = "rounded-2xl bg-white ring-1 ring-[#D7E1EE] shadow-[0_14px_30px_-18px_rgb(6_43_82/0.35)]";
 
 function ReturnVisual() {
   const [ref, on] = useOn();
@@ -46,7 +45,7 @@ function ReturnVisual() {
         animate={on ? { opacity: 1, y: 0, rotate: 2 } : undefined}
         transition={{ duration: 0.8, delay: 0.35, ease: ease.out }}
       >
-        <span className="grid size-8 place-items-center rounded-xl bg-[#FFF1D9] text-[#B86B1B]">
+        <span className="grid size-8 place-items-center rounded-xl bg-[linear-gradient(145deg,#FFF6EA,#FBE3C4)] text-[#B86B1B]">
           <Gift className="size-4" />
         </span>
         <span>
@@ -117,7 +116,7 @@ function ValueVisual() {
         {bars.map((h, i) => (
           <div key={i} className="flex h-full flex-1 flex-col justify-end">
             <motion.div
-              className={cn("rounded-t-md", i === bars.length - 1 ? "bg-[#219BFB]" : "bg-brand-100")}
+              className={cn("rounded-t-md", i === bars.length - 1 ? "bg-[linear-gradient(180deg,#219BFB,#0177F2)]" : "bg-brand-100")}
               initial={{ height: "0%" }}
               animate={on ? { height: `${h * 100}%` } : undefined}
               transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: ease.out }}
@@ -164,14 +163,12 @@ export function GrowthStory() {
   const line = useRef<HTMLDivElement>(null);
   const inView = useInView(line, { once: true, amount: 0.3 });
   return (
-    <section id="how-it-works" data-line-host="" aria-labelledby="growth-title" className="relative isolate overflow-x-clip py-[clamp(4rem,10svh,7rem)]">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,#DCEBFD_0%,#EAF2FC_42%,#FFF1D9_100%)] [mask-image:linear-gradient(180deg,transparent,#000_26%,#000_74%,transparent)]" />
+    <section id="how-it-works" aria-labelledby="growth-title" className="relative isolate overflow-x-clip bg-[#EEF6FE] py-[clamp(4rem,10svh,7rem)]">
       <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[42rem] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
-      <SectionLines variant="growth" />
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal className="flex justify-center">
-            <Eyebrow>How Appstle helps merchants grow</Eyebrow>
+            <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#CFE4F8]">How Appstle helps merchants grow</Eyebrow>
           </Reveal>
           <h2 id="growth-title" className="mt-5 text-[2.2rem] leading-[1.04] font-bold tracking-[-0.04em] text-ink sm:text-[3rem]">
             <SplitText>
@@ -195,15 +192,15 @@ export function GrowthStory() {
                 <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full bg-white font-display text-sm font-bold text-brand shadow-soft ring-1 ring-[#CFE4F8] transition-[scale,background-color,color] duration-500 ease-[var(--ease-spring)] [li:hover>&]:scale-115 [li:hover>&]:bg-brand [li:hover>&]:text-white">
                   {s.n}
                 </span>
-                <div data-spotlight="" className="group mt-4 flex flex-1 flex-col overflow-hidden luxe-card luxe-card-sky rounded-[1.75rem] p-5 ring-1 [--ring:15rem] transition-[translate,box-shadow,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:bg-white hover:shadow-float sm:p-6">
-                  <div aria-hidden className="rounded-[1.35rem] bg-[#F3F7FE] p-4 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.02]">
+                <div data-spotlight="" className="group mt-4 flex flex-1 flex-col overflow-hidden rounded-[1.75rem] bg-white/70 p-5 ring-1 ring-white backdrop-blur transition-[translate,box-shadow,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:bg-white hover:shadow-float sm:p-6">
+                  <div aria-hidden className="rounded-[1.35rem] bg-[linear-gradient(160deg,#F5FAFF,#E6F2FD)] p-4 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.02]">
                     {s.visual}
                   </div>
                   <h3 className="mt-6 text-[1.35rem] leading-tight font-bold tracking-[-0.025em] text-ink">{s.title}</h3>
                   <p className="mt-2 leading-relaxed text-ink-muted">{s.body}</p>
                   <ul className="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Apps that help">
                     {s.apps.map((id) => (
-                      <li key={id} className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white py-1 pr-3 pl-1 text-xs font-semibold text-ink ring-1 ring-canvas-line hover:ring-brand/40">
+                      <li key={id} className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white py-1 pr-3 pl-1 text-xs font-semibold text-ink ring-1 ring-[#D7E1EE] hover:ring-brand/40">
                         <ProductIcon id={id} size="sm" className="size-6 rounded-full" />
                         {productById[id].shortName}
                       </li>

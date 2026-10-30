@@ -39,10 +39,10 @@ export const socials = [
 
 export const proof = {
   merchants: {
-    value: 40000,
-    display: "40,000+",
+    value: 70000,
+    display: "70,000+",
     label: "Shopify & Shopify Plus merchants",
-    note: "Merchant count published by Appstle (as of Dec 2024).",
+    note: "Merchant count provided by Appstle.",
     source: "https://appstle.com/merchants/",
   },
   reviews: {

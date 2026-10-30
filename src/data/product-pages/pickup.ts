@@ -16,7 +16,7 @@ export const pickupPage = {
         { product: "pickup", title: "Local delivery", meta: "Rate by zip code" },
       ],
       description: "Appstle Pickup & Delivery delivery-zone management and a product page offering pickup, delivery and shipping with a date picker.",
-      stage: "bg-deep-blue",
+      stage: "bg-gradient-to-br from-blush-100 via-blush to-blush-700",
     },
   } satisfies Pick<ProductPageData["hero"], "title" | "lead" | "visual">,
   features: {

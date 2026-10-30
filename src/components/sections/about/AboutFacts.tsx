@@ -1,5 +1,5 @@
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { AppstleBadge } from "@/components/brand/AppstleLogo";
+import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { companyBlurb } from "@/data/pages/company";
 import { cn } from "@/lib/cn";
 
@@ -17,7 +17,7 @@ export function AboutFacts({ facts }: { facts: { value: string; label: string }[
         ))}
       </Stagger>
       <div className="mt-4 flex items-start gap-3 rounded-3xl bg-cream-50 p-4 ring-1 ring-navy/6">
-        <AppstleBadge className="size-10 shrink-0" />
+        <AppstleMark className="size-9 shrink-0 rounded-xl" />
         <p className="text-[0.86rem] leading-relaxed text-ink-muted">{companyBlurb}</p>
       </div>
     </div>

@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 import { ease, spring } from "@/lib/motion";
 
 const shell =
-  "rounded-[1.15rem] bg-white ring-1 ring-canvas-line shadow-[0_1px_2px_rgb(6_43_82/0.05),0_18px_38px_-20px_rgb(6_43_82/0.3)]";
+  "rounded-[1.15rem] bg-white ring-1 ring-[#D7E1EE] shadow-[0_1px_2px_rgb(6_43_82/0.05),0_18px_38px_-20px_rgb(6_43_82/0.3)]";
 
 function useLive<T extends Element>() {
   const ref = useRef<T>(null);
@@ -159,7 +159,7 @@ export function LoyaltyCard({ className }: { className?: string }) {
       </div>
       <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#E6EDF5]">
         <motion.div
-          className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-brand-300),var(--color-brand))]"
+          className="h-full rounded-full bg-[linear-gradient(90deg,#6FC0FA,#1088F6)]"
           initial={false}
           animate={{ width: `${Math.min(100, (pts / GOAL) * 100)}%` }}
           transition={{ duration: 0.9, ease: ease.out }}

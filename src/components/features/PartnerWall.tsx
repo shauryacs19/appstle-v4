@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { AppstleBadge } from "@/components/brand/AppstleLogo";
+import { AppstleMark } from "@/components/brand/AppstleLogo";
 import type { Partner } from "@/data/partners";
 import { cn } from "@/lib/cn";
 
@@ -46,7 +46,7 @@ export function PartnerWall({ rows, className }: { rows: Partner[][]; className?
         <div className="absolute -inset-12 -z-10 rounded-full bg-[radial-gradient(closest-side,#fff_55%,rgb(255_255_255/0.85)_70%,rgb(255_255_255/0)_100%)]" />
         <div className="absolute -inset-3 -z-10 rounded-[1.6rem] bg-cobalt/10 motion-safe:animate-[pulse-ring_2.8s_ease-out_infinite]" />
         <div className="grid size-16 place-items-center rounded-2xl bg-white shadow-[0_14px_30px_-12px_rgb(36_87_230/0.55)] ring-1 ring-cobalt-200">
-          <AppstleBadge className="size-12" />
+          <AppstleMark className="size-11 rounded-xl" />
         </div>
       </div>
     </div>

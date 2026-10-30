@@ -1,21 +1,5 @@
 @theme {
   --gradient-brand: linear-gradient(135deg, #219bfb 0%, #0177f2 100%);
-  /* 2026-10-29 palette: Electric Blue → Periwinkle (selective use only) */
-  --gradient-duo: linear-gradient(120deg, #219bfb 0%, #6565f5 100%);
-  --gradient-lilac-cream: linear-gradient(160deg, #efeaff 0%, #fff6e8 100%);
-  --color-electric: #219bfb;
-  --color-deep-blue: #0875d1;
-  --color-charcoal: #202124;
-  --color-warm-cream: #fff1d9;
-  --color-periwinkle: #6565f5;
-  --color-periwinkle-50: #f2f2ff;
-  --color-periwinkle-100: #e4e4fe;
-  --color-periwinkle-200: #cbcbfc;
-  --color-periwinkle-700: #3e3eb8;
-  --color-deep-blue-50: #eaf3fc;
-  --color-deep-blue-100: #d3e6f8;
-  --color-deep-blue-200: #a7cdf1;
-  --color-deep-blue-700: #065da6;
 
   --color-brand-50: #eef7fe;
   --color-brand-100: #ceeffd;
@@ -24,26 +8,21 @@
   --color-brand-400: #219bfb;
   --color-brand-500: #0177f2;
   --color-brand: #1088f6;
-  --color-brand-700: #0875d1;
+  --color-brand-700: #0a6fd1;
   --color-brand-800: #003f7d;
   --color-brand-900: #062b52;
 
   --color-surface: #ffffff;
-  --color-canvas: #fdf8ef;
-  --color-canvas-2: #fff1d9;
-  --color-canvas-line: #ece8f2;
-  --color-sky-wash: #e4f1fd;
-  --color-surface-2: #f6f6fb;
-  --color-line: #e6e8f0;
+  --color-surface-2: #f3f7fc;
+  --color-line: #dfe7f1;
 
-  --color-ink: #202124;
+  --color-ink: #2d2d2d;
   --color-ink-700: #44494f;
   --color-ink-muted: #5c636c;
   --color-ink-subtle: #7a818b;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
 
   --shadow-soft: 0 1px 2px rgb(6 43 82 / 0.05), 0 6px 20px -8px rgb(6 43 82 / 0.14);
   --shadow-card: 0 1px 2px rgb(6 43 82 / 0.05), 0 18px 40px -18px rgb(6 43 82 / 0.22);
@@ -73,11 +52,11 @@
   }
 }
 @theme {
-  --color-cream: #fff1d9;
-  --color-cream-50: #fffcf6;
-  --color-cream-100: #fff8ec;
-  --color-cream-200: #fff1d9;
-  --color-cream-300: #f5e2be;
+  --color-cream: #f3f7fc;
+  --color-cream-50: #ffffff;
+  --color-cream-100: #f6f9fd;
+  --color-cream-200: #e6eef7;
+  --color-cream-300: #d3dfec;
 
   --color-cobalt: #1088f6;
   --color-cobalt-50: #eef7fe;
@@ -90,36 +69,35 @@
   --color-cobalt-800: #003f7d;
   --color-cobalt-900: #062b52;
 
-  --color-navy: #13294b;
+  --color-navy: #0b2545;
   --color-navy-800: #12345e;
   --color-navy-700: #2a4466;
 
-  /* coral remapped to the Blush Pink accent (restrained) */
-  --color-coral: #f4b9d1;
-  --color-coral-50: #fdf3f7;
-  --color-coral-100: #fbe6ef;
-  --color-coral-200: #f4b9d1;
-  --color-coral-700: #b23a6e;
-  --color-peach: #fff1d9;
-  --color-lavender: #c5b2ff;
+  --color-coral: #ff8c69;
+  --color-coral-50: #fff3ee;
+  --color-coral-100: #ffe3d8;
+  --color-coral-200: #ffc9b6;
+  --color-coral-700: #b5442a;
+  --color-peach: #ffd8c4;
+  --color-lavender: #c8b8ff;
   --color-lavender-50: #f6f2ff;
-  --color-lavender-100: #ece4ff;
-  --color-lavender-200: #ddd0ff;
-  --color-lavender-700: #6a4fd6;
+  --color-lavender-100: #ebe4ff;
+  --color-lavender-200: #ddd2ff;
+  --color-lavender-700: #5a3fc0;
   --color-mint: #bfe7d0;
   --color-mint-50: #effaf3;
   --color-mint-100: #dcf3e5;
   --color-mint-200: #c9ecd8;
   --color-mint-700: #1b6a46;
-  --color-blush: #f4b9d1;
-  --color-blush-50: #fdf3f7;
-  --color-blush-100: #fbe6ef;
-  --color-blush-700: #b23a6e;
-  --color-sky: #219bfb;
-  --color-sky-50: #eef6ff;
-  --color-sky-100: #d9ecfe;
-  --color-sky-200: #a6d5fd;
-  --color-sky-700: #0875d1;
+  --color-blush: #ffd3dd;
+  --color-blush-50: #fff3f6;
+  --color-blush-100: #ffe5eb;
+  --color-blush-700: #a8385a;
+  --color-sky: #09a9eb;
+  --color-sky-50: #eef8fd;
+  --color-sky-100: #d9f0fb;
+  --color-sky-200: #b3e1f6;
+  --color-sky-700: #0a6d99;
 
   --shadow-hairline: 0 0 0 1px rgb(6 43 82 / 0.06);
   --spacing-gutter: 1.25rem;

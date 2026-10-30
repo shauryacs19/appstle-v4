@@ -1,144 +1,237 @@
-"use client";
-
-import { useId, useState } from "react";
-import { SectionLines } from "@/components/features/backdrops/SectionLines";
-import { ArrowUpRight, Boxes, CalendarDays, Clock, Coins, Crown, Gem, Gift, Heart, MapPin, Package, Percent, Repeat, ShoppingBag, Sparkle, Star, Store, Tag, Ticket, Truck, type LucideIcon } from "lucide-react";
-import { Reveal } from "@/components/motion/Reveal";
+import type { ReactNode } from "react";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { SplitText } from "@/components/motion/SplitText";
+import { BundleBuilderDemo } from "@/components/features/demos/BundleBuilderDemo";
+import { LoyaltyPointsDemo } from "@/components/features/demos/LoyaltyPointsDemo";
+import { MembershipTierDemo } from "@/components/features/demos/MembershipTierDemo";
+import { PickupSchedulerDemo } from "@/components/features/demos/PickupSchedulerDemo";
+import { SubscriptionWidgetDemo } from "@/components/features/demos/SubscriptionWidgetDemo";
+import { Confetti } from "@/components/motion/Confetti";
+import { Doodles, type DoodleSpot } from "@/components/features/backdrops/Doodles";
+import { BundleRise, DeliveryLane, RenewOrbit, Sparkles } from "@/components/features/backdrops/scenes";
+import { ButtonLink } from "@/components/ui/Button";
 import { ProductIcon } from "@/components/ui/ProductIcon";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { SmartLink } from "@/components/ui/SmartLink";
-import { Stars } from "@/components/ui/Stars";
+import { suiteCopy } from "@/data/productCopy";
 import { productById, type ProductId } from "@/data/products";
-import { accentVars } from "@/lib/accents";
 import { cn } from "@/lib/cn";
-import { appWidgets } from "./suite/AppWidgets";
-import { WidgetCanvas } from "./suite/WidgetCanvas";
+import { FitDemos } from "./suite/FitDemos";
+
+type Tone = "light" | "mist" | "sky" | "navy";
+const tones: Record<Tone, { card: string; text: string; muted: string; frame: string; doodle: string; dark?: boolean }> = {
+  light: {
+    card: "bg-white ring-1 ring-[#D7E1EE] hover:ring-brand/30",
+    text: "text-ink",
+    muted: "text-ink-muted",
+    frame: "bg-[#F3F7FC] ring-[#E1E9F3]",
+    doodle: "text-brand-400/40",
+  },
+  mist: {
+    card: "bg-[linear-gradient(165deg,#F2F8FF_0%,#E8F2FD_100%)] ring-1 ring-[#D8E7F7] hover:ring-brand/30",
+    text: "text-ink",
+    muted: "text-ink-muted",
+    frame: "bg-white/85 ring-[#E1ECF8]",
+    doodle: "text-brand-400/45",
+  },
+  sky: {
+    card: "bg-[linear-gradient(165deg,#F3F9FF_0%,#E8F3FE_60%,#DDEEFD_100%)] ring-1 ring-[#CFE3F8] hover:ring-brand/35",
+    text: "text-ink",
+    muted: "text-ink-muted",
+    frame: "bg-white/80 ring-[#D6E7F8]",
+    doodle: "text-brand-400/50",
+  },
+  navy: {
+    card: "bg-[linear-gradient(160deg,#13264A,#0B1730)] ring-1 ring-white/5 hover:ring-white/15",
+    text: "text-white",
+    muted: "text-white/72",
+    frame: "bg-white/6 ring-white/10",
+    doodle: "text-brand-300/40",
+    dark: true,
+  },
+};
+
+const doodleSpots: Record<ProductId, DoodleSpot[]> = {
+  subscriptions: [
+    { name: "repeat", className: "right-[5%] top-[3%] size-10", rotate: -8 },
+    { name: "calendar", className: "hidden sm:block right-[18%] top-[4.5%] size-8", rotate: 8 },
+    { name: "parcel", className: "right-[5%] bottom-[2.5%] size-9", rotate: -6 },
+  ],
+  memberships: [
+    { name: "crown", className: "right-[5%] top-[3%] size-11", rotate: 10 },
+    { name: "gem", className: "hidden sm:block right-[20%] top-[4.5%] size-8", rotate: -8 },
+    { name: "ticket", className: "right-[5%] bottom-[2.5%] size-10", rotate: 8 },
+  ],
+  loyalty: [
+    { name: "gift", className: "right-[5%] top-[3%] size-11", rotate: 10 },
+    { name: "star", className: "hidden sm:block right-[20%] top-[4.5%] size-8", rotate: 12 },
+    { name: "heart", className: "right-[5%] bottom-[2.5%] size-9", rotate: -6 },
+  ],
+  bundles: [
+    { name: "percent", className: "right-[4%] top-[4%] size-10", rotate: -8 },
+    { name: "bag", className: "hidden sm:block right-[16%] top-[5%] size-10", rotate: 6 },
+    { name: "tag", className: "right-[4%] bottom-[3%] size-10", rotate: 14 },
+  ],
+  pickup: [
+    { name: "pin", className: "right-[4%] top-[2.5%] size-9 md:right-auto md:left-[30%] md:top-[5%] md:size-11", rotate: -8 },
+    { name: "van", className: "hidden md:block left-[24%] bottom-[6%] size-12", rotate: -4 },
+    { name: "clock", className: "hidden md:block left-[3%] bottom-[4%] size-9", rotate: 6 },
+  ],
+};
+
+const confetti = ["#1088F6", "#1088F6", "#6FC0FA", "#CEEFFD", "#F5B53F", "#F5B53F", "#0066CA", "#FFFFFF"];
+
+const demo: Record<ProductId, ReactNode> = {
+  subscriptions: (
+    <>
+      <RenewOrbit className="hidden sm:block" />
+      <SubscriptionWidgetDemo />
+    </>
+  ),
+  memberships: <MembershipTierDemo />,
+  loyalty: (
+    <div className="relative">
+      <LoyaltyPointsDemo />
+      <Confetti colors={confetti} className="z-20 rounded-[1.75rem]" />
+    </div>
+  ),
+  bundles: <BundleBuilderDemo />,
+  pickup: (
+    <>
+      <DeliveryLane className="mb-4" />
+      <PickupSchedulerDemo />
+    </>
+  ),
+};
+
+const stageScene: Partial<Record<ProductId, ReactNode>> = {
+  memberships: <Sparkles />,
+  bundles: <BundleRise />,
+};
+
+const demoWidth: Record<ProductId, string> = {
+  subscriptions: "max-w-sm",
+  memberships: "max-w-sm",
+  loyalty: "max-w-lg",
+  bundles: "max-w-xl",
+  pickup: "max-w-md",
+};
+
+function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Tone; wide?: boolean; flip?: boolean; className?: string }) {
+  const p = productById[id];
+  const copy = suiteCopy[id];
+  const t = tones[tone];
+  const dark = !!t.dark;
+  const ctas = (
+    <div className="flex flex-wrap items-center gap-2">
+      <ButtonLink href={p.href} size="sm" variant={dark ? "light" : "primary"}>
+        Learn <strong>more</strong>
+      </ButtonLink>
+      <ButtonLink
+        href={p.installHref}
+        size="sm"
+        variant={dark ? "outlineLight" : "ghost"}
+        arrow={false}
+        className={dark ? undefined : "ring-1 ring-[#D3DDEA] hover:ring-brand/40"}
+      >
+        Install on <strong>Shopify</strong>
+      </ButtonLink>
+    </div>
+  );
+  const head = (
+    <div className="flex min-w-0 flex-col">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+        <ProductIcon
+          id={id}
+          size="md"
+          className={cn(
+            "transition-[rotate,scale] duration-500 ease-[var(--ease-spring)] group-hover:scale-110 group-hover:-rotate-8",
+            dark ? "bg-white/12 text-white ring-white/15" : "bg-white",
+          )}
+        />
+        <div className="min-w-0">
+          <p className={cn("text-[0.95rem] font-semibold", t.text)}>{p.shortName}</p>
+        </div>
+      </div>
+      <h3 id={`app-${id}`} className={cn("mt-4 short:mt-3 font-bold tracking-[-0.03em] text-balance", t.text, wide ? "text-[1.6rem] leading-[1.08] sm:text-[1.9rem] short:text-[1.5rem]" : "text-[1.3rem] leading-[1.12] short:text-[1.15rem]")}>
+        {copy.title}
+      </h3>
+      <p className={cn("mt-2 text-[0.95rem] leading-relaxed short:mt-1 short:text-[0.875rem]", t.muted)}>{copy.intro}</p>
+    </div>
+  );
+  const stage = (
+    <div data-fit-stage="" className={cn("relative isolate flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.5rem] p-4 ring-1 sm:p-6 short:p-3.5", t.frame)}>
+      <div aria-hidden className={cn("absolute inset-0 -z-20 rounded-[inherit] opacity-40", dark ? "bg-dots" : "bg-dots-ink")} />
+      {stageScene[id]}
+      <div data-fit-demo="" data-fit-max="0.92" className={cn("relative isolate mx-auto my-auto w-full min-w-0 lg:[zoom:0.86] xl:[zoom:0.92] short:[zoom:0.7]", demoWidth[id])}>
+        <div>{demo[id]}</div>
+      </div>
+    </div>
+  );
+  return (
+    <article
+      aria-labelledby={`app-${id}`}
+      data-fit-card=""
+      data-spotlight={dark ? "dark" : ""}
+      className={cn(
+        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-soft transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:shadow-float sm:p-6 short:p-4",
+        t.card,
+        className,
+      )}
+    >
+      {dark && <div aria-hidden className="absolute inset-0 -z-20 bg-dots opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000)]" />}
+      <Doodles autoplay spots={doodleSpots[id]} className={t.doodle} />
+      {wide ? (
+        <div className={cn("grid h-full gap-6 md:gap-8", flip ? "md:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]" : "md:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]")}>
+          <div className={cn("flex flex-col justify-center gap-6", flip && "md:order-2")}>
+            {head}
+            {ctas}
+          </div>
+          {stage}
+        </div>
+      ) : (
+        <div className="flex h-full flex-col gap-5 short:gap-3.5">
+          {head}
+          {stage}
+          {ctas}
+        </div>
+      )}
+    </article>
+  );
+}
 
 const order: ProductId[] = ["subscriptions", "memberships", "loyalty", "bundles", "pickup"];
 
-/** Flat palette tint behind each app's live widgets. */
-const tint: Record<ProductId, string> = {
-  subscriptions: "bg-[#EEF6FF]",
-  memberships: "bg-[#F2F2FE]",
-  loyalty: "bg-[#FDF2F7]",
-  bundles: "bg-[#F5F1FF]",
-  pickup: "bg-[#EAF3FC]",
-};
-
-/** Icons that float upward behind each app's widgets. */
-const rising: Record<ProductId, LucideIcon[]> = {
-  subscriptions: [Repeat, Package, CalendarDays, Truck],
-  memberships: [Crown, Gem, Ticket, Sparkle],
-  loyalty: [Gift, Star, Heart, Coins],
-  bundles: [Percent, ShoppingBag, Tag, Boxes],
-  pickup: [MapPin, Truck, Clock, Store],
-};
-
-/** Grid-line / label-dot colour per app (palette). */
-const accentHex: Record<ProductId, string> = {
-  subscriptions: "#219BFB",
-  memberships: "#6565F5",
-  loyalty: "#E2628F",
-  bundles: "#7B5CF0",
-  pickup: "#0875D1",
-};
-
-const blurb: Record<ProductId, string> = {
-  subscriptions: "Flexible subscriptions that are easy for customers to buy and manage.",
-  memberships: "Exclusive member perks that keep customers coming back.",
-  loyalty: "Points, referrals and VIP tiers that drive more purchases.",
-  bundles: "Raise order value with smart product bundles and upsells.",
-  pickup: "Local pickup and delivery that fit your customers’ schedule.",
-};
-
-/** Rounded-down review count, e.g. 9,054 → "9,000+", 926 → "900+", 21 → "20+". */
-function approxCount(n: number) {
-  const step = n >= 100 ? 100 : 10;
-  return `${(Math.floor(n / step) * step).toLocaleString("en-US")}+`;
-}
-
-export function RetentionStack({ initial = "subscriptions" }: { initial?: ProductId }) {
-  const [active, setActive] = useState<ProductId>(initial);
-  const base = useId();
-  const w = appWidgets[active];
-  const p = productById[active];
-
+export function RetentionStack() {
   return (
-    <section id="products" data-line-host="" aria-labelledby="products-title" className="relative isolate scroll-mt-24 py-[clamp(4rem,10svh,6.5rem)]">
-      <SectionLines variant="products" />
+    <section id="products" aria-labelledby="products-title" className="relative scroll-mt-24 bg-[#F7F9FC] py-[clamp(4rem,10svh,7rem)]">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-2xl text-center">
-          <Reveal className="flex justify-center">
-            <Eyebrow>The Appstle retention stack</Eyebrow>
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#D7E1EE]">The Appstle retention stack</Eyebrow>
+            </Reveal>
+            <h2 id="products-title" className="mt-5 text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-[3rem] lg:text-[3.4rem]">
+              <SplitText>
+                Five apps. <span className="text-brand">One retention stack.</span>
+              </SplitText>
+            </h2>
+          </div>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <p className="text-lg leading-relaxed text-ink-muted lg:pb-2">
+              Use one app or all five. Each is built for Shopify and Shopify Plus, and they’re designed to work together.
+            </p>
           </Reveal>
-          <h2 id="products-title" className="mt-4 text-[2.3rem] text-ink sm:text-[3rem]">
-            Five apps. <span className="text-brand">One retention stack.</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-lg text-[1.02rem] leading-relaxed text-ink-muted">
-            Powerful apps that work together to turn first-time buyers into loyal, repeat customers.
-          </p>
         </div>
 
-        <div className="mt-10 grid gap-3 rounded-[1.75rem] bg-white/80 p-3 ring-1 ring-[#ECE8F2] sm:p-4 lg:grid-cols-[minmax(0,0.36fr)_minmax(0,1fr)] lg:gap-4">
-          {/* App list */}
-          <div role="tablist" aria-label="Appstle apps" aria-orientation="vertical" className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
-            {order.map((id) => {
-              const app = productById[id];
-              const on = id === active;
-              return (
-                <div
-                  key={id}
-                  className={cn(
-                    "shrink-0 rounded-2xl ring-1 transition-colors max-lg:w-[17rem]",
-                    on ? "bg-white shadow-[0_14px_30px_-20px_rgb(40_60_140/0.35)] ring-[#E3E7F2]" : "ring-transparent hover:bg-[#F7F8FC]",
-                  )}
-                >
-                  <button
-                    type="button"
-                    role="tab"
-                    id={`${base}-tab-${id}`}
-                    aria-selected={on}
-                    aria-controls={`${base}-panel`}
-                    onClick={() => setActive(id)}
-                    className="flex w-full items-start gap-3.5 px-4 py-3.5 text-left"
-                  >
-                    <span style={accentVars(id)} className="contents">
-                      <ProductIcon id={id} size="md" className="ring-0" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-[0.95rem] font-semibold text-[#13294B]">{app.shortName}</span>
-                      <span className="mt-0.5 flex items-center gap-1.5 text-[0.72rem] text-ink-subtle">
-                        <Stars value={app.rating.value} className="[&>span]:size-3 [&_svg]:size-3" />
-                        <span className="font-semibold text-ink">{app.rating.value.toFixed(1)}</span>· {approxCount(app.rating.count)} reviews
-                      </span>
-                      <span className="mt-1.5 block text-[0.82rem] leading-snug text-ink-muted">{blurb[id]}</span>
-                    </span>
-                  </button>
-                  {on && (
-                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 px-4 pb-4 pl-[4.4rem]">
-                      <SmartLink href={app.href} className="inline-flex items-center gap-1 text-[0.82rem] font-semibold text-[#1A84F5] hover:underline">
-                        Learn more <ArrowUpRight aria-hidden className="size-3.5" />
-                      </SmartLink>
-                      <SmartLink href={app.installHref} className="inline-flex items-center gap-1 text-[0.82rem] font-medium text-ink-muted hover:text-ink">
-                        Install on Shopify <ShoppingBag aria-hidden className="size-3.5" />
-                      </SmartLink>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Live widgets for the selected app, on a draggable canvas */}
-          <div id={`${base}-panel`} role="tabpanel" aria-labelledby={`${base}-tab-${active}`}>
-            <p className="sr-only">{w.label}</p>
-            <WidgetCanvas key={active} items={w.items} height={w.height} accent={accentHex[active]} tint={tint[active]} title={p.shortName} icons={rising[active]} />
-          </div>
-        </div>
-
-        <div className="mt-6">
-          <p className="text-center text-xs text-ink-subtle">Demos use illustrative values and don’t create orders or bookings. Ratings from the Shopify App Store; review counts rounded (Oct 2026).</p>
-        </div>
+        <Stagger className="mt-12 grid grid-cols-1 gap-4 sm:gap-5" interval={0.08} amount={0.05}>
+          {order.map((id, i) => (
+            <StaggerItem key={id}>
+              <AppCard id={id} tone={i % 2 ? "mist" : "light"} wide flip={i % 2 === 1} className="lg:h-[clamp(30rem,calc(100svh-10rem),36rem)]" />
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <FitDemos />
+        <p className="mt-6 text-center text-xs text-ink-subtle">Demos use illustrative values and don’t create orders or bookings.</p>
       </div>
     </section>
   );

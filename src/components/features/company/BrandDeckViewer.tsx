@@ -2,7 +2,7 @@
 
 import { ExternalLink, Presentation } from "lucide-react";
 import { useState } from "react";
-import { AppstleBadge } from "@/components/brand/AppstleLogo";
+import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Button } from "@/components/ui/Button";
 import { TabList } from "@/components/ui/Tabs";
 import { cn } from "@/lib/cn";
@@ -51,7 +51,7 @@ export function BrandDeckViewer({ decks }: { decks: string[] }) {
           <div className="on-dark absolute inset-0 grid place-items-center bg-gradient-to-br from-cobalt-700 via-cobalt-800 to-navy p-6 text-center text-white">
             <div aria-hidden className="bg-dots absolute inset-0 opacity-40" />
             <div className="relative flex flex-col items-center">
-              <AppstleBadge className="size-16" />
+              <AppstleMark className="size-14 rounded-2xl shadow-glow" />
               <p className="mt-4 font-display text-2xl font-bold">Appstle brand deck {decks.length > 1 ? Number(active) + 1 : ""}</p>
               <p className="mt-1 text-sm text-white/70">Google Slides presentation</p>
               <Button variant="light" className="mt-5" onClick={() => setLoaded((l) => ({ ...l, [active]: true }))}>

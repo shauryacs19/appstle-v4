@@ -1,59 +1,24 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { HeartHandshake, ShoppingBag, Sparkles, Truck, type LucideIcon } from "lucide-react";
-import { AppTile } from "./hero/AppTile";
-import { SplitText } from "@/components/motion/SplitText";
-import { ButtonLink } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/SectionHeading";
+import { motion } from "motion/react";
+import { useRef, type CSSProperties, type ReactNode } from "react";
+import { Gift, HeartHandshake, Package, Repeat, ShoppingBag, Sparkles, TrendingUp, Truck, UserCheck, type LucideIcon } from "lucide-react";
+import Image from "next/image";
+import { Reveal } from "@/components/motion/Reveal";
+import { Starter } from "@/components/ui/Starter";
+import heroWoman from "@/assets/home/hero-woman.webp";
 import { Stars } from "@/components/ui/Stars";
-import { commerceHero } from "@/data/home";
-import { proof } from "@/data/site";
+import { links, proof } from "@/data/site";
 import { ease } from "@/lib/motion";
-import { BundleCard, LoyaltyCard, MembershipCard, PickupCard, SubscriptionCard } from "@/components/features/widgets/ProductWidgets";
+import { ButtonLink } from "@/components/ui/Button";
+import { PickupCard, SubscriptionCard } from "@/components/features/widgets/ProductWidgets";
 import { Deco, ParallaxField, Piece } from "./hero/Collage";
 import { Doodles, type DoodleSpot } from "@/components/features/backdrops/Doodles";
-import { LifetimeValueChip, NotificationCard, RepeatRateCard, RevenueCard, ShopifyTile, StorefrontCard } from "./hero/GrowthCards";
-
-function Rise({ delay, className, children }: { delay: number; className?: string; children: ReactNode }) {
-  return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y: 22 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay, ease: ease.out, opacity: { duration: 0.55, delay } }}
-    >
-      {children}
-    </motion.div>
-  );
-}
+import { NotificationCard, RevenueCard, ShopifyTile } from "./hero/GrowthCards";
 
 function Backdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-      <div className="absolute -top-[20%] left-1/2 h-[80%] w-[120%] -translate-x-1/2 bg-[radial-gradient(closest-side,rgb(206_239_253/0.55),transparent)]" />
-      <div className="absolute top-[44%] left-1/2 size-[min(calc(62rem*var(--hs,1)),140vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(255_255_255/0.95),rgb(255_255_255/0.55)_55%,transparent)]" />
-      <Deco depth={-6} delay={0.15} className="top-[44%] left-1/2 size-[min(calc(46rem*var(--hs,1)),120vw)] -translate-x-1/2 -translate-y-1/2">
-        <div className="size-full rounded-full border border-brand/20" />
-      </Deco>
-      <Deco depth={-10} delay={0.25} className="top-[44%] left-1/2 hidden size-[min(calc(64rem*var(--hs,1)),150vw)] -translate-x-1/2 -translate-y-1/2 md:block">
-        <svg viewBox="0 0 100 100" className="size-full animate-[orbit_160s_linear_infinite]">
-          <circle cx="50" cy="50" r="49.6" fill="none" stroke="var(--color-brand)" strokeOpacity=".3" strokeWidth=".16" strokeDasharray=".6 1.4" />
-          {[18, 152, 236, 318].map((a, i) => (
-            <circle key={a} cx={50 + 49.6 * Math.cos((a * Math.PI) / 180)} cy={50 + 49.6 * Math.sin((a * Math.PI) / 180)} r={[0.75, 0.55, 0.9, 0.5][i]} fill="var(--color-brand)" fillOpacity={0.6} />
-          ))}
-        </svg>
-      </Deco>
-      <Deco depth={-4} delay={0.2} className="top-[44%] left-1/2 hidden size-[min(calc(36rem*var(--hs,1)),100vw)] -translate-x-1/2 -translate-y-1/2 md:block">
-        <div className="size-full rounded-full border border-dashed border-brand/15" />
-      </Deco>
-      <Deco depth={-8} delay={0.4} className="-top-28 -right-20 hidden size-80 md:block">
-        <div className="size-full rounded-full bg-brand-100/35" />
-      </Deco>
-      <div className="absolute top-[8%] left-[8%] hidden size-[26rem] rounded-full bg-[#6FC0FA]/25 blur-[90px] md:block" />
-      <div className="absolute right-[6%] bottom-[6%] hidden size-[28rem] rounded-full bg-[#1088F6]/15 blur-[100px] md:block" />
-      <div className="absolute top-[38%] left-[30%] hidden size-[18rem] rounded-full bg-[#CEEFFD]/60 blur-[80px] md:block" />
       <Deco depth={-4} delay={0.5} className="top-[6%] -left-[4%] hidden size-[22rem] md:block">
         <ShoppingBag className="size-full -rotate-12 text-brand/[0.05]" strokeWidth={0.5} />
       </Deco>
@@ -69,7 +34,7 @@ function Backdrop() {
 
 function PurposeChip({ icon: Icon, children }: { icon: LucideIcon; children: ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 rounded-full bg-white/90 py-1.5 pr-3.5 pl-1.5 text-[0.8rem] whitespace-nowrap text-ink ring-1 ring-canvas-line shadow-[0_14px_30px_-18px_rgb(6_43_82/0.35)] backdrop-blur">
+    <div className="inline-flex items-center gap-2 rounded-full bg-white/90 py-1.5 pr-3.5 pl-1.5 text-[0.8rem] whitespace-nowrap text-ink ring-1 ring-[#D7E1EE] shadow-[0_14px_30px_-18px_rgb(6_43_82/0.35)] backdrop-blur">
       <span className="grid size-6 place-items-center rounded-full bg-brand-50 text-brand">
         <Icon className="size-3.5" strokeWidth={2} />
       </span>
@@ -78,114 +43,98 @@ function PurposeChip({ icon: Icon, children }: { icon: LucideIcon; children: Rea
   );
 }
 
-function Cycle({ items, every = 5, offset = 0 }: { items: ReactNode[]; every?: number; offset?: number }) {
-  const reduce = useReducedMotion();
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    if (reduce || items.length < 2) return;
-    let t: ReturnType<typeof setInterval> | undefined;
-    const start = setTimeout(() => {
-      setI((v) => (v + 1) % items.length);
-      t = setInterval(() => setI((v) => (v + 1) % items.length), every * 1000);
-    }, (every + offset) * 1000);
-    return () => {
-      clearTimeout(start);
-      if (t) clearInterval(t);
-    };
-  }, [reduce, items.length, every, offset]);
+const headline = ["Grow Revenue", "Through", "Retention"];
+
+function Underline() {
   return (
-    <div className="grid [&>*]:[grid-area:1/1]">
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 10, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -8, scale: 0.98 }}
-          transition={{ duration: 0.9, ease: ease.out }}
-        >
-          {items[i]}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    <svg aria-hidden viewBox="0 0 300 24" preserveAspectRatio="none" className="absolute -bottom-[0.12em] left-0 h-[0.2em] w-full">
+      <motion.path
+        d="M3 16C60 6 130 4 297 12"
+        fill="none"
+        stroke="var(--color-coral)"
+        strokeWidth="7"
+        strokeLinecap="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 0.9, delay: 0.95, ease: ease.inOut }}
+      />
+    </svg>
   );
 }
 
-const big = "w-[15rem]";
-const small = "w-[11.75rem]";
+
+function Floater({ delay, d, children }: { delay: number; d: number; children: ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay, ease: ease.out }}
+    >
+      <div className="hero-float" style={{ "--fd": `${d}s`, "--fy": "4px", "--fdl": `${-delay}s` } as CSSProperties}>
+        <div className="hero-tilt">{children}</div>
+      </div>
+    </motion.div>
+  );
+}
 
 function HeroCollage() {
   return (
-    <div aria-hidden className="hero-ring pointer-events-none absolute hidden md:block [&_.hero-tilt]:pointer-events-auto">
+    <div aria-hidden className="hero-ring pointer-events-none absolute hidden flex-col items-center justify-center gap-4 md:flex [&_.hero-tilt]:pointer-events-auto">
+      <div className="flex items-center justify-center gap-3">
+        <Floater delay={0.55} d={8}>
+          <PurposeChip icon={Repeat}>Subscribe &amp; save <strong className="font-semibold text-brand">15%</strong></PurposeChip>
+        </Floater>
+        <Floater delay={0.65} d={9.5}>
+          <ShopifyTile className="h-10 [&_img]:h-5" />
+        </Floater>
+        <Floater delay={0.75} d={8.5}>
+          <PurposeChip icon={Gift}><strong className="font-semibold text-brand">+80 pts</strong> · VIP Silver</PurposeChip>
+        </Floater>
+      </div>
 
-      {[
-        "top-[30%] left-[17%] size-16",
-        "top-[14%] right-[20%] size-10",
-        "bottom-[22%] left-[26%] size-9",
-        "bottom-[16%] right-[17%] size-20",
-        "top-[52%] left-[38%] size-7",
-        "top-[20%] left-[44%] size-12",
-        "bottom-[30%] right-[36%] size-8",
-      ].map((c, i) => (
-        <span key={c} className={`hero-orb absolute ${c}`} style={{ "--od": `${11 + i * 1.7}s`, "--odl": `${-i * 1.3}s` } as CSSProperties} />
-      ))}
-      <Piece className={`top-[2%] left-[2%] ${big}`} depth={14} rotate={-2} delay={0.55} from={{ x: -30, y: 30 }} float={{ d: 9, y: 6 }} z={2}>
-        <SubscriptionCard className="hero-card" />
-      </Piece>
-      <Piece className={`top-[2%] right-[2%] ${big}`} depth={16} rotate={2} delay={0.65} from={{ x: 30, y: 30 }} float={{ d: 8, y: 7 }} z={2}>
-        <LoyaltyCard className="hero-card" />
-      </Piece>
-      <Piece className={`bottom-[2%] left-[5%] ${big}`} depth={12} rotate={2} delay={0.8} float={{ d: 9.5, y: 6, delay: 1.6 }} z={2}>
-        <BundleCard className="hero-card" />
-      </Piece>
-      <Piece className={`right-[5%] bottom-[2%] ${big}`} depth={12} rotate={-2} delay={0.9} float={{ d: 10, y: 6, delay: 0.7 }} z={2}>
-        <MembershipCard className="hero-card" />
-      </Piece>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, delay: 0.3, ease: ease.out }}
+        className="w-[min(100%,34rem)]"
+      >
+        <Image
+          src={heroWoman}
+          alt=""
+          sizes="520px"
+          priority
+          className="h-auto w-full rounded-[2rem] shadow-[0_40px_80px_-36px_rgb(6_43_82/0.55)] ring-1 ring-white/80"
+        />
+      </motion.div>
 
-      <Piece className={`top-[42%] left-[2%] ${small}`} depth={20} rotate={-1} delay={1.3} float={{ d: 10, y: 5, delay: 0.6 }} z={1}>
-        <Cycle items={[<RevenueCard key="r" chartClassName="h-[3.2rem]" />, <StorefrontCard key="s" />]} every={5} />
-      </Piece>
-      <Piece className={`top-[40%] right-[2%] ${small}`} depth={20} rotate={1} delay={1.45} float={{ d: 9, y: 5, delay: 1.1 }} z={1}>
-        <Cycle items={[<RepeatRateCard key="rr" />, <PickupCard key="p" className="hero-card" />]} every={5} offset={2.5} />
-      </Piece>
-
-      <div>
-        <Piece className={`top-[6%] left-[24%] ${small}`} depth={24} rotate={2} delay={1.05} float={{ d: 7, y: 5, delay: 1.2 }} z={3}>
-          <NotificationCard />
-        </Piece>
-        <Piece className="top-[1%] left-[calc(50%-3.6rem)]" depth={-8} rotate={-3} delay={1.15} float={{ d: 10.5, y: 5, delay: 0.5 }} z={1}>
-          <ShopifyTile />
-        </Piece>
-        <Piece className="top-[8%] right-[27%]" depth={-8} rotate={-6} delay={1.25} float={{ d: 11, y: 5, delay: 1 }} z={1}>
-          <AppTile id="pickup" tone="white" className="size-[4.4rem]" />
-        </Piece>
-        <Piece className="top-[22%] right-[22%]" depth={-10} rotate={5} delay={1.35} float={{ d: 12, y: 5, delay: 0.4 }} z={1}>
-          <PurposeChip icon={ShoppingBag}>Built for <strong className="font-semibold text-brand">Shopify</strong> &amp; <strong className="font-semibold text-brand">Shopify Plus</strong></PurposeChip>
-        </Piece>
-        <Piece className="top-[64%] left-[21%]" depth={-10} rotate={-6} delay={1.4} float={{ d: 11, y: 6 }} z={1}>
-          <AppTile id="memberships" className="size-[4.4rem]" />
-        </Piece>
-        <Piece className="top-[62%] right-[20%]" depth={-12} rotate={6} delay={1.5} float={{ d: 12.5, y: 6, delay: 0.3 }} z={1}>
-          <AppTile id="loyalty" tone="white" className="size-[4.4rem]" />
-        </Piece>
-        <Piece className="bottom-[1%] left-[calc(50%-5.4rem)]" depth={18} rotate={-2} delay={1.6} float={{ d: 9, y: 5, delay: 1.1 }} z={2}>
-          <LifetimeValueChip />
-        </Piece>
-        <Piece className="right-[26%] bottom-[18%]" depth={-6} rotate={-5} delay={1.7} float={{ d: 11.5, y: 5, delay: 1.7 }} z={1}>
+      <div className="flex items-center justify-center gap-3">
+        <Floater delay={0.9} d={9}>
+          <PurposeChip icon={Package}>Bundle added · <strong className="font-semibold text-brand">Save 20%</strong></PurposeChip>
+        </Floater>
+        <Floater delay={1} d={10}>
+          <PurposeChip icon={UserCheck}>Returning customer · <strong className="font-semibold text-brand">3rd order</strong></PurposeChip>
+        </Floater>
+      </div>
+      <div className="-mt-1 flex items-center justify-center gap-3">
+        <Floater delay={1.1} d={8.5}>
           <PurposeChip icon={HeartHandshake}>Keep customers <strong className="font-semibold text-brand">coming back</strong></PurposeChip>
-        </Piece>
+        </Floater>
+        <Floater delay={1.2} d={9.5}>
+          <PurposeChip icon={TrendingUp}>Lifetime value <strong className="font-semibold text-brand">$214</strong></PurposeChip>
+        </Floater>
       </div>
     </div>
   );
 }
 
 const heroSpots: DoodleSpot[] = [
-  { name: "sparkle", className: "hidden md:block left-[19%] top-[30%] size-12 text-brand-500/70", rotate: 8 },
+  { name: "sparkle", className: "hidden md:block left-[46%] top-[18%] size-12 text-brand-500/70", rotate: 8 },
   { name: "heart", className: "hidden md:block right-[17%] top-[34%] size-11 text-ink/45", rotate: 12 },
-  { name: "gift", className: "hidden md:block left-[3%] top-[40%] size-14 text-[#9AA3AE]", rotate: -10 },
+  { name: "gift", className: "hidden md:block left-[44%] bottom-[6%] size-14 text-[#9AA3AE]", rotate: -10 },
   { name: "percent", className: "hidden md:block right-[3%] top-[42%] size-12 text-brand-500/60", rotate: 6 },
   { name: "star", className: "hidden md:block left-[40%] top-[4%] size-10 text-ink/40", rotate: -14 },
   { name: "repeat", className: "hidden md:block right-[40%] bottom-[3%] size-12 text-brand-500/60", rotate: 10 },
-  { name: "bag", className: "hidden md:block left-[22%] bottom-[18%] size-12 text-[#9AA3AE]", rotate: -6 },
+  { name: "bag", className: "hidden md:block left-[46%] bottom-[24%] size-12 text-[#9AA3AE]", rotate: -6 },
   { name: "crown", className: "hidden md:block right-[23%] bottom-[20%] size-12 text-ink/40", rotate: 8 },
   { name: "tag", className: "hidden md:block left-[47%] bottom-[2%] size-10 text-[#9AA3AE]", rotate: -12 },
 ];
@@ -211,7 +160,6 @@ function CompactCollage() {
 
 export function CommerceHero() {
   const ref = useRef<HTMLElement>(null);
-  const { eyebrow, lead } = commerceHero;
   return (
     <section
       ref={ref}
@@ -221,57 +169,76 @@ export function CommerceHero() {
     >
       <ParallaxField target={ref}>
         <Backdrop />
-        <div className="hero-stage relative mx-auto px-5 pt-10 pb-14 sm:px-8 sm:pt-14 md:flex md:items-center md:px-6 md:py-10">
+        <div className="hero-stage relative mx-auto px-5 pt-10 pb-14 sm:px-8 sm:pt-14 md:flex md:items-center md:px-[4.5rem] md:py-10">
           <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
             <Doodles autoplay spots={heroSpots} />
           </div>
           <HeroCollage />
 
-          <div className="hero-column hero-window relative z-10 mx-auto text-center">
-            <span aria-hidden className="hero-lens" />
-            <Rise delay={0.1} className="flex justify-center">
-              <Eyebrow>{eyebrow}</Eyebrow>
-            </Rise>
-            <h1
-              id="hero-title"
-              className="mt-5 text-[2.4rem] leading-[1.08] font-semibold tracking-[-0.035em] text-balance text-ink sm:text-[3.25rem] md:mt-6 md:text-[3.75rem] md:leading-[1.06]"
-            >
-              <SplitText delay={0.15}>
-                Everything your <span className="font-bold text-brand">Shopify</span>
-              </SplitText>
-              <br className="hidden md:block" />{" "}
-              <SplitText delay={0.35}>
-                store needs to <span className="font-bold text-brand">grow.</span>
-              </SplitText>
-            </h1>
-            <Rise delay={0.4}>
-              <p className="mx-auto mt-5 max-w-[34rem] text-[1.05rem] leading-relaxed text-ink-muted sm:text-lg">{lead}</p>
-            </Rise>
-            <Rise delay={0.5} className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-              <ButtonLink href="#products" className="px-5 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-brand">
-                Explore Our <strong>Apps</strong>
-              </ButtonLink>
-              <ButtonLink
-                href="#how-it-works"
-                variant="ghost"
-                arrow={false}
-                className="bg-white/70 px-5 text-ink ring-1 ring-[#DCE4EE] hover:bg-white hover:shadow-none hover:ring-brand/35 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-brand"
-              >
-                See How It <strong>Works</strong>
-              </ButtonLink>
-            </Rise>
-            <Rise delay={0.62} className="mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-sm text-ink-muted">
-              <span className="inline-flex items-center gap-2">
-                <Stars />
-                <span>
-                  <strong className="font-semibold text-ink">{proof.reviews.display}</strong> merchant reviews
+          <div className="hero-copy relative z-10 max-w-[40rem]">
+            <h1 id="hero-title" className="text-[2.75rem] leading-[0.98] font-extrabold tracking-[-0.04em] text-navy sm:text-6xl md:text-[4.35rem]">
+              {headline.map((line, i) => (
+                <span key={line} className="block overflow-hidden pb-[0.08em]">
+                  <motion.span
+                    className="block"
+                    initial={{ y: "105%" }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.9, delay: 0.18 + i * 0.1, ease: ease.out }}
+                  >
+                    {i === 2 ? (
+                      <span className="relative inline-block text-[#2457E6]">
+                        {line}
+                        <Underline />
+                      </span>
+                    ) : (
+                      line
+                    )}
+                  </motion.span>
                 </span>
-              </span>
-              <span aria-hidden className="hidden size-1 rounded-full bg-ink/25 sm:block" />
-              <span>
-                Trusted by <strong className="font-semibold text-ink">{proof.merchants.display}</strong> Shopify brands
-              </span>
-            </Rise>
+              ))}
+            </h1>
+
+            <Reveal delay={0.55}>
+              <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-ink-muted sm:text-[1.2rem]">
+                Drive growth with customizable retention tools, trusted by {proof.merchants.display} Shopify merchants — subscriptions,
+                memberships, loyalty, bundles and pickup &amp; delivery, with support around the clock.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.68} className="mt-9 flex flex-wrap items-center gap-3">
+              <ButtonLink href={links.contact} size="lg" className="bg-[#2457E6] hover:bg-[#1C47C4]">
+                Book a <strong>Demo</strong>
+              </ButtonLink>
+              <Starter />
+            </Reveal>
+
+            <Reveal delay={0.85}>
+              <dl className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-muted">
+                <div className="flex items-center gap-2.5">
+                  <Stars value={5} />
+                  <dt className="sr-only">Reviews</dt>
+                  <dd>
+                    <a href={proof.reviews.source} className="hover:underline">
+                      <span className="font-semibold text-navy">{proof.reviews.display}</span> reviews
+                    </a>
+                  </dd>
+                </div>
+                <span aria-hidden className="h-5 w-px bg-navy/15" />
+                <div>
+                  <dt className="sr-only">Merchants</dt>
+                  <dd>
+                    <span className="font-semibold text-navy">{proof.merchants.display}</span> merchants
+                  </dd>
+                </div>
+                <span aria-hidden className="h-5 w-px bg-navy/15" />
+                <div>
+                  <dt className="sr-only">Support</dt>
+                  <dd>
+                    <span className="font-semibold text-navy">24/7/365</span> support
+                  </dd>
+                </div>
+              </dl>
+            </Reveal>
           </div>
         </div>
         <div className="-mt-6 px-5 pb-6 sm:px-8 md:hidden">

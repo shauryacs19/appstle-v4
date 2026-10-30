@@ -78,7 +78,7 @@ export function MembershipTierDemo() {
                 {selected && (
                   <motion.span
                     layoutId="tier-pill"
-                    className="absolute inset-0 rounded-full bg-brand-700 shadow-[0_8px_18px_-8px_rgb(11_23_48/0.5)]"
+                    className="absolute inset-0 rounded-full bg-[#13264A] shadow-[0_8px_18px_-8px_rgb(11_23_48/0.7)]"
                     transition={{ type: "spring", stiffness: 420, damping: 32 }}
                   />
                 )}

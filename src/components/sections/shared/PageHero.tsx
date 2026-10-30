@@ -3,7 +3,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { HeroWash } from "@/components/features/backdrops/HeroWash";
 import type { Crumb } from "@/lib/jsonld";
 import { cn } from "@/lib/cn";
 
@@ -28,7 +27,11 @@ export function PageHero({
 }) {
   return (
     <section id="hero" aria-labelledby="page-title" data-section="hero" data-section-fit="screen" className={cn("relative isolate overflow-hidden", className)}>
-      <HeroWash />
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_20%,#000_30%,transparent_75%)]" />
+        <div className="absolute -top-48 right-[-8%] size-[36rem] rounded-full bg-cobalt-100/60 blur-3xl" />
+        <div className="absolute top-[30%] left-[-10%] size-[26rem] rounded-full bg-brand-100/50 blur-3xl" />
+      </div>
       <div
         className={cn(
           "mx-auto grid max-w-site gap-10 px-5 pt-6 pb-section sm:px-8 lg:items-center",
@@ -42,7 +45,7 @@ export function PageHero({
               <Eyebrow dot={dot}>{eyebrow}</Eyebrow>
             </Reveal>
           )}
-          <h1 id="page-title" className="mt-4 text-[2.5rem] leading-[1.04] font-extrabold tracking-[-0.04em] text-ink sm:text-[3.4rem] lg:text-[3.9rem]">
+          <h1 id="page-title" className="mt-4 text-[2.5rem] leading-[1.02] font-extrabold tracking-[-0.035em] text-navy sm:text-[3.4rem] lg:text-[3.9rem]">
             <SplitText delay={0.05}>{title}</SplitText>
           </h1>
           {intro && (

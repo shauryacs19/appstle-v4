@@ -1,4 +1,4 @@
-import { AppstleBadge } from "@/components/brand/AppstleLogo";
+import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Reveal } from "@/components/motion/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
 import { Panel } from "@/components/ui/Panel";
@@ -26,7 +26,7 @@ export function FaqGroupPanel({ group, tone }: { group: FaqGroup; tone: "white" 
     <Panel id={`faq-${group.id}`} labelledBy={titleId} className={cn(tone === "white" ? "bg-white ring-1 ring-navy/6" : product?.accent.soft ?? "bg-cream-100")}>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
         <Reveal className="lg:col-span-4">
-          {product ? <ProductIcon id={product.id} size="lg" /> : <AppstleBadge className="size-12" />}
+          {product ? <ProductIcon id={product.id} size="lg" /> : <AppstleMark className="size-12 rounded-2xl" />}
           <h2 id={titleId} className="mt-5 text-[2rem] leading-tight font-bold text-navy sm:text-[2.3rem] short:text-[2rem]">
             {group.title}
           </h2>

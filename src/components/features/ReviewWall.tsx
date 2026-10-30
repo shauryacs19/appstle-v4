@@ -35,7 +35,7 @@ export function ReviewWall({ items }: { items: Testimonial[] }) {
 
 function ReviewCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex w-[17rem] flex-col justify-between gap-4 luxe-card ring-tr rounded-[1.25rem] p-4 ring-1 [--ring:10rem] transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
+    <figure className="flex w-[17rem] flex-col justify-between gap-4 rounded-[1.25rem] bg-white p-4 shadow-[0_1px_2px_rgb(6_43_82/0.05),0_12px_28px_-18px_rgb(6_43_82/0.3)] ring-1 ring-[#DCE5F0] transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
       <div className="flex flex-col gap-2">
         <span className="flex gap-0.5 text-[#FEC84B]" role="img" aria-label="Rated 5 out of 5">
           {Array.from({ length: 5 }, (_, i) => (

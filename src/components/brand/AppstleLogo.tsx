@@ -1,5 +1,3 @@
-import Image from "next/image";
-import logo from "@/assets/brand/appstle-logo.png";
 import { cn } from "@/lib/cn";
 
 const MARK_VIEWBOX = "0 0 490 490";
@@ -22,20 +20,12 @@ function MarkGlobe({ className }: { className?: string }) {
   );
 }
 
-export function AppstleMarkOutline({ className }: { className?: string }) {
-  return (
-    <svg viewBox={MARK_VIEWBOX} className={className} aria-hidden fill="none">
-      <path d={MARK_A} stroke="currentColor" strokeWidth={5} fillRule="evenodd" />
-    </svg>
-  );
-}
-
-export function AppstleMark({ className, title, plain = false }: { className?: string; title?: string; plain?: boolean }) {
+export function AppstleMark({ className, title }: { className?: string; title?: string }) {
   return (
     <svg
       viewBox={MARK_VIEWBOX}
       className={cn("rounded-[22%]", className)}
-      style={plain ? undefined : { background: "var(--gradient-brand)" }}
+      style={{ background: "var(--gradient-brand)" }}
       role={title ? "img" : undefined}
       aria-hidden={title ? undefined : true}
       aria-label={title}
@@ -53,9 +43,6 @@ export function AppstleMark({ className, title, plain = false }: { className?: s
 }
 
 export function AppstleLogo({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
-  if (tone === "dark") {
-    return <Image src={logo} alt="Appstle — Compelling apps at compelling prices" priority sizes="220px" className={cn("h-10 w-auto", className)} />;
-  }
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <AppstleMark className="size-8 shrink-0 rounded-[8px] shadow-[0_6px_14px_-6px_rgb(1_119_242_/_0.7)]" />
@@ -63,7 +50,7 @@ export function AppstleLogo({ className, tone = "dark" }: { className?: string; 
         <span
           className={cn(
             "font-display text-[1.32rem] font-bold tracking-[-0.03em]",
-            "text-white",
+            tone === "dark" ? "text-ink" : "text-white",
           )}
         >
           Appstle
@@ -72,24 +59,11 @@ export function AppstleLogo({ className, tone = "dark" }: { className?: string; 
         <span
           className={cn(
             "mt-1 hidden text-[0.62rem] font-medium tracking-[0.01em] sm:block lg:hidden xl:block",
-            "text-white/70",
+            tone === "dark" ? "text-ink-subtle" : "text-white/70",
           )}
         >
           Compelling apps at compelling prices
         </span>
-      </span>
-    </span>
-  );
-}
-
-/** Appstle app tile in the hero's glossy 3D style (blue face, darker depth edge, white mark). */
-export function AppstleBadge({ className, markClassName, title }: { className?: string; markClassName?: string; title?: string }) {
-  return (
-    <span className={cn("relative inline-block shrink-0", className)}>
-      <span aria-hidden className="absolute inset-0 translate-x-[6%] translate-y-[8%] rounded-[26%] bg-[#0B57B8]" />
-      <span className="absolute inset-0 rounded-[26%] bg-[linear-gradient(150deg,#46ADFF_0%,#1C86F4_50%,#0E6BDC_100%)] shadow-[0_14px_28px_-12px_rgb(14_90_200/0.55)]">
-        <span aria-hidden className="absolute inset-[3%] rounded-[24%] bg-[linear-gradient(180deg,rgb(255_255_255/0.35)_0%,rgb(255_255_255/0)_45%)]" />
-        <AppstleMark plain title={title} className={cn("absolute top-[16%] left-[16%] h-[68%] w-[68%] rounded-none", markClassName)} />
       </span>
     </span>
   );

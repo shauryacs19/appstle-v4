@@ -1,5 +1,4 @@
 import { ArrowRightLeft, Clock3, LifeBuoy, Paintbrush, Rocket, Zap } from "lucide-react";
-import { SectionLines } from "@/components/features/backdrops/SectionLines";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { ButtonLink } from "@/components/ui/Button";
@@ -16,13 +15,13 @@ const help = [
 
 export function SupportSection() {
   return (
-    <section id="support" data-line-host="" aria-labelledby="support-title" className="relative isolate px-3 py-[clamp(3.5rem,9svh,6rem)] sm:px-5 lg:px-6">
-      <SectionLines variant="support" />
-      <div className="luxe-card mx-auto max-w-site rounded-[2rem] ring-1 [--ring:28rem] sm:rounded-[2.5rem]">
+    <section id="support" aria-labelledby="support-title" className="bg-[#F7F9FC] px-3 py-[clamp(3.5rem,9svh,6rem)] sm:px-5 lg:px-6">
+      <div className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-white shadow-card ring-1 ring-[#D7E1EE] sm:rounded-[2.5rem]">
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[url('/patterns/commerce.svg')] [background-size:300px_300px] opacity-[0.14] [mask-image:linear-gradient(90deg,#000,transparent_70%)]" />
         <div className="grid lg:grid-cols-12">
           <div className="flex flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:col-span-7 lg:py-14 lg:pr-8 lg:pl-14">
             <Reveal>
-              <Eyebrow>Customer support</Eyebrow>
+              <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#D7E1EE]">Customer support</Eyebrow>
             </Reveal>
             <h2 id="support-title" className="mt-5 text-[2.2rem] leading-[1.04] font-bold tracking-[-0.04em] text-ink sm:text-[3rem]">
               <SplitText>
@@ -51,9 +50,9 @@ export function SupportSection() {
                 <StaggerItem
                   as="li"
                   key={h.title}
-                  className="flex items-start gap-3 rounded-2xl bg-white/85 p-4 ring-1 ring-[#ECE8F2] transition-[box-shadow,translate] duration-300 hover:-translate-y-0.5 hover:shadow-soft"
+                  className="flex items-start gap-3 rounded-2xl bg-[#F7F9FC] p-4 ring-1 ring-[#E3EAF3] transition-[box-shadow,translate] duration-300 hover:-translate-y-0.5 hover:shadow-soft"
                 >
-                  <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white text-brand ring-1 ring-canvas-line">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-white text-brand ring-1 ring-[#D7E1EE]">
                     <h.icon aria-hidden className="size-[1.1rem]" />
                   </span>
                   <span>

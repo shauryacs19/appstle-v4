@@ -3,8 +3,13 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { cn } from "@/lib/cn";
 
-export function Eyebrow({ children, className }: { children: ReactNode; className?: string; dot?: string }) {
-  return <p className={cn("eyebrow-line", className)}>{children}</p>;
+export function Eyebrow({ children, className, dot = "bg-brand-400" }: { children: ReactNode; className?: string; dot?: string }) {
+  return (
+    <p className={cn("eyebrow inline-flex items-center gap-2 text-brand", className)}>
+      <span aria-hidden className={cn("size-1.5 rounded-full", dot)} />
+      {children}
+    </p>
+  );
 }
 
 export function SectionHeading({

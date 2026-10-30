@@ -6,7 +6,7 @@ const icons = { subscriptions: Repeat2, memberships: Crown, loyalty: Gift, bundl
 
 const tones = {
   blue: "bg-[linear-gradient(150deg,#3AA8FC_0%,#1088F6_46%,#0A6FD1_100%)] text-white ring-1 ring-white/25 shadow-[0_2px_6px_rgb(6_43_82/0.08),0_22px_44px_-16px_rgb(16_136_246/0.6)]",
-  white: "bg-white text-brand ring-1 ring-canvas-line shadow-[0_1px_2px_rgb(6_43_82/0.05),0_20px_40px_-18px_rgb(6_43_82/0.3)]",
+  white: "bg-white text-brand ring-1 ring-[#D7E1EE] shadow-[0_1px_2px_rgb(6_43_82/0.05),0_20px_40px_-18px_rgb(6_43_82/0.3)]",
 } as const;
 
 export function AppTile({ id, tone = "blue", className }: { id: ProductId; tone?: keyof typeof tones; className?: string }) {

@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 
 const MIN = 0.55;
-const GAP = 28;
 
 export function FitDemos({ root = "#products" }: { root?: string }) {
   useEffect(() => {
@@ -15,8 +14,6 @@ export function FitDemos({ root = "#products" }: { root?: string }) {
     const fit = () => {
       window.clearTimeout(timer);
       timer = window.setTimeout(() => {
-        const header = document.querySelector("header")?.getBoundingClientRect().bottom ?? 72;
-        const avail = window.innerHeight - Math.max(header, 0) - GAP * 2;
         section.querySelectorAll<HTMLElement>("[data-fit-card]").forEach((card) => {
           const demo = card.querySelector<HTMLElement>("[data-fit-demo]");
           const stage = card.querySelector<HTMLElement>("[data-fit-stage]");
@@ -29,10 +26,9 @@ export function FitDemos({ root = "#products" }: { root?: string }) {
           const z = parseFloat(getComputedStyle(demo).zoom) || 1;
           const cs = getComputedStyle(stage);
           const stagePad = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
-          const fixed = card.getBoundingClientRect().height - stage.getBoundingClientRect().height;
           const natural = demo.getBoundingClientRect().height / z;
           if (!natural) return;
-          const next = Math.min(max, Math.max(MIN, (avail - fixed - stagePad) / natural));
+          const next = Math.min(max, Math.max(MIN, (stage.clientHeight - stagePad) / natural));
           if (Math.abs(next - z) > 0.005) demo.style.zoom = next.toFixed(3);
         });
       }, 40);

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Fraunces, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { AppstleBot } from "@/components/features/assistant/AppstleBot";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -10,7 +10,6 @@ import "@/styles/globals.css";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 const bricolage = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"], display: "swap", axes: ["opsz"] });
-const fraunces = Fraunces({ variable: "--font-fraunces", subsets: ["latin"], display: "swap", style: ["normal", "italic"], axes: ["opsz", "SOFT"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -19,12 +18,12 @@ export const metadata: Metadata = {
   description: "Customer retention apps for Shopify: subscriptions, memberships, bundles, loyalty, pickup & delivery.",
 };
 
-export const viewport: Viewport = { themeColor: "#FDF6EC", colorScheme: "light" };
+export const viewport: Viewport = { themeColor: "#FFFFFF", colorScheme: "light" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${bricolage.variable} ${fraunces.variable} antialiased`} suppressHydrationWarning>
-      <body className="min-h-dvh text-ink">
+    <html lang="en" data-glass="" className={`${inter.variable} ${bricolage.variable} antialiased`} suppressHydrationWarning>
+      <body className="min-h-dvh bg-surface text-ink">
         <script dangerouslySetInnerHTML={{ __html: `document.documentElement.dataset.js=""` }} />
         <a
           href="#main"

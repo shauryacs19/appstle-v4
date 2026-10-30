@@ -19,7 +19,7 @@ export const subscriptionsPage: ProductPageData = {
         { product: "subscriptions", title: "Next order skipped", meta: "From the customer portal" },
       ],
       description: "The Appstle Subscriptions admin with a subscription's upcoming orders, and a purchase options widget on a phone.",
-      stage: "bg-electric",
+      stage: "bg-gradient-to-br from-cobalt-400 via-cobalt to-cobalt-800",
     },
   },
   logos: {

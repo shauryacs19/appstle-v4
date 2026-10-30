@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { SectionLines } from "@/components/features/backdrops/SectionLines";
 import { motion, useInView, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
 import { ArrowRight, Gift, Headset, LayoutTemplate, Mail, Star, Workflow, type LucideIcon } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
-import { AppstleBadge } from "@/components/brand/AppstleLogo";
+import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { ButtonLink } from "@/components/ui/Button";
@@ -75,8 +74,8 @@ function GroupCard({
         onPointerEnter={() => onHover(index)}
         onPointerLeave={() => onHover(null)}
         className={cn(
-          "luxe-card h-full rounded-[1.4rem] p-4 ring-1 [--ring:11rem] transition-[box-shadow,translate,--tw-ring-color] duration-500 sm:p-5",
-          active ? "-translate-y-1 shadow-card ring-brand/35" : "shadow-soft ring-canvas-line",
+          "relative h-full rounded-[1.4rem] bg-white p-4 ring-1 transition-[box-shadow,translate,--tw-ring-color] duration-500 sm:p-5",
+          active ? "-translate-y-1 shadow-card ring-brand/35" : "shadow-soft ring-[#D7E1EE]",
         )}
       >
         <div className="flex items-center gap-2.5">
@@ -103,14 +102,14 @@ function Hub() {
   return (
     <div data-int-hub className="relative mx-auto aspect-square w-full max-w-[19rem] lg:max-w-none">
       <div aria-hidden className="absolute inset-[6%] rounded-full border border-brand/15" />
-      <div aria-hidden className="absolute inset-[22%] rounded-full bg-[#F7F5FF] ring-1 ring-[#E4DEFA]" />
+      <div aria-hidden className="absolute inset-[22%] rounded-full border border-brand/20 bg-white/60" />
       <svg aria-hidden viewBox="0 0 100 100" className="absolute inset-0 size-full animate-[orbit_70s_linear_infinite]">
         <circle cx="50" cy="50" r="44" fill="none" stroke="var(--color-brand)" strokeOpacity=".35" strokeWidth=".35" strokeDasharray="1 2.2" />
       </svg>
       <div className="absolute inset-0 grid place-items-center">
         <div className="relative grid place-items-center">
-          <span aria-hidden className="absolute size-28 animate-[pulse-ring_3.2s_var(--ease-smooth)_infinite] rounded-[2.2rem] bg-[#C5B2FF]/30" />
-          <AppstleBadge title="Appstle" className="size-[6.5rem]" />
+          <span aria-hidden className="absolute size-24 animate-[pulse-ring_3.2s_var(--ease-smooth)_infinite] rounded-[1.8rem] bg-brand/25" />
+          <AppstleMark title="Appstle" className="relative size-[5.5rem] rounded-[1.6rem] shadow-glow" />
           <span className="absolute top-full mt-2 font-display text-sm font-bold whitespace-nowrap text-ink">Appstle apps</span>
         </div>
       </div>
@@ -130,7 +129,7 @@ function Hub() {
                 <SmartLink
                   href={p.href}
                   title={p.name}
-                  className="flex items-center gap-1.5 rounded-full bg-white py-1 pr-2.5 pl-1 shadow-soft ring-1 ring-canvas-line transition hover:-translate-y-0.5 hover:ring-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  className="flex items-center gap-1.5 rounded-full bg-white py-1 pr-2.5 pl-1 shadow-soft ring-1 ring-[#D7E1EE] transition hover:-translate-y-0.5 hover:ring-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
                 >
                   <ProductIcon id={p.id} size="sm" className="size-6 rounded-full" />
                   <span className="text-[11.5px] font-semibold whitespace-nowrap text-ink">{p.shortName.split(" &")[0]}</span>
@@ -212,12 +211,11 @@ export function ConnectedIntegrations() {
   const right = integrationGroups.slice(3);
 
   return (
-    <section id="integrations" data-line-host="" aria-labelledby="int-title" className="int-stage relative isolate overflow-x-clip py-[clamp(4rem,10svh,7rem)]">
-      <SectionLines variant="integrations" />
+    <section id="integrations" aria-labelledby="int-title" className="int-stage relative overflow-x-clip py-[clamp(4rem,10svh,7rem)]">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal className="flex justify-center">
-            <Eyebrow>Integrations</Eyebrow>
+            <Eyebrow className="rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-[#D7E1EE]">Integrations</Eyebrow>
           </Reveal>
           <h2 id="int-title" className="mt-5 text-[2.3rem] leading-[1.02] font-bold tracking-[-0.04em] text-ink sm:text-[3.2rem] lg:text-[clamp(2.8rem,4vw,3.9rem)]">
             <SplitText delay={0.05}>
@@ -291,7 +289,7 @@ export function ConnectedIntegrations() {
             </ButtonLink>
             <SmartLink
               href={links.contact}
-              className="group inline-flex h-[46px] items-center gap-2 rounded-xl bg-white px-[18px] font-semibold text-brand ring-1 ring-canvas-line transition hover:ring-brand/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              className="group inline-flex h-[46px] items-center gap-2 rounded-[10px] bg-white px-[18px] font-semibold text-brand ring-1 ring-[#D3DDEA] transition hover:ring-brand/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               Request an integration
               <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />

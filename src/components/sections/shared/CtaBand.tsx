@@ -24,23 +24,29 @@ export function CtaBand({
     <Panel
       id={id}
       labelledBy={`${id}-title`}
-      className={cn("on-dark bg-[linear-gradient(100deg,#219BFB_0%,#4F86F8_35%,#6565F5_68%,#B9A4FC_100%)] text-white", className)}
+      className={cn("on-dark bg-gradient-to-br from-cobalt-400 via-cobalt to-cobalt-800 text-white", className)}
     >
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+      <div aria-hidden className="bg-dots absolute inset-0 -z-10 opacity-50" />
+      <div aria-hidden className="pointer-events-none absolute -top-40 -left-24 -z-10 size-[30rem] rounded-full bg-white/15 blur-3xl" />
+      <div aria-hidden className="absolute -right-10 -bottom-48 -z-10 size-[34rem] rounded-full border-[48px] border-white/[0.06]" />
+      <div className="max-w-3xl">
         <Reveal>
-          <p className="rounded-full bg-white/18 px-3.5 py-1 text-[0.7rem] font-semibold tracking-[0.16em] text-white uppercase ring-1 ring-white/25">{eyebrow}</p>
+          <p className="eyebrow inline-flex items-center gap-2 text-white/75">
+            <span aria-hidden className="size-1.5 rounded-full bg-brand-200" />
+            {eyebrow}
+          </p>
         </Reveal>
         <Reveal delay={0.06}>
-          <h2 id={`${id}-title`} className="mt-5 text-[2.2rem] leading-[1.06] text-white sm:text-[3rem]">
+          <h2 id={`${id}-title`} className="mt-5 text-[2.3rem] leading-[1.03] font-extrabold tracking-[-0.035em] sm:text-5xl lg:text-[3.6rem]">
             {title}
           </h2>
         </Reveal>
         {body && (
           <Reveal delay={0.12}>
-            <div className="mx-auto mt-4 max-w-xl text-[1.05rem] leading-relaxed text-white/85">{body}</div>
+            <div className="mt-5 max-w-xl text-lg leading-relaxed text-white/80">{body}</div>
           </Reveal>
         )}
-        <Reveal delay={0.18} className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+        <Reveal delay={0.18} className="mt-8 flex flex-col gap-3 sm:flex-row">
           {actions}
         </Reveal>
         {extras && (

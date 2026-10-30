@@ -27,7 +27,7 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 h-[var(--header-h)] border-b pt-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300",
         scrolled
-          ? "border-canvas-line/80 bg-canvas/80 shadow-[0_8px_24px_-14px_rgb(6_43_82/0.25)] backdrop-blur-md backdrop-saturate-150"
+          ? "border-line/70 bg-white/55 shadow-[0_8px_24px_-14px_rgb(6_43_82/0.3)] backdrop-blur-md backdrop-saturate-150"
           : "border-transparent bg-transparent",
       )}
     >
