@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, LayoutGroup, motion, useInView, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
-import { CreditCard, Gift, Headset, Languages, LayoutTemplate, Mail, ShoppingBag, Star, Workflow, type LucideIcon } from "lucide-react";
+import { CreditCard, Gift, Headset, Languages, LayoutGrid, LayoutTemplate, Mail, ShoppingBag, Star, Workflow, type LucideIcon } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Reveal } from "@/components/motion/Reveal";
@@ -17,7 +17,7 @@ import { useHydrated } from "@/hooks/useHydrated";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/motion";
 
-const icons: Record<string, LucideIcon> = { Mail, Star, Headset, Gift, Workflow, LayoutTemplate, Languages, CreditCard, ShoppingBag };
+const icons: Record<string, LucideIcon> = { Mail, Star, Headset, Gift, Workflow, LayoutTemplate, Languages, CreditCard, ShoppingBag, LayoutGrid };
 
 type TileItem = Pick<Integration, "name" | "logo">;
 type Group = { title: string; icon: string; blurb: string; items: readonly TileItem[] };
@@ -34,13 +34,23 @@ const productGroupDefs: (Omit<Group, "items"> & { cats: Integration["category"][
 ];
 
 const NATIVE = "Built into Shopify";
+const OTHERS = "Other integrations";
+const MAX_GROUPS = 6;
 
 function groupsFor(product: ProductId | null): readonly Group[] {
   if (!product) return integrationGroups;
   const listed = integrations.filter((i) => i.listedOn.includes(product));
-  const groups = productGroupDefs
-    .map(({ cats, ...g }) => ({ ...g, items: listed.filter((i) => cats.includes(i.category)) }))
+  let groups: (Group & { parts: string[] })[] = productGroupDefs
+    .map(({ cats, ...g }) => ({ ...g, parts: [g.title], items: listed.filter((i) => cats.includes(i.category)) }))
     .filter((g) => g.items.length);
+  while (groups.length > MAX_GROUPS || (groups.length > 1 && groups.length % 2)) {
+    const [a, b] = [...groups].sort((x, y) => x.items.length - y.items.length);
+    const parts = [...a.parts, ...b.parts];
+    groups = [
+      ...groups.filter((g) => g !== a && g !== b),
+      { title: OTHERS, icon: "LayoutGrid", blurb: parts.join(" · "), parts, items: [...a.items, ...b.items] },
+    ];
+  }
   if (groups.length) return groups;
   return [{ title: NATIVE, icon: "ShoppingBag", blurb: "Works natively, no extra apps", items: shopifySurfaces[product].map((name) => ({ name })) }];
 }
@@ -130,6 +140,7 @@ function Column({
   offset,
   side,
   fill,
+  col,
   progress,
   still,
   active,
@@ -139,13 +150,14 @@ function Column({
   offset: number;
   side: -1 | 1;
   fill: boolean;
+  col: string;
   progress: MotionValue<number>;
   still: boolean;
   active: number | null;
   onHover: (i: number | null) => void;
 }) {
   return (
-    <div className={cn("contents lg:row-start-1 lg:flex lg:flex-col lg:justify-center lg:gap-5", side < 0 ? "lg:col-start-1" : "lg:col-start-3")}>
+    <div className={cn("contents lg:row-start-1 lg:flex lg:flex-col lg:justify-center lg:gap-5", col)}>
       <AnimatePresence mode="popLayout" initial={false}>
         {groups.map((g, k) => (
           <motion.div
@@ -326,7 +338,8 @@ export function ConnectedIntegrations() {
   const selected = product ? products.find((p) => p.id === product)! : null;
   const native = groups[0]?.title === NATIVE;
   const total = groups.reduce((n, g) => n + g.items.length, 0);
-  const split = Math.ceil(groups.length / 2);
+  const single = groups.length === 1;
+  const split = single ? 0 : groups.length / 2;
   const left = groups.slice(0, split);
   const right = groups.slice(split);
   const tall = split >= 3;
@@ -355,7 +368,12 @@ export function ConnectedIntegrations() {
 
         <div
           ref={stage}
-          className="relative mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,21rem)_minmax(0,1fr)] lg:gap-x-[clamp(3rem,6vw,6rem)] lg:gap-y-5"
+          className={cn(
+            "relative mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:mt-14 lg:gap-x-[clamp(3rem,6vw,6rem)] lg:gap-y-5",
+            single
+              ? "lg:grid-cols-[minmax(17rem,21rem)_minmax(0,26rem)] lg:justify-center"
+              : "lg:grid-cols-[minmax(0,1fr)_minmax(17rem,21rem)_minmax(0,1fr)]",
+          )}
         >
           <svg
             aria-hidden
@@ -388,7 +406,8 @@ export function ConnectedIntegrations() {
           </svg>
 
           <motion.div
-            className="relative mb-4 sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:self-center"
+            layout={!reduce}
+            className={cn("relative mb-4 sm:col-span-2 lg:col-span-1 lg:row-start-1 lg:mb-0 lg:self-center", single ? "lg:col-start-1" : "lg:col-start-2")}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : undefined}
             transition={{ duration: 1.2, ease: ease.out }}
@@ -398,13 +417,13 @@ export function ConnectedIntegrations() {
               {selected &&
                 (native
                   ? `${selected.shortName} works natively inside Shopify`
-                  : `${total} integration${total === 1 ? "" : "s"} across ${groups.length} categories for ${selected.shortName}`)}
+                  : `${total} integration${total === 1 ? "" : "s"} for ${selected.shortName}`)}
             </p>
           </motion.div>
 
           <LayoutGroup id="int-groups">
-            <Column groups={left} offset={0} side={-1} fill={tall} progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
-            <Column groups={right} offset={split} side={1} fill={tall && right.length === split} progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
+            <Column groups={left} offset={0} side={-1} fill={tall} col="lg:col-start-1" progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
+            <Column groups={right} offset={split} side={1} fill={tall} col={single ? "lg:col-start-2" : "lg:col-start-3"} progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
           </LayoutGroup>
         </div>
 
