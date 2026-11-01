@@ -31,20 +31,20 @@ export function Header() {
           : "border-transparent bg-transparent",
       )}
     >
-      <div className="flex h-[3.75rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-5 xl:px-10">
+      <div className="flex h-[4.5rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-6 xl:px-12">
         <Link href="/" className="shrink-0 rounded-lg" aria-label="Appstle home">
-          <AppstleLogo tone="dark" tagline={false} />
+          <AppstleLogo tone="dark" tagline={false} className="[&>svg]:size-10 [&_.font-display]:text-[1.55rem]" />
         </Link>
 
         <MegaMenu />
 
         <div className="flex items-center gap-2">
-          <ButtonLink href={links.partnerProgram} size="sm" variant="primary" className="hidden sm:inline-flex">
+          <ButtonLink href={links.partnerProgram} size="md" variant="primary" className="hidden sm:inline-flex">
             Become a <strong>Partner</strong>
           </ButtonLink>
           <button
             type="button"
-            className={cn("inline-grid size-10 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-brand-50 hover:text-brand")}
+            className={cn("inline-grid size-11 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-brand-50 hover:text-brand")}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

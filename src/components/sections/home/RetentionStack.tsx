@@ -3,7 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { BundleBuilderDemo } from "@/components/features/demos/BundleBuilderDemo";
 import { LoyaltyPointsDemo } from "@/components/features/demos/LoyaltyPointsDemo";
-import { MembershipAccountDemo } from "@/components/features/demos/MembershipAccountDemo";
+import { MembershipJoinDemo } from "@/components/features/demos/MembershipJoinDemo";
 import { PickupSchedulerDemo } from "@/components/features/demos/PickupSchedulerDemo";
 import { SubscriptionWidgetDemo } from "@/components/features/demos/SubscriptionWidgetDemo";
 import { Confetti } from "@/components/motion/Confetti";
@@ -89,7 +89,7 @@ const demo: Record<ProductId, ReactNode> = {
       <SubscriptionWidgetDemo />
     </>
   ),
-  memberships: <MembershipAccountDemo />,
+  memberships: <MembershipJoinDemo />,
   loyalty: (
     <div className="relative">
       <LoyaltyPointsDemo />
@@ -197,7 +197,7 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
       data-fit-card=""
       
       className={cn(
-        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-soft sm:p-6 short:p-4",
+        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-[0_1px_2px_rgb(15_23_42/0.04),0_10px_28px_-18px_rgb(15_23_42/0.12)] sm:p-6 short:p-4",
         t.card,
         className,
       )}

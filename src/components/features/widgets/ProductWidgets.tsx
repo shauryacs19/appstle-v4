@@ -187,7 +187,7 @@ export function MembershipCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white shadow-[0_18px_40px_-18px_rgb(1_82_163/0.65)] ring-1 ring-white/10 [container-type:inline-size]",
+        "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white shadow-[0_14px_32px_-20px_rgb(15_23_42/0.2)] ring-1 ring-white/10 [container-type:inline-size]",
         className,
       )}
     >

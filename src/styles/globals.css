@@ -6,7 +6,7 @@
 @custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
 
 :root {
-  --header-h: 4.5rem;
+  --header-h: 5.25rem;
 }
 
 @layer base {

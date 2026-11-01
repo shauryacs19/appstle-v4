@@ -189,7 +189,7 @@ export function CommerceHero() {
                     transition={{ duration: 0.9, delay: 0.18 + i * 0.1, ease: ease.out }}
                   >
                     {i === 2 ? (
-                      <span className="relative inline-block text-brand-700">
+                      <span className="relative inline-block text-brand">
                         {line}
                         <Underline />
                       </span>

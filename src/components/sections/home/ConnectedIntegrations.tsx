@@ -1,27 +1,51 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
-import { ArrowRight, Gift, Headset, LayoutTemplate, Mail, Star, Workflow, type LucideIcon } from "lucide-react";
+import { AnimatePresence, LayoutGroup, motion, useInView, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { CreditCard, Gift, Headset, Languages, LayoutTemplate, Mail, ShoppingBag, Star, Workflow, type LucideIcon } from "lucide-react";
 import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
-import { ButtonLink } from "@/components/ui/Button";
 import { ProductIcon } from "@/components/ui/ProductIcon";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { SmartLink } from "@/components/ui/SmartLink";
-import { integrationGroups, type Integration } from "@/data/integrations";
+import { integrationGroups, integrations, shopifySurfaces, type Integration } from "@/data/integrations";
 import { links } from "@/data/links";
-import { products } from "@/data/products";
+import { products, type ProductId } from "@/data/products";
 import { useHydrated } from "@/hooks/useHydrated";
 import { cn } from "@/lib/cn";
 import { ease } from "@/lib/motion";
 
-const rows = ["lg:row-start-1", "lg:row-start-2", "lg:row-start-3"];
-const icons: Record<string, LucideIcon> = { Mail, Star, Headset, Gift, Workflow, LayoutTemplate };
+const icons: Record<string, LucideIcon> = { Mail, Star, Headset, Gift, Workflow, LayoutTemplate, Languages, CreditCard, ShoppingBag };
 
-function Tile({ item, i, side, progress, still }: { item: Integration; i: number; side: number; progress: MotionValue<number>; still: boolean }) {
+type TileItem = Pick<Integration, "name" | "logo">;
+type Group = { title: string; icon: string; blurb: string; items: readonly TileItem[] };
+
+const productGroupDefs: (Omit<Group, "items"> & { cats: Integration["category"][] })[] = [
+  { title: "Email & SMS marketing", icon: "Mail", blurb: "Flows and campaigns for shoppers", cats: ["Email & SMS"] },
+  { title: "Reviews", icon: "Star", blurb: "Social proof on every product", cats: ["Reviews"] },
+  { title: "Customer support", icon: "Headset", blurb: "Helpdesk for every ticket", cats: ["Support"] },
+  { title: "Translation", icon: "Languages", blurb: "Your storefront in every language", cats: ["Translation"] },
+  { title: "Loyalty & referrals", icon: "Gift", blurb: "Rewards and affiliate programs", cats: ["Loyalty & referrals"] },
+  { title: "Automation", icon: "Workflow", blurb: "Workflows across your stack", cats: ["Automation"] },
+  { title: "Storefront & upsells", icon: "LayoutTemplate", blurb: "Pages, funnels and offers", cats: ["Storefront & pages", "Upsell & pricing"] },
+  { title: "Payments", icon: "CreditCard", blurb: "Billing beyond Shopify Payments", cats: ["Payments"] },
+];
+
+const NATIVE = "Built into Shopify";
+
+function groupsFor(product: ProductId | null): readonly Group[] {
+  if (!product) return integrationGroups;
+  const listed = integrations.filter((i) => i.listedOn.includes(product));
+  const groups = productGroupDefs
+    .map(({ cats, ...g }) => ({ ...g, items: listed.filter((i) => cats.includes(i.category)) }))
+    .filter((g) => g.items.length);
+  if (groups.length) return groups;
+  return [{ title: NATIVE, icon: "ShoppingBag", blurb: "Works natively, no extra apps", items: shopifySurfaces[product].map((name) => ({ name })) }];
+}
+
+function Tile({ item, i, side, progress, still }: { item: TileItem; i: number; side: number; progress: MotionValue<number>; still: boolean }) {
   const sx = side * (18 + ((i * 29) % 3) * 16);
   const sy = 46 + ((i * 17) % 3) * 22;
   const sr = (((i * 53) % 7) - 3) * 4;
@@ -32,9 +56,12 @@ function Tile({ item, i, side, progress, still }: { item: Integration; i: number
   return (
     <motion.li
       style={still ? undefined : { x, y, rotate }}
+      initial={still ? false : { opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.35, ease: ease.out }}
       className={cn(
         "group/tile relative grid h-[3.9rem] place-items-center rounded-xl bg-white ring-1 ring-[#DCE5F0] shadow-[0_1px_2px_rgb(6_43_82/0.05)] transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_14px_26px_-14px_rgb(6_43_82/0.4)] hover:ring-brand/35",
-        wide ? "w-[6.6rem]" : "w-[4.6rem]",
+        !item.logo ? "w-auto px-3" : wide ? "w-[6.6rem]" : "w-[4.6rem]",
       )}
     >
       {item.logo ? (
@@ -57,7 +84,7 @@ function GroupCard({
   active,
   onHover,
 }: {
-  group: (typeof integrationGroups)[number];
+  group: Group;
   index: number;
   side: -1 | 1;
   progress: MotionValue<number>;
@@ -70,6 +97,7 @@ function GroupCard({
     <Reveal delay={0.08 * (index % 3)} className="h-full min-w-0">
       <article
         data-int-card={index}
+        data-int-title={group.title}
         data-side={side < 0 ? "left" : "right"}
         onPointerEnter={() => onHover(index)}
         onPointerLeave={() => onHover(null)}
@@ -79,7 +107,7 @@ function GroupCard({
         )}
       >
         <div className="flex items-center gap-2.5">
-          <span className={cn("grid size-9 place-items-center rounded-xl transition-colors duration-500", active ? "bg-brand-700 text-white" : "bg-brand-50 text-brand-ink")}>
+          <span className={cn("grid size-9 place-items-center rounded-xl transition-colors duration-500", active ? "bg-brand text-white" : "bg-brand-50 text-brand-ink")}>
             <Icon aria-hidden className="size-[18px]" strokeWidth={2.1} />
           </span>
           <div className="min-w-0">
@@ -97,7 +125,48 @@ function GroupCard({
   );
 }
 
-function Hub() {
+function Column({
+  groups,
+  offset,
+  side,
+  fill,
+  progress,
+  still,
+  active,
+  onHover,
+}: {
+  groups: readonly Group[];
+  offset: number;
+  side: -1 | 1;
+  fill: boolean;
+  progress: MotionValue<number>;
+  still: boolean;
+  active: number | null;
+  onHover: (i: number | null) => void;
+}) {
+  return (
+    <div className={cn("contents lg:row-start-1 lg:flex lg:flex-col lg:justify-center lg:gap-5", side < 0 ? "lg:col-start-1" : "lg:col-start-3")}>
+      <AnimatePresence mode="popLayout" initial={false}>
+        {groups.map((g, k) => (
+          <motion.div
+            key={g.title}
+            layout={!still}
+            layoutId={still ? undefined : `int-${g.title}`}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5, ease: ease.out }}
+            className={cn("relative min-w-0", fill && "lg:flex-1")}
+          >
+            <GroupCard group={g} index={offset + k} side={side} progress={progress} still={still} active={active === offset + k} onHover={onHover} />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+function Hub({ product, onSelect }: { product: ProductId | null; onSelect: (id: ProductId | null) => void }) {
   const n = products.length;
   return (
     <div data-int-hub className="relative mx-auto aspect-square w-full max-w-[19rem] lg:max-w-none">
@@ -110,11 +179,22 @@ function Hub() {
         <div className="relative grid place-items-center">
           <span aria-hidden className="absolute size-24 animate-[pulse-ring_3.2s_var(--ease-smooth)_infinite] rounded-[1.8rem] bg-brand/25" />
           <AppstleMark title="Appstle" className="relative size-[5.5rem] rounded-[1.6rem] shadow-glow" />
-          <span className="absolute top-full mt-2 font-display text-sm font-bold whitespace-nowrap text-ink">Appstle apps</span>
+          {product ? (
+            <button
+              type="button"
+              onClick={() => onSelect(null)}
+              className="absolute top-full mt-2 rounded-full px-2 py-0.5 text-sm font-semibold whitespace-nowrap text-brand hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+              Show all apps
+            </button>
+          ) : (
+            <span className="absolute top-full mt-2 font-display text-sm font-bold whitespace-nowrap text-ink">Appstle apps</span>
+          )}
         </div>
       </div>
-      <ul aria-label="Appstle apps" className="absolute inset-0">
+      <ul aria-label="Filter integrations by app" className="absolute inset-0">
         {products.map((p, i) => {
+          const on = product === p.id;
           const a = (-90 + (360 / n) * i) * (Math.PI / 180);
           const style = {
             left: `${50 + 44 * Math.cos(a)}%`,
@@ -126,14 +206,19 @@ function Hub() {
           return (
             <li key={p.id} className="absolute -translate-x-1/2 -translate-y-1/2" style={style}>
               <div className="hero-float">
-                <SmartLink
-                  href={p.href}
-                  title={p.name}
-                  className="flex items-center gap-1.5 rounded-full bg-white py-1 pr-2.5 pl-1 shadow-soft ring-1 ring-[#D7E1EE] transition hover:-translate-y-0.5 hover:ring-brand/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                <button
+                  type="button"
+                  aria-pressed={on}
+                  title={`Show ${p.shortName} integrations`}
+                  onClick={() => onSelect(on ? null : p.id)}
+                  className={cn(
+                    "flex cursor-pointer items-center gap-1.5 rounded-full py-1 pr-2.5 pl-1 shadow-soft ring-1 transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
+                    on ? "bg-brand ring-brand" : "bg-white ring-[#D7E1EE] hover:ring-brand/40",
+                  )}
                 >
-                  <ProductIcon id={p.id} size="sm" className="size-6 rounded-full" />
-                  <span className="text-xs font-semibold whitespace-nowrap text-ink">{p.shortName.split(" &")[0]}</span>
-                </SmartLink>
+                  <ProductIcon id={p.id} size="sm" className={cn("size-6 rounded-full", on && "bg-white/20 text-white ring-0")} />
+                  <span className={cn("text-xs font-semibold whitespace-nowrap", on ? "text-white" : "text-ink")}>{p.shortName.split(" &")[0]}</span>
+                </button>
               </div>
             </li>
           );
@@ -157,8 +242,15 @@ function offsetIn(el: HTMLElement, stage: HTMLElement) {
   return { x, y };
 }
 
-function useLinePaths(stage: RefObject<HTMLDivElement | null>) {
+function useLinePaths(stage: RefObject<HTMLDivElement | null>, layoutKey: string) {
   const [paths, setPaths] = useState<Path[]>([]);
+  const [drawn, setDrawn] = useState(false);
+  const measureRef = useRef<() => void>(() => {});
+  const keyRef = useRef(layoutKey);
+  const first = useRef(true);
+  useEffect(() => {
+    keyRef.current = layoutKey;
+  }, [layoutKey]);
   useEffect(() => {
     const el = stage.current;
     if (!el) return;
@@ -171,7 +263,9 @@ function useLinePaths(stage: RefObject<HTMLDivElement | null>) {
       const cx = h.x + hub.offsetWidth / 2;
       const cy = h.y + hub.offsetHeight / 2;
       const r = hub.offsetWidth * 0.44;
+      const keep = new Set(keyRef.current.split("|"));
       const next = [...el.querySelectorAll<HTMLElement>("[data-int-card]")]
+        .filter((card) => keep.has(card.dataset.intTitle ?? ""))
         .sort((a, b) => Number(a.dataset.intCard) - Number(b.dataset.intCard))
         .map((card) => {
           const o = offsetIn(card, el);
@@ -186,7 +280,9 @@ function useLinePaths(stage: RefObject<HTMLDivElement | null>) {
         });
       setPaths(next);
     };
+    measureRef.current = measure;
     measure();
+    setDrawn(true);
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     mq.addEventListener("change", measure);
@@ -196,7 +292,25 @@ function useLinePaths(stage: RefObject<HTMLDivElement | null>) {
       mq.removeEventListener("change", measure);
     };
   }, [stage]);
-  return paths;
+  useEffect(() => {
+    if (first.current) {
+      first.current = false;
+      return;
+    }
+    setDrawn(false);
+    let raf = 0;
+    const t = setTimeout(() => {
+      measureRef.current();
+      raf = requestAnimationFrame(() => {
+        raf = requestAnimationFrame(() => setDrawn(true));
+      });
+    }, 600);
+    return () => {
+      clearTimeout(t);
+      cancelAnimationFrame(raf);
+    };
+  }, [layoutKey]);
+  return { paths, drawn };
 }
 
 export function ConnectedIntegrations() {
@@ -205,10 +319,21 @@ export function ConnectedIntegrations() {
   const reduce = !!useReducedMotion() && mounted;
   const inView = useInView(stage, { once: true, amount: 0.25 });
   const { scrollYProgress } = useScroll({ target: stage, offset: ["start end", "start 0.4"] });
-  const paths = useLinePaths(stage);
   const [active, setActive] = useState<number | null>(null);
-  const left = integrationGroups.slice(0, 3);
-  const right = integrationGroups.slice(3);
+  const [product, setProduct] = useState<ProductId | null>(null);
+  const groups = groupsFor(product);
+  const { paths, drawn } = useLinePaths(stage, groups.map((g) => g.title).join("|"));
+  const selected = product ? products.find((p) => p.id === product)! : null;
+  const native = groups[0]?.title === NATIVE;
+  const total = groups.reduce((n, g) => n + g.items.length, 0);
+  const split = Math.ceil(groups.length / 2);
+  const left = groups.slice(0, split);
+  const right = groups.slice(split);
+  const tall = split >= 3;
+  const select = (id: ProductId | null) => {
+    setActive(null);
+    setProduct(id);
+  };
 
   return (
     <section id="integrations" aria-labelledby="int-title" className="int-stage relative overflow-x-clip py-band">
@@ -224,6 +349,7 @@ export function ConnectedIntegrations() {
           </h2>
           <Reveal delay={0.1}>
             <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-ink-muted">Connect Appstle with the email, reviews, support and automation tools your store already runs on.</p>
+            <p className="mt-3 text-sm font-medium text-ink-subtle">Pick an app in the ring to see its integrations.</p>
           </Reveal>
         </div>
 
@@ -233,11 +359,11 @@ export function ConnectedIntegrations() {
         >
           <svg
             aria-hidden
-            data-on={inView ? "" : undefined}
+            data-on={inView && drawn ? "" : undefined}
             className="int-lines pointer-events-none absolute inset-0 hidden size-full overflow-visible lg:block"
           >
             {paths.map((p, i) => {
-              const on = active === i;
+              const on = active === i || !!product;
               return (
                 <g key={i}>
                   <path d={p.d} pathLength={100} fill="none" stroke="var(--color-brand)" strokeOpacity={on ? 0.75 : 0.28} strokeWidth={on ? 2 : 1.5} className="int-line" />
@@ -262,37 +388,39 @@ export function ConnectedIntegrations() {
           </svg>
 
           <motion.div
-            className="relative mb-4 sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:mb-0 lg:self-center"
+            className="relative mb-4 sm:col-span-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:self-center"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={inView ? { opacity: 1, scale: 1 } : undefined}
             transition={{ duration: 1.2, ease: ease.out }}
           >
-            <Hub />
+            <Hub product={product} onSelect={select} />
+            <p aria-live="polite" className="mt-10 min-h-5 text-center text-sm text-ink-muted lg:mt-6">
+              {selected &&
+                (native
+                  ? `${selected.shortName} works natively inside Shopify`
+                  : `${total} integration${total === 1 ? "" : "s"} across ${groups.length} categories for ${selected.shortName}`)}
+            </p>
           </motion.div>
 
-          {left.map((g, i) => (
-            <div key={g.title} className={cn("relative h-full lg:col-start-1", rows[i])}>
-              <GroupCard group={g} index={i} side={-1} progress={scrollYProgress} still={reduce} active={active === i} onHover={setActive} />
-            </div>
-          ))}
-          {right.map((g, i) => (
-            <div key={g.title} className={cn("relative h-full lg:col-start-3", rows[i])}>
-              <GroupCard group={g} index={i + 3} side={1} progress={scrollYProgress} still={reduce} active={active === i + 3} onHover={setActive} />
-            </div>
-          ))}
+          <LayoutGroup id="int-groups">
+            <Column groups={left} offset={0} side={-1} fill={tall} progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
+            <Column groups={right} offset={split} side={1} fill={tall && right.length === split} progress={scrollYProgress} still={reduce} active={active} onHover={setActive} />
+          </LayoutGroup>
         </div>
 
         <Reveal delay={0.1} className="mx-auto mt-12 flex max-w-3xl flex-col items-center gap-5 text-center">
           <div className="flex flex-wrap justify-center gap-2.5">
-            <ButtonLink href={links.appPartners} variant="primary" size="md">
-              See all <strong>app partners</strong>
-            </ButtonLink>
+            <SmartLink
+              href={links.appPartners}
+              className="inline-flex h-[46px] items-center rounded-[10px] bg-brand px-[18px] font-semibold text-white transition-colors hover:bg-brand-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+            >
+              See all app partners
+            </SmartLink>
             <SmartLink
               href={links.contact}
-              className="group inline-flex h-[46px] items-center gap-2 rounded-[10px] bg-white px-[18px] font-semibold text-brand-ink ring-1 ring-[#D3DDEA] transition hover:ring-brand/45 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              className="inline-flex h-[46px] items-center rounded-[10px] bg-navy px-[18px] font-semibold text-white transition-colors hover:bg-navy-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
             >
               Request an integration
-              <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
             </SmartLink>
           </div>
         </Reveal>

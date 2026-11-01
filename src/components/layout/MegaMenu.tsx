@@ -66,7 +66,7 @@ export function MegaMenu({ tone = "dark" }: { tone?: "dark" | "light" }) {
                   }
                 }}
                 className={cn(
-                  "inline-flex h-10 items-center gap-1 rounded-lg px-1.5 text-[0.9rem] font-semibold transition-colors xl:px-3.5 xl:text-[0.93rem]",
+                  "inline-flex h-11 items-center gap-1 rounded-lg px-2 text-[0.98rem] font-semibold transition-colors xl:px-4 xl:text-[1.05rem]",
                   tone === "light"
                     ? active ? "bg-white/20 text-white" : "text-white/90 hover:bg-white/12 hover:text-white"
                     : active ? "bg-brand-50 text-brand" : "text-ink-700 hover:bg-white/70",

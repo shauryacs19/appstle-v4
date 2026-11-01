@@ -41,7 +41,7 @@ export function AboutSection() {
             </h2>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-[36rem] text-lg leading-relaxed text-ink-muted">{hero.intro}</p>
-              <SmartLink href={links.about} className="hit-area group mt-4 inline-flex items-center gap-2 font-semibold text-brand-ink hover:text-brand-700">
+              <SmartLink href={links.about} className="hit-area group mt-4 inline-flex items-center gap-2 font-semibold text-brand hover:text-brand-500">
                 Read our story
                 <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
               </SmartLink>

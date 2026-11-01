@@ -6,7 +6,8 @@ import { footerColumns } from "@/data/navigation";
 import { SmartLink } from "@/components/ui/SmartLink";
 import { links } from "@/data/links";
 import { socials } from "@/data/site";
-import logoWhite from "@/assets/brand/appstle-logo-white.webp";
+import { AppstleLogo } from "@/components/brand/AppstleLogo";
+import shopifyLogo from "@/assets/brand/shopify-logo.webp";
 import shopifyPlus from "@/assets/brand/shopify-plus.webp";
 
 export function Footer() {
@@ -20,13 +21,16 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" aria-label="Appstle home" className="inline-block rounded-md">
-              <Image src={logoWhite} alt="Appstle — Compelling apps at compelling prices" className="h-10 w-auto" sizes="200px" />
+              <AppstleLogo tone="light" className="[&>svg]:size-10 [&_.font-display]:text-[1.6rem] [&_.mt-1]:block!" />
             </Link>
             <p className="mt-6 max-w-sm text-[0.95rem] leading-relaxed text-white/70">
               Appstle℠ empowers Shopify merchants to grow and increase their sales through smart, unique, innovative apps.
               Based in Menlo Park, California, with offices in Canada and India.
             </p>
             <div className="mt-6 flex items-center gap-3">
+              <span className="inline-flex h-9 items-center rounded-lg bg-white px-3">
+                <Image src={shopifyLogo} alt="Apps for Shopify" className="h-5 w-auto" sizes="100px" />
+              </span>
               <span className="inline-flex h-9 items-center rounded-lg bg-white px-3">
                 <Image src={shopifyPlus} alt="Apps for Shopify Plus" className="h-4 w-auto" sizes="100px" />
               </span>

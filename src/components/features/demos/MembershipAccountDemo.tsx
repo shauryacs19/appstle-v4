@@ -81,7 +81,7 @@ export function MembershipAccountDemo() {
 
       <motion.div
         layout
-        className={cn("relative mt-4 overflow-hidden rounded-2xl p-4 text-ink ring-1 shadow-[0_14px_30px_-20px_rgb(16_136_246/0.4)] transition-[background] duration-500", cardTone[status])}
+        className={cn("relative mt-4 overflow-hidden rounded-2xl p-4 text-ink ring-1 shadow-[0_10px_24px_-18px_rgb(15_23_42/0.14)] transition-[background] duration-500", cardTone[status])}
       >
         <span aria-hidden className="absolute -top-10 -right-8 size-36 rounded-full bg-white/50" />
         <span aria-hidden className="absolute -bottom-14 left-1/3 size-32 rounded-full bg-white/35" />

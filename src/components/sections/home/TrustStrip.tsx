@@ -30,7 +30,7 @@ export function TrustStrip() {
       </div>
       <div className="border-t border-dashed border-line/90">
         <ul className="mx-auto flex max-w-site flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-4 sm:px-8" aria-label="As seen on">
-          <li className="eyebrow text-ink-subtle">As seen on</li>
+          <li className="font-display text-lg font-bold tracking-[-0.01em] text-ink">As seen on</li>
           {press.map((p) => (
             <li key={p.outlet}>
               <SmartLink href={p.href} aria-label={`Appstle on ${p.outlet}`} className="hit-area block rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">
