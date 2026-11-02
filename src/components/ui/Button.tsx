@@ -8,15 +8,15 @@ type Variant = "primary" | "secondary" | "dark" | "ghost" | "light" | "outlineLi
 type Size = "sm" | "md" | "lg";
 
 const base =
-  "group/btn inline-flex select-none items-center justify-center gap-[0.3em] whitespace-nowrap rounded-xl font-normal [&_strong]:font-bold duration-300 hover:-translate-y-0.5 active:translate-y-px";
+  "group/btn inline-flex select-none items-center justify-center gap-[0.3em] whitespace-nowrap rounded-[10px] font-normal [&_strong]:font-bold duration-300 hover:-translate-y-0.5 active:translate-y-px";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-[#1A84F5] text-white shadow-[0_8px_18px_-10px_rgb(18_121_238/0.7)] hover:bg-[#0875D1] [&_.btn-arrow]:text-white/85",
+  primary: "btn-shine bg-brand-700 text-white hover:bg-brand-ink [&_.btn-arrow]:text-white/85",
   dark: "bg-brand-900 text-white hover:bg-brand-800 [&_.btn-arrow]:text-brand-300",
-  secondary: "bg-brand-50 text-brand hover:bg-brand-100 [&_.btn-arrow]:text-brand",
-  ghost: "text-ink hover:bg-surface-2 hover:shadow-[0_10px_22px_-14px_rgb(6_43_82/0.35)] [&_.btn-arrow]:text-brand",
+  secondary: "bg-[#fff] text-ink ring-1 ring-line hover:ring-ink/25 [&_.btn-arrow]:text-brand-700",
+  ghost: "text-ink hover:bg-surface-2 [&_.btn-arrow]:text-brand",
   outlineLight: "text-white ring-1 ring-white/60 hover:bg-white/12 [&_.btn-arrow]:text-white/85",
-  light: "btn-shine bg-white text-brand shadow-[0_6px_16px_-8px_rgb(0_40_90/0.5)] hover:bg-brand-50 hover:shadow-[0_14px_26px_-12px_rgb(0_40_90/0.6)] [&_.btn-arrow]:text-brand-500",
+  light: "btn-shine bg-white text-brand-ink hover:bg-brand-50 [&_.btn-arrow]:text-brand-500",
 };
 
 const sizes: Record<Size, string> = {
@@ -65,7 +65,7 @@ export function TextLink({ className, children, external, ...props }: ComponentP
   return (
     <a
       className={cn(
-        "group/link inline-flex items-center gap-1.5 font-semibold text-brand underline decoration-current/0 decoration-2 underline-offset-4 transition-colors hover:decoration-current/40",
+        "group/link inline-flex items-center gap-1.5 font-semibold text-brand-ink underline decoration-current/0 decoration-2 underline-offset-4 transition-colors hover:decoration-current/40",
         className,
       )}
       {...props}

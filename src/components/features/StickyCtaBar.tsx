@@ -47,7 +47,7 @@ export function StickyCtaBar({
           transition={{ type: "spring", stiffness: 320, damping: 32 }}
           className={cn("fixed bottom-4 left-3 right-[5.25rem] z-40 sm:left-auto sm:right-[6.25rem] sm:bottom-6" , className)}
         >
-          <div className="flex items-center gap-2 rounded-2xl bg-[linear-gradient(135deg,#1088F6,#0066CA)] p-2 pl-4 text-white shadow-float ring-1 ring-white/10">
+          <div className="flex items-center gap-2 rounded-2xl bg-ink-deep p-2 pl-4 text-white shadow-float ring-1 ring-white/10">
             {children}
             <button
               type="button"

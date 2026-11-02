@@ -80,7 +80,7 @@ export function PickupSchedulerDemo() {
                 {on && (
                   <motion.span
                     layoutId="method-bg"
-                    className="absolute inset-0 rounded-2xl bg-brand-50 ring-2 ring-brand-700/60"
+                    className="absolute inset-0 rounded-2xl bg-ice ring-2 ring-brand"
                     transition={{ type: "spring", stiffness: 420, damping: 32 }}
                   />
                 )}
@@ -92,7 +92,7 @@ export function PickupSchedulerDemo() {
         </div>
       </LayoutGroup>
 
-      <div className="mt-5 flex items-center gap-3 rounded-2xl bg-brand-50 px-4 py-3 text-sm">
+      <div className="mt-5 flex items-center gap-3 rounded-2xl bg-ice px-4 py-3 text-sm ring-1 ring-powder">
         <Store aria-hidden className="size-5 shrink-0 text-brand-700" />
         <div>
           <p className="font-semibold text-ink">{method === "pickup" ? "Your store location" : method === "delivery" ? "Within your delivery zone" : "Standard shipping"}</p>
@@ -116,12 +116,12 @@ export function PickupSchedulerDemo() {
                 className={cn(
                   "flex h-16 flex-col items-center justify-center rounded-xl text-xs ring-1 transition",
                   d.blackout && "cursor-not-allowed bg-[repeating-linear-gradient(135deg,transparent_0_6px,rgb(32_43_69/0.05)_6px_8px)] text-ink-subtle ring-ink/6",
-                  !d.blackout && (on ? "bg-ink text-white ring-ink" : "bg-white text-ink ring-ink/12 hover:ring-ink/30"),
+                  !d.blackout && (on ? "bg-blue-ink text-white ring-blue-ink" : "bg-white text-ink ring-ink/12 hover:ring-ink/30"),
                 )}
               >
                 <span className="font-medium opacity-80">{fmt(d.date, { weekday: "short" })}</span>
                 <span className="font-display text-lg font-bold">{fmt(d.date, { day: "numeric" })}</span>
-                {d.blackout && <span className="text-[0.62rem] font-semibold">Closed</span>}
+                {d.blackout && <span className="text-xs font-semibold">Closed</span>}
               </button>
             );
           })}
@@ -153,11 +153,11 @@ export function PickupSchedulerDemo() {
                     className={cn(
                       "flex items-center justify-between rounded-xl px-3 py-2.5 text-left text-xs font-semibold ring-1 transition sm:text-sm",
                       full && "cursor-not-allowed text-ink-subtle ring-ink/6",
-                      !full && (on ? "bg-brand-50 text-brand-700 ring-brand-700/60" : "text-ink ring-ink/12 hover:ring-ink/30"),
+                      !full && (on ? "bg-brand text-white ring-brand" : "text-ink ring-ink/12 hover:ring-ink/30"),
                     )}
                   >
                     {s}
-                    {full && <span className="rounded-full bg-line px-2 py-0.5 text-[0.62rem]">Full</span>}
+                    {full && <span className="rounded-full bg-terracotta-50 px-2 py-0.5 text-xs font-semibold text-terracotta">Full</span>}
                   </button>
                 );
               })}
@@ -166,8 +166,8 @@ export function PickupSchedulerDemo() {
         )}
       </AnimatePresence>
 
-      <div aria-live="polite" className="mt-5 flex items-start gap-3 rounded-2xl bg-ink p-4 text-white">
-        <CalendarCheck2 aria-hidden className="mt-0.5 size-5 shrink-0 text-brand-300" />
+      <div aria-live="polite" className="mt-5 flex items-start gap-3 rounded-2xl bg-blue-ink p-4 text-white">
+        <CalendarCheck2 aria-hidden className="mt-0.5 size-5 shrink-0 text-[#E0745A]" />
         <div className="text-sm">
           <p className="font-semibold">
             {selectedDay

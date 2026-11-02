@@ -23,7 +23,7 @@ export const loyaltyPage: ProductPageData = {
         { product: "loyalty", title: "Reward redeemed", meta: "Free shipping" },
       ],
       description: "Appstle Loyalty program types (rewards, points, store credits, discounts, referrals) and a shopper's points widget on a phone.",
-      stage: "bg-blush",
+      stage: "bg-gradient-to-br from-coral-200 via-coral to-coral-700",
     },
   },
   overview: {

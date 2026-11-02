@@ -217,8 +217,7 @@ export function ScrollLines({ stops }: { stops: LineStop[] }) {
     const found: Array<{ host: HTMLElement; color: string; line: Line }> = [];
     for (const s of stops) {
       if (!s.line) continue;
-      const section = document.querySelector<HTMLElement>(s.section);
-      const host = section?.matches("[data-line-host]") ? section : (section?.querySelector<HTMLElement>("[data-line-host]") ?? section?.firstElementChild);
+      const host = document.querySelector<HTMLElement>(s.section)?.firstElementChild;
       if (host instanceof HTMLElement) found.push({ host, color: s.color, line: s.line });
     }
     return found;

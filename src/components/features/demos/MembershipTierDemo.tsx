@@ -10,13 +10,13 @@ const tiers = {
   bronze: {
     label: "Bronze",
     discount: 5,
-    swatch: "from-[#EEF1F5] to-[#FFFFFF] text-ink ring-1 ring-[#E1E6ED]",
+    swatch: "from-[#EEE6D8] to-[#FFFFFF] text-ink ring-1 ring-line",
     perks: ["5% off on all products", "$5 shipping on all orders"],
   },
   silver: {
     label: "Silver",
     discount: 10,
-    swatch: "from-[#CDD4DE] to-[#F1F3F7] text-ink",
+    swatch: "from-[#CDD4DE] to-[#EFE8DB] text-ink",
     perks: ["10% off on all products", "Exclusive access to early launches", "Free shipping on local orders"],
   },
   gold: {
@@ -44,11 +44,11 @@ export function MembershipTierDemo() {
     <div className="rounded-3xl bg-white p-5 shadow-float ring-1 ring-ink/8 sm:p-6">
       <div className="flex items-center justify-between gap-3">
         <p className="font-display text-lg font-bold text-ink">Choose a tier</p>
-        <DemoBadge label="Demo" />
+        <DemoBadge />
       </div>
 
       <LayoutGroup id="tiers">
-        <div role="radiogroup" aria-label="Membership tier" className="mt-4 grid grid-cols-3 gap-1 rounded-full bg-[#F1F3F7] p-1 ring-1 ring-[#E1E6ED]">
+        <div role="radiogroup" aria-label="Membership tier" className="mt-4 grid grid-cols-3 gap-1 rounded-full bg-[#EFE8DB] p-1 ring-1 ring-line">
           {ids.map((id) => {
             const selected = id === tier;
             return (
@@ -78,7 +78,7 @@ export function MembershipTierDemo() {
                 {selected && (
                   <motion.span
                     layoutId="tier-pill"
-                    className="absolute inset-0 rounded-full bg-brand-700 shadow-[0_8px_18px_-8px_rgb(11_23_48/0.5)]"
+                    className="absolute inset-0 rounded-full bg-[#13264A] "
                     transition={{ type: "spring", stiffness: 420, damping: 32 }}
                   />
                 )}
@@ -106,7 +106,7 @@ export function MembershipTierDemo() {
         <div className="relative mt-6 flex items-end justify-between">
           <span className="text-xs font-medium opacity-80">Example product</span>
           <span className="text-right" aria-live="polite">
-            <span className="mr-2 text-sm line-through opacity-60">${EXAMPLE_PRICE.toFixed(2)}</span>
+            <span className="mr-2 text-sm line-through opacity-80">${EXAMPLE_PRICE.toFixed(2)}</span>
             <span className="font-display text-2xl font-bold">${memberPrice.toFixed(2)}</span>
           </span>
         </div>
@@ -123,8 +123,8 @@ export function MembershipTierDemo() {
               exit={{ opacity: 0, x: 12, transition: { duration: 0.15 } }}
               className="flex items-start gap-2.5 text-[0.92rem] text-ink"
             >
-              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#EEF1F5]">
-                <Check aria-hidden className="size-3 text-brand" strokeWidth={3} />
+              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#EEE6D8]">
+                <Check aria-hidden className="size-3 text-brand-ink" strokeWidth={3} />
               </span>
               {p}
             </motion.li>

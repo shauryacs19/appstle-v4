@@ -6,7 +6,7 @@ export const seo = {
     path: routes.home,
     title: "Appstle — Shopify Subscription, Membership & Loyalty Apps",
     description:
-      "Appstle builds Shopify apps for subscriptions, memberships, loyalty, bundles and pickup & delivery. Trusted by 40,000+ merchants, with 24/7 support.",
+      "Appstle builds Shopify apps for subscriptions, memberships, loyalty, bundles and pickup & delivery. Trusted by 70,000+ merchants, with 24x7x365 support.",
   },
   subscriptions: {
     path: routes.product.subscriptions,

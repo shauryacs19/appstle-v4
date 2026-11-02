@@ -3,7 +3,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import type { Crumb } from "@/lib/jsonld";
 import { cn } from "@/lib/cn";
-import { HeroWash } from "@/components/features/backdrops/HeroWash";
 
 export function ArticleHero({
   crumbs,
@@ -32,7 +31,11 @@ export function ArticleHero({
         : "text-[2.5rem] sm:text-[3.2rem] lg:text-[3.6rem] short:text-[3rem]";
   return (
     <section id="hero" aria-labelledby="page-title" data-section="hero" data-section-fit="screen" className="relative isolate overflow-hidden">
-      <HeroWash />
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_70%_at_50%_20%,#000_30%,transparent_75%)]" />
+        <div className="absolute -top-48 right-[-8%] size-[36rem] rounded-full bg-cobalt-100/60 blur-3xl" />
+        <div className="absolute top-[30%] left-[-10%] size-[26rem] rounded-full bg-coral-100/50 blur-3xl" />
+      </div>
       <div className={cn("mx-auto grid max-w-site grid-cols-1 gap-10 px-5 pt-6 pb-section sm:px-8 lg:items-center", !!aside && "lg:grid-cols-12 lg:gap-12")}>
         <div className={cn(aside ? "lg:col-span-7" : "max-w-4xl")}>
           <Breadcrumbs items={crumbs} />

@@ -54,7 +54,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
   return (
     <AnimatePresence>
       {open && (
-        <motion.div className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div data-mobile-nav="" className="fixed inset-0 z-[60] lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
           <button type="button" tabIndex={-1} aria-hidden className="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onClick={onClose} />
           <motion.div
             id="mobile-menu"
@@ -66,7 +66,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 380, damping: 38 }}
-            className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white shadow-[0_12px_28px_rgb(0_0_0/0.25)]"
+            className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-white "
           >
             <div className="flex h-[var(--header-h)] shrink-0 items-center justify-between border-b border-line px-4">
               <span id={titleId} className="sr-only">

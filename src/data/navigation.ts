@@ -17,7 +17,7 @@ export const navGroups: NavGroup[] = [
         links: [
           { label: "All apps on Shopify", href: links.shopifyPartner, description: "Install from the Shopify App Store." },
           { label: "Case studies", href: links.caseStudies, description: "Merchant success stories." },
-          { label: "Merchants", href: links.merchants, description: "40,000+ Shopify & Shopify Plus merchants." },
+          { label: "Merchants", href: links.merchants, description: "70,000+ Shopify & Shopify Plus merchants." },
         ],
       },
     ],
@@ -107,7 +107,7 @@ export const navGroups: NavGroup[] = [
         title: "Appstle",
         links: [
           { label: "About us", href: links.about, description: "Founded in 2021, headquartered in Menlo Park, California." },
-          { label: "Merchants", href: links.merchants, description: "40,000+ Shopify & Shopify Plus merchants." },
+          { label: "Merchants", href: links.merchants, description: "70,000+ Shopify & Shopify Plus merchants." },
           { label: "Case studies", href: links.caseStudies, description: "Merchant success stories." },
           { label: "App partners", href: links.appPartners, description: "Integrations across the Shopify ecosystem." },
         ],

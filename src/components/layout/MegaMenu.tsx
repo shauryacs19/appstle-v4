@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ProductIcon } from "@/components/ui/ProductIcon";
 import { SmartLink } from "@/components/ui/SmartLink";
 import { links } from "@/data/links";
 import { navGroups, type NavGroup } from "@/data/navigation";
@@ -66,16 +65,16 @@ export function MegaMenu({ tone = "dark" }: { tone?: "dark" | "light" }) {
                   }
                 }}
                 className={cn(
-                  "inline-flex h-10 items-center gap-1 rounded-lg px-1.5 text-[0.9rem] font-semibold transition-colors xl:px-3.5 xl:text-[0.93rem]",
+                  "inline-flex h-10 items-center gap-1 rounded-lg px-1.5 text-[0.95rem] font-semibold transition-colors xl:px-3.5 xl:text-[1.02rem]",
                   tone === "light"
                     ? active ? "bg-white/20 text-white" : "text-white/90 hover:bg-white/12 hover:text-white"
-                    : active ? "bg-brand-50 text-brand" : "text-ink-700 hover:bg-white/70",
+                    : active ? "bg-surface text-ink" : "text-ink-700 hover:bg-surface hover:text-ink",
                 )}
               >
                 {group.label}
                 <ChevronDown aria-hidden className={cn("size-4 opacity-60 transition-transform duration-300", active && "rotate-180")} />
               </button>
-              <span aria-hidden className={cn("absolute inset-x-2 bottom-0 h-[3px] rounded-t-full transition-opacity", tone === "light" ? "bg-white" : "bg-brand", active ? "opacity-100" : "opacity-0")} />
+              <span aria-hidden className={cn("absolute inset-x-2 bottom-0 h-[3px] rounded-t-full transition-opacity", tone === "light" ? "bg-white" : "bg-orange", active ? "opacity-100" : "opacity-0")} />
               <AnimatePresence>
                 {active && <MegaMenuPanel group={group} pathname={pathname} onNavigate={() => setOpen(null)} onBlurOut={() => setOpen(null)} />}
               </AnimatePresence>
@@ -110,7 +109,7 @@ function MegaMenuPanel({ group, pathname, onNavigate, onBlurOut }: { group: NavG
             : "w-[min(34rem,calc(100vw-3rem))]",
       )}
     >
-      <div className="overflow-hidden rounded-xl bg-white shadow-[0_12px_28px_rgb(0_0_0/0.2),0_2px_4px_rgb(0_0_0/0.1)]">
+      <div className="overflow-hidden rounded-xl bg-white ">
         <div className={cn("grid gap-2 p-2", withIcons ? "grid-cols-[1.6fr_1fr]" : "grid-cols-2")}>
           {group.columns.map((col, ci) => (
             <div key={col.title} className={cn("rounded-lg p-3", ci === 1 && "bg-surface-2")}>
@@ -122,9 +121,8 @@ function MegaMenuPanel({ group, pathname, onNavigate, onBlurOut }: { group: NavG
                       href={l.href}
                       onClick={onNavigate}
                       aria-current={l.href === pathname ? "page" : undefined}
-                      className="group/item flex items-start gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-brand-50 focus-visible:bg-brand-50"
+                      className="group/item flex items-start gap-3 rounded-lg px-2.5 py-2 transition-colors hover:bg-surface focus-visible:bg-surface"
                     >
-                      {l.icon && <ProductIcon id={l.icon} size="md" />}
                       <span className="min-w-0">
                         <span className="flex items-center gap-1 text-[0.92rem] font-semibold text-ink group-hover/item:text-brand">
                           {l.label}

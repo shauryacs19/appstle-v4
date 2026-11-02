@@ -1,6 +1,6 @@
 "use client";
 
-import Image, {  } from "next/image";
+import Image, { } from "next/image";
 import { AnimatePresence, motion, useInView, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { Bell, Crown, Gift, Heart, PackagePlus, Repeat2, Store, ShoppingBag, TrendingUp, UserCheck, type LucideIcon } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
@@ -10,7 +10,7 @@ import storePhoto from "@/assets/home/hero.webp";
 import shopifyLogo from "@/assets/brand/shopify-logo.webp";
 
 const shell =
-  "hero-card rounded-[1.15rem] bg-white ring-1 ring-canvas-line shadow-[0_1px_2px_rgb(6_43_82/0.05),0_18px_38px_-20px_rgb(6_43_82/0.3)]";
+  "hero-card rounded-[1.15rem] bg-white ring-1 ring-line ";
 
 function useLive<T extends Element>() {
   const ref = useRef<T>(null);
@@ -33,7 +33,7 @@ function Count({ to, on, prefix = "", suffix = "", decimals = 0 }: { to: number;
 
 function SampleTag({ className }: { className?: string }) {
   return (
-    <span className={cn("rounded-full bg-surface-2 px-1.5 py-0.5 text-[9px] font-semibold tracking-wide text-ink-subtle uppercase ring-1 ring-canvas-line", className)}>
+    <span className={cn("rounded-full bg-surface-2 px-1.5 py-0.5 text-xs font-semibold tracking-wide text-ink-subtle uppercase ring-1 ring-line", className)}>
       Sample data
     </span>
   );
@@ -64,7 +64,7 @@ export function RevenueCard({ className, chartClassName }: { className?: string;
   return (
     <div ref={ref} className={cn(shell, "p-3.5", className)}>
       <div className="flex items-center gap-2">
-        <span className="grid size-6 place-items-center rounded-lg bg-brand-50 text-brand">
+        <span className="grid size-6 place-items-center rounded-lg bg-brand-50 text-brand-ink">
           <TrendingUp className="size-3.5" strokeWidth={2.3} />
         </span>
         <span className="text-[12.5px] font-semibold text-ink">Revenue</span>
@@ -74,7 +74,7 @@ export function RevenueCard({ className, chartClassName }: { className?: string;
         <span className="font-display text-[1.75rem] leading-none font-bold tracking-[-0.03em] text-ink">
           <Count to={48.2} on={on} prefix="$" suffix="k" decimals={1} />
         </span>
-        <span className="mb-0.5 inline-flex items-center gap-0.5 rounded-full bg-[#E8F8EF] px-1.5 py-0.5 text-[10.5px] font-bold text-[#1F8A57]">
+        <span className="mb-0.5 inline-flex items-center gap-0.5 rounded-full bg-[#E8F8EF] px-1.5 py-0.5 text-xs font-bold text-[#1F8A57]">
           <TrendingUp className="size-3" strokeWidth={2.6} /> trending up
         </span>
       </div>
@@ -86,7 +86,7 @@ export function RevenueCard({ className, chartClassName }: { className?: string;
           </linearGradient>
         </defs>
         {[0.25, 0.5, 0.75].map((f) => (
-          <line key={f} x1="0" x2={W} y1={H * f} y2={H * f} stroke="#E3EAF3" strokeDasharray="2 4" />
+          <line key={f} x1="0" x2={W} y1={H * f} y2={H * f} stroke="#E8DFCF" strokeDasharray="2 4" />
         ))}
         <motion.path
           d={`${d} L${W} ${H} L0 ${H} Z`}
@@ -110,7 +110,7 @@ export function RevenueCard({ className, chartClassName }: { className?: string;
           <circle cx={end[0]} cy={end[1]} r="3.5" fill="#fff" stroke="#1088F6" strokeWidth="2" />
         </motion.g>
       </svg>
-      <div className="mt-1 flex justify-between text-[9.5px] font-medium text-ink-subtle">
+      <div className="mt-1 flex justify-between text-xs font-medium text-ink-subtle">
         <span>Jan</span>
         <span>Apr</span>
         <span>Jul</span>
@@ -128,7 +128,7 @@ export function LifetimeValueChip({ className }: { className?: string }) {
         <Heart className="size-4" strokeWidth={2.2} />
       </span>
       <div className="min-w-0">
-        <p className="text-[10px] font-medium whitespace-nowrap text-ink-subtle">Lifetime value</p>
+        <p className="text-xs font-medium whitespace-nowrap text-ink-subtle">Lifetime value</p>
         <p className="font-display text-[0.95rem] leading-tight font-bold text-ink">
           <Count to={214} on={on} prefix="$" />
         </p>
@@ -155,7 +155,7 @@ export function ShopifyTile({ className }: { className?: string }) {
   return (
     <div className={cn(shell, "flex h-[3.4rem] items-center rounded-2xl px-3.5", className)}>
       <Image src={shopifyLogo} alt="" sizes="110px" className="h-6 w-auto" />
-      <span className="ml-2 rounded-md bg-[#95BF47]/15 px-1.5 py-0.5 text-[0.7rem] font-bold tracking-wide text-[#5E8E3E] uppercase">Plus</span>
+      <span className="ml-2 rounded-md bg-[#95BF47]/15 px-1.5 py-0.5 text-xs font-bold tracking-wide text-[#5E8E3E] uppercase">Plus</span>
     </div>
   );
 }
@@ -167,11 +167,11 @@ export function StorefrontCard({ className }: { className?: string }) {
         <span className="size-2 rounded-full bg-[#FF8A7A]" />
         <span className="size-2 rounded-full bg-[#FFC75A]" />
         <span className="size-2 rounded-full bg-[#5FD38D]" />
-        <span className="ml-2 h-4 flex-1 rounded-full bg-surface-2 px-2 text-[9.5px] leading-4 text-ink-subtle">yourstore.com/shop</span>
+        <span className="ml-2 h-4 flex-1 rounded-full bg-surface-2 px-2 text-xs leading-4 text-ink-subtle">yourstore.com/shop</span>
       </div>
       <div className="relative overflow-hidden rounded-[0.85rem]">
         <Image src={storePhoto} alt="" sizes="(min-width: 1024px) 18rem, 60vw" className="aspect-[4/3.1] w-full object-cover object-[40%_40%]" priority />
-        <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white/92 px-2 py-1 text-[10.5px] font-semibold text-ink shadow-soft backdrop-blur">
+        <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-full bg-white/92 px-2 py-1 text-xs font-semibold text-ink shadow-soft backdrop-blur">
           <span className="size-1.5 rounded-full bg-[#22C55E]" />
           Store open · new orders coming in
         </span>
@@ -211,21 +211,21 @@ export function NotificationCard({ className }: { className?: string }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.97 }}
           transition={{ duration: 0.55, ease: ease.out }}
-          className="absolute inset-0 flex items-center gap-2.5 rounded-2xl bg-white/90 px-2.5 shadow-[0_14px_34px_-16px_rgb(6_43_82/0.35)] ring-1 ring-canvas-line backdrop-blur"
+          className="absolute inset-0 flex items-center gap-2.5 rounded-2xl bg-white/90 px-2.5 ring-1 ring-line backdrop-blur"
         >
           <span className={cn("grid size-8 shrink-0 place-items-center rounded-[0.7rem] text-white", N.tone)}>
             <N.icon className="size-4" strokeWidth={2.2} />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="flex items-center gap-1.5 text-[11.5px] font-semibold text-ink">
+            <p className="flex items-center gap-1.5 text-xs font-semibold text-ink">
               {N.title}
-              <span className="ml-auto text-[9.5px] font-medium text-ink-subtle">now</span>
+              <span className="ml-auto text-xs font-medium text-ink-subtle">now</span>
             </p>
-            <p className="truncate text-[11px] text-ink-muted">{N.body}</p>
+            <p className="truncate text-xs text-ink-muted">{N.body}</p>
           </div>
         </motion.div>
       </AnimatePresence>
-      <span className="absolute -top-1.5 -left-1.5 grid size-5 place-items-center rounded-full bg-white text-brand shadow-soft ring-1 ring-canvas-line">
+      <span className="absolute -top-1.5 -left-1.5 grid size-5 place-items-center rounded-full bg-white text-brand-ink shadow-soft ring-1 ring-line">
         <Bell className="size-3" strokeWidth={2.4} />
       </span>
     </div>
@@ -241,7 +241,7 @@ export function RepeatRateCard({ className }: { className?: string }) {
       <div className="flex items-center gap-3">
         <div className="relative size-12 shrink-0">
           <svg viewBox="0 0 40 40" className="size-full -rotate-90" aria-hidden>
-            <circle cx="20" cy="20" r={R} fill="none" stroke="#E6EDF5" strokeWidth="5" />
+            <circle cx="20" cy="20" r={R} fill="none" stroke="#E8DECD" strokeWidth="5" />
             <motion.circle
               cx="20"
               cy="20"
@@ -256,19 +256,19 @@ export function RepeatRateCard({ className }: { className?: string }) {
               transition={{ duration: 1.5, ease: ease.out, delay: 0.3 }}
             />
           </svg>
-          <span className="absolute inset-0 grid place-items-center text-[11px] font-bold text-ink">
+          <span className="absolute inset-0 grid place-items-center text-xs font-bold text-ink">
             <Count to={38} on={on} suffix="%" />
           </span>
         </div>
         <div className="min-w-0">
           <p className="text-[12px] font-semibold text-ink">Repeat purchase rate</p>
-          <p className="mt-0.5 flex items-center gap-1 text-[10.5px] font-semibold text-[#1F8A57]">
+          <p className="mt-0.5 flex items-center gap-1 text-xs font-semibold text-[#1F8A57]">
             <UserCheck className="size-3" /> more returning customers
           </p>
         </div>
       </div>
-      <div className="mt-2.5 flex items-center justify-between border-t border-[#EBF0F6] pt-2">
-        <span className="text-[10px] text-ink-subtle">Retention · last 6 months</span>
+      <div className="mt-2.5 flex items-center justify-between border-t border-[#ECE3D3] pt-2">
+        <span className="text-xs text-ink-subtle">Retention · last 6 months</span>
         <SampleTag />
       </div>
     </div>

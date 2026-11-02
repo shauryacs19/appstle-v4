@@ -54,14 +54,14 @@ export function ProductOverview({ product, data }: { product: Product & { id: st
               {shot ? (
                 <figure
                   data-spotlight=""
-                  className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-[#F3F7FE] ring-1 ring-[#D7E7F8] transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-card"
+                  className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-[linear-gradient(170deg,#FBF7F0,#E7F2FD)] ring-1 ring-[#D7E7F8] transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-card"
                 >
                   <div className="relative h-56 overflow-hidden px-5 pt-5 sm:h-64 short:h-48">
                     <Image
                       src={shot}
                       alt=""
                       sizes="(min-width: 1024px) 40vw, 92vw"
-                      className="mx-auto h-full w-auto max-w-full rounded-t-xl object-contain object-top drop-shadow-[0_14px_24px_rgb(6_43_82/0.14)] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
+                      className="mx-auto h-full w-auto max-w-full rounded-t-xl object-contain object-top transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
                     />
                   </div>
                   <figcaption className="relative border-t border-[#D7E7F8] bg-white px-5 py-4">
@@ -75,7 +75,7 @@ export function ProductOverview({ product, data }: { product: Product & { id: st
               ) : (
                 <div
                   data-spotlight="dark"
-                  className="group relative isolate flex h-full min-h-[14rem] flex-col justify-end overflow-hidden rounded-[1.5rem] bg-[#1A84F5] p-6 text-white transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-float"
+                  className="group relative isolate flex h-full min-h-[14rem] flex-col justify-end overflow-hidden rounded-[1.5rem] bg-[linear-gradient(150deg,#1F96FB,#0A6FD1_70%,#0052A3)] p-6 text-white transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-float"
                 >
                   <div aria-hidden className="absolute inset-0 -z-10 bg-dots opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000)]" />
                   <Icon aria-hidden className="absolute top-6 left-6 size-10 text-white/90 transition-transform duration-500 ease-[var(--ease-spring)] group-hover:-rotate-8 group-hover:scale-110" strokeWidth={1.6} />

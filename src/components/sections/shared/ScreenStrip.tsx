@@ -7,7 +7,7 @@ type Screen = { image: StaticImageData; caption: string };
 
 export function ScreenStrip({ id, eyebrow, title, screens }: { id: string; eyebrow?: string; title: string; screens: Screen[] }) {
   return (
-    <Panel id={id} labelledBy={`${id}-title`} className="bg-[#F7F5FF] ring-1 ring-line">
+    <Panel id={id} labelledBy={`${id}-title`} className="bg-[linear-gradient(180deg,#F3F9FF,#FFFFFF)] ring-1 ring-line">
       <SectionHeading id={`${id}-title`} eyebrow={eyebrow} title={title} dot="bg-brand" titleClassName="lg:text-[2.4rem]" />
       <Stagger as="ul" className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {screens.map((s) => (

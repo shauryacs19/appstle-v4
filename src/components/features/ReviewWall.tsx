@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { productById } from "@/data/products";
+import { PauseToggle } from "@/components/ui/PauseToggle";
 import type { Testimonial } from "@/data/testimonials";
 
 export function ReviewWall({ items }: { items: Testimonial[] }) {
@@ -27,7 +27,8 @@ export function ReviewWall({ items }: { items: Testimonial[] }) {
   );
 
   return (
-    <div className="group/wall relative" role="region" aria-label="Merchant reviews">
+    <div data-pausable="" className="group/wall relative" role="region" aria-label="Merchant reviews">
+      <PauseToggle label="scrolling reviews" className="absolute -top-11 right-0 z-10" />
       <div className="grid gap-3 sm:gap-4">{[items.slice(0, half), items.slice(half)].map(row)}</div>
     </div>
   );
@@ -35,7 +36,7 @@ export function ReviewWall({ items }: { items: Testimonial[] }) {
 
 function ReviewCard({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex w-[17rem] flex-col justify-between gap-4 luxe-card ring-tr rounded-[1.25rem] p-4 ring-1 [--ring:10rem] transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
+    <figure className="flex w-[17rem] flex-col justify-between gap-4 rounded-[1.25rem] bg-white p-4 ring-1 ring-line transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
       <div className="flex flex-col gap-2">
         <span className="flex gap-0.5 text-[#FEC84B]" role="img" aria-label="Rated 5 out of 5">
           {Array.from({ length: 5 }, (_, i) => (
@@ -51,12 +52,11 @@ function ReviewCard({ t }: { t: Testimonial }) {
           {t.quote}
         </blockquote>
       </div>
-      <figcaption className="flex items-center gap-2.5 border-t border-[#EBF0F6] pt-3">
+      <figcaption className="flex items-center gap-2.5 border-t border-[#ECE3D3] pt-3">
         <span className="grid size-8 shrink-0 place-items-center overflow-hidden rounded-full bg-white ring-1 ring-black/5">
           <Image src={t.logo} alt="" sizes="44px" className="max-h-6 w-auto max-w-7 object-contain" />
         </span>
         <span className="min-w-0 flex-1 truncate text-[0.88rem] leading-tight font-semibold text-ink">{t.merchant}</span>
-        <span className="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-[0.68rem] font-semibold text-brand-700">{productById[t.product].shortName}</span>
       </figcaption>
     </figure>
   );

@@ -7,10 +7,10 @@ import { DemoBadge } from "@/components/ui/Badges";
 import { cn } from "@/lib/cn";
 
 const items = [
-  { id: "cleanser", name: "Custom Cleanser", price: 29, color: "var(--color-brand-100)", cap: "var(--color-brand-700)" },
-  { id: "mask", name: "Shampoo Scalp Mask", price: 48, color: "var(--color-brand-200)", cap: "var(--color-brand-500)" },
-  { id: "moisturizer", name: "Face Moisturizer", price: 36, color: "var(--color-brand-100)", cap: "var(--color-brand-700)" },
-  { id: "oil", name: "Body Oil", price: 24, color: "var(--color-brand-50)", cap: "var(--color-brand-500)" },
+  { id: "cleanser", name: "Custom Cleanser", price: 29, color: "#CFE0FB", cap: "#14275C" },
+  { id: "mask", name: "Shampoo Scalp Mask", price: 48, color: "#8CB8F7", cap: "#2A56D8" },
+  { id: "moisturizer", name: "Face Moisturizer", price: 36, color: "#EAF1FD", cap: "#B4472A" },
+  { id: "oil", name: "Body Oil", price: 24, color: "#3F7BEA", cap: "#14275C" },
 ] as const;
 type ItemId = (typeof items)[number]["id"];
 
@@ -52,7 +52,7 @@ export function BundleBuilderDemo() {
                   aria-pressed={on}
                   className={cn(
                     "group relative flex h-full w-full flex-col rounded-2xl p-3 text-left ring-1 transition duration-300",
-                    on ? "bg-brand-50 ring-brand-700/40" : "bg-surface-2 ring-ink/8 hover:-translate-y-1 hover:ring-ink/20",
+                    on ? "bg-ice ring-brand/50" : "bg-stage ring-ink/8 hover:-translate-y-1 hover:ring-ink/20",
                   )}
                 >
                   <div className="relative grid h-24 place-items-center">
@@ -72,7 +72,7 @@ export function BundleBuilderDemo() {
                   <span
                     className={cn(
                       "absolute top-2.5 right-2.5 grid size-7 place-items-center rounded-full text-white transition",
-                      on ? "bg-brand-700" : "bg-ink group-hover:scale-110",
+                      on ? "bg-red" : "bg-blue-ink group-hover:scale-110",
                     )}
                     aria-hidden
                   >
@@ -85,7 +85,7 @@ export function BundleBuilderDemo() {
           })}
         </ul>
 
-        <div className="mt-5 rounded-2xl bg-brand-100/70 p-4 ring-1 ring-brand-200">
+        <div className="mt-5 rounded-2xl bg-ice p-4 ring-1 ring-powder">
           <div className="flex min-h-24 items-center gap-2 overflow-x-auto">
             <AnimatePresence initial={false}>
               {picked.length === 0 && (
@@ -117,7 +117,7 @@ export function BundleBuilderDemo() {
                   key={t.count}
                   className={cn(
                     "rounded-xl px-3 py-2 text-center text-xs font-semibold ring-1 transition duration-300",
-                    reached ? "bg-brand-700 text-white ring-brand-700" : "bg-white/70 text-brand-700 ring-brand-200",
+                    reached ? "bg-red text-white ring-red" : "bg-white text-blue-ink ring-powder",
                   )}
                 >
                   Buy {t.count} · {t.off}% off
@@ -159,7 +159,7 @@ export function BundleBuilderDemo() {
       <button
         type="button"
         onClick={() => setPicked([])}
-        className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
+        className="hit-area mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
       >
         <RotateCcw aria-hidden className="size-3.5" /> Clear bundle
       </button>
@@ -170,12 +170,12 @@ export function BundleBuilderDemo() {
 function Bottle({ color, cap, small }: { color: string; cap: string; small?: boolean }) {
   return (
     <svg viewBox="0 0 48 72" className={small ? "h-14 w-auto" : "h-20 w-auto"} aria-hidden>
-      <rect x="17" y="2" width="14" height="12" rx="3" style={{ fill: cap }} />
-      <rect x="20" y="13" width="8" height="6" style={{ fill: cap }} opacity="0.7" />
-      <rect x="8" y="18" width="32" height="52" rx="10" style={{ fill: color }} />
+      <rect x="17" y="2" width="14" height="12" rx="3" fill={cap} />
+      <rect x="20" y="13" width="8" height="6" fill={cap} opacity="0.7" />
+      <rect x="8" y="18" width="32" height="52" rx="10" fill={color} />
       <rect x="13" y="34" width="22" height="18" rx="4" fill="#fff" opacity="0.75" />
-      <rect x="16" y="39" width="16" height="2.5" rx="1.25" style={{ fill: cap }} opacity="0.5" />
-      <rect x="16" y="44" width="10" height="2.5" rx="1.25" style={{ fill: cap }} opacity="0.35" />
+      <rect x="16" y="39" width="16" height="2.5" rx="1.25" fill={cap} opacity="0.5" />
+      <rect x="16" y="44" width="10" height="2.5" rx="1.25" fill={cap} opacity="0.35" />
       <rect x="12" y="22" width="5" height="40" rx="2.5" fill="#fff" opacity="0.35" />
     </svg>
   );

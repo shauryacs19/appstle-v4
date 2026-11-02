@@ -50,12 +50,13 @@ export function LoyaltyPointsDemo() {
         <DemoBadge />
       </div>
 
-      <div className="relative mt-5 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-100 via-brand-100 to-brand-50 p-5">
-        <div aria-hidden className="absolute -right-6 -bottom-10 size-32 rounded-full bg-white/40" />
-        <p className="text-sm font-medium text-ink/70">Your balance</p>
+      <div className="relative mt-5 overflow-hidden rounded-2xl bg-blue-ink p-5 text-white">
+        <div aria-hidden className="absolute -right-8 -bottom-12 size-36 rounded-full bg-brand" />
+        <div aria-hidden className="absolute -right-2 -bottom-6 size-24 rounded-full border-2 border-sky-blue/60" />
+        <p className="relative text-sm font-medium text-white/75">Your balance</p>
         <div className="relative mt-1 flex items-baseline gap-2">
-          <span className="font-display text-5xl font-bold tracking-tight text-ink tabular-nums">{display.toLocaleString("en-US")}</span>
-          <span className="font-semibold text-ink/70">points</span>
+          <span className="font-display text-5xl font-bold tracking-tight text-white tabular-nums">{display.toLocaleString("en-US")}</span>
+          <span className="font-semibold text-sky-blue">points</span>
           <AnimatePresence>
             {bursts.map((b) => (
               <motion.span
@@ -66,7 +67,7 @@ export function LoyaltyPointsDemo() {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className={cn(
                   "absolute top-0 left-40 rounded-full px-2.5 py-0.5 text-sm font-bold text-white shadow-soft",
-                  b.text.startsWith("+") ? "bg-brand-700" : "bg-ink",
+                  b.text.startsWith("+") ? "bg-red" : "bg-white text-blue-ink",
                 )}
               >
                 {b.text}
@@ -75,15 +76,15 @@ export function LoyaltyPointsDemo() {
           </AnimatePresence>
         </div>
         <div className="relative mt-4">
-          <div className="flex justify-between text-xs font-medium text-ink/70">
+          <div className="flex justify-between text-xs font-medium text-white/80">
             <span>
               {balance >= nextReward.cost ? "Top reward unlocked" : `${(nextReward.cost - balance).toLocaleString("en-US")} points to ${nextReward.label.toLowerCase()}`}
             </span>
             <span>{nextReward.cost.toLocaleString("en-US")}</span>
           </div>
-          <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-white/70">
+          <div className="mt-1.5 h-2.5 overflow-hidden rounded-full bg-white/15">
             <motion.div
-              className="h-full rounded-full bg-brand-700"
+              className="h-full rounded-full bg-[linear-gradient(90deg,var(--color-sky-blue),#E0745A)]"
               initial={false}
               animate={{ width: `${progress * 100}%` }}
               transition={{ type: "spring", stiffness: 120, damping: 20 }}
@@ -105,11 +106,11 @@ export function LoyaltyPointsDemo() {
                   type="button"
                   whileTap={{ scale: 0.96 }}
                   onClick={() => change(a.points, `+${a.points}`)}
-                  className="group flex w-full items-center gap-2 rounded-xl px-2.5 py-2.5 text-left ring-1 ring-ink/10 transition hover:bg-brand-50 hover:ring-brand-200"
+                  className="group flex w-full items-center gap-2 rounded-xl px-2.5 py-2.5 text-left ring-1 ring-ink/10 transition hover:bg-ice hover:ring-powder"
                 >
-                  <a.icon aria-hidden className="size-4 shrink-0 text-brand-700" />
-                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-[0.8125rem] font-medium text-ink">{a.label}</span>
-                  <span className="shrink-0 text-xs font-bold text-brand-700">+{a.points}</span>
+                  <a.icon aria-hidden className="size-4 shrink-0 text-brand" />
+                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium text-ink">{a.label}</span>
+                  <span className="shrink-0 rounded-full bg-terracotta-50 px-1.5 py-0.5 text-xs font-bold text-terracotta">+{a.points}</span>
                 </motion.button>
               </li>
             ))}
@@ -132,11 +133,11 @@ export function LoyaltyPointsDemo() {
                     }}
                     className={cn(
                       "flex w-full items-center gap-2 rounded-xl px-2.5 py-2.5 text-left ring-1 transition",
-                      can ? "bg-ink text-white ring-ink hover:bg-ink-700" : "cursor-not-allowed bg-brand-50 text-ink-subtle ring-ink/8",
+                      can ? "bg-blue-ink text-white ring-blue-ink hover:bg-brand" : "cursor-not-allowed bg-stage text-ink-subtle ring-ink/8",
                     )}
                   >
                     <r.icon aria-hidden className="size-4 shrink-0" />
-                    <span className="min-w-0 flex-1 truncate whitespace-nowrap text-[0.8125rem] font-medium">{r.label}</span>
+                    <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium">{r.label}</span>
                     <span className="shrink-0 text-xs font-bold">{r.cost.toLocaleString("en-US")}</span>
                   </button>
                   <AnimatePresence>
@@ -161,7 +162,7 @@ export function LoyaltyPointsDemo() {
               setUnlocked([]);
               animate(shown, START, { duration: 0.6 });
             }}
-            className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
+            className="hit-area mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink"
           >
             <RotateCcw aria-hidden className="size-3.5" /> Reset demo
           </button>

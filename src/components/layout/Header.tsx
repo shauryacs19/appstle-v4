@@ -24,27 +24,28 @@ export function Header() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.1, ease: ease.out }}
-      className={cn(
-        "sticky top-0 z-50 h-[var(--header-h)] border-b pt-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300",
-        scrolled
-          ? "border-canvas-line/80 bg-canvas/80 shadow-[0_8px_24px_-14px_rgb(6_43_82/0.25)] backdrop-blur-md backdrop-saturate-150"
-          : "border-transparent bg-transparent",
-      )}
+      className="sticky top-0 z-50 h-[var(--header-h)] bg-transparent px-3 pt-3 sm:px-5 lg:px-6"
     >
-      <div className="flex h-[3.75rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-5 xl:px-10">
+      {/* V2's floating rounded bar */}
+      <div
+        className={cn(
+          "mx-auto flex h-[4.25rem] max-w-site items-center justify-between gap-4 rounded-[1.25rem] px-4 ring-1 backdrop-blur-xl transition-[background-color] duration-300 sm:px-5 lg:h-[4.75rem] lg:rounded-[1.5rem] xl:px-7",
+          scrolled ? "bg-[#FBF8F3]/90 ring-line" : "bg-[#FBF8F3]/70 ring-line/80",
+        )}
+      >
         <Link href="/" className="shrink-0 rounded-lg" aria-label="Appstle home">
-          <AppstleLogo tone="dark" />
+          <AppstleLogo tone="dark" tagline={false} className="gap-3 [&>svg]:size-9 [&_.font-display]:text-[1.5rem] [&_.font-display]:text-logo" />
         </Link>
 
         <MegaMenu />
 
         <div className="flex items-center gap-2">
-          <ButtonLink href={links.partnerProgram} size="sm" variant="primary" className="hidden sm:inline-flex">
+          <ButtonLink href={links.partnerProgram} size="md" variant="primary" className="hidden sm:inline-flex">
             Become a <strong>Partner</strong>
           </ButtonLink>
           <button
             type="button"
-            className={cn("inline-grid size-10 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-brand-50 hover:text-brand")}
+            className={cn("inline-grid size-10 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-surface")}
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

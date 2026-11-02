@@ -6,7 +6,7 @@
 @custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
 
 :root {
-  --header-h: 4.5rem;
+  --header-h: 5.5rem;
 }
 
 @layer base {
@@ -15,8 +15,11 @@
     scroll-padding-top: calc(var(--header-h) + 0.75rem);
     -webkit-text-size-adjust: 100%;
   }
+  @media (min-width: 1024px) {
+    html { font-size: 90%; }
+  }
   body {
-    background: var(--color-canvas);
+    background: var(--color-surface);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01";
@@ -35,7 +38,7 @@
   .scrollbar-none { scrollbar-width: none; }
   .scrollbar-none::-webkit-scrollbar { display: none; }
   .bg-dots {
-    background-image: radial-gradient(rgb(255 255 255 / 0.28) 1px, transparent 1.4px);
+    background-image: radial-gradient(rgb(255 252 245 / 0.28) 1px, transparent 1.4px);
     background-size: 18px 18px;
   }
   .bg-dots-ink {
@@ -46,42 +49,98 @@
     mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
   }
   .eyebrow {
-    font-size: 0.72rem;
+    font-size: var(--text-xs);
     line-height: 1rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 }
-:root { --pattern-alpha: 0.09; --pattern-size: 300px; }
+/* Background system (2026-11-02): V2's engineering grid only behind the hero (commerce-hero.css).
+   Everything after it sits on ivory scattered with small static line doodles, like a chat wallpaper,
+   and each section is its own rounded card on top of that. */
+:root {
+  --grid-line: rgb(23 32 54 / 0.05);
+  --grid-size: 48px;
+  --doodles: url("/patterns/commerce.svg"), url("/patterns/doodles.svg");
+  --card-gutter: 0.75rem;
+  --card-gap: 0.75rem;
+}
+@media (min-width: 640px) { :root { --card-gutter: 1.25rem; --card-gap: 1rem; } }
+@media (min-width: 1024px) { :root { --card-gutter: 1.5rem; --card-gap: 1.25rem; } }
+
 .home-pattern {
   position: relative;
   isolation: isolate;
-}
-.home-pattern > section {
-  position: relative;
-  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  padding-bottom: var(--card-gap);
 }
 .home-pattern::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -20;
+  z-index: -1;
   pointer-events: none;
-  background-image: url("/patterns/commerce.svg");
-  background-size: var(--pattern-size) var(--pattern-size);
-  opacity: var(--pattern-alpha);
+  background-image: var(--doodles);
+  background-size: 300px 300px, 360px 360px;
+  background-position: 0 0, 150px 120px;
+  opacity: 0.09;
 }
+.home-pattern > section {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Scroll reveal: each section card rises and settles as it enters, driven by scroll position itself
+   (no timers), so it stays calm and reverses cleanly. Browsers without scroll timelines show it as is. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .home-pattern > .section-card,
+    .home-pattern > section > .relative.isolate.mx-auto {
+      animation: card-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+@keyframes card-rise {
+  from { opacity: 0.35; transform: translateY(48px) scale(0.985); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Section cards: one rounded surface per section, the same width as the support and CTA cards. */
+.section-card {
+  width: min(100% - 2 * var(--card-gutter), var(--container-site));
+  margin-inline: auto;
+  border-radius: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--card-bg, var(--color-white));
+  box-shadow: inset 0 0 0 1px var(--card-line, var(--color-line));
+  overflow: clip;
+}
+.card-paper { --card-bg: var(--color-white); }
+.card-sand { --card-bg: var(--color-sand); --card-line: #ECE3D3; }
+.card-sage { --card-bg: var(--color-forest-50); --card-line: #CBEBD8; }
+.card-peach { --card-bg: var(--color-terracotta-50); --card-line: #FBD9C6; }
+
+/* Section accents: the headline highlight, eyebrow and small icons take the section's colour */
+.accent-cobalt { --accent: var(--color-brand); --accent-tint: var(--color-brand-50); }
+.accent-terracotta { --accent: var(--color-terracotta); --accent-tint: var(--color-terracotta-50); }
+.accent-forest { --accent: var(--color-forest); --accent-tint: var(--color-forest-50); }
+.accent-plum { --accent: var(--color-plum); --accent-tint: var(--color-plum-50); }
+
 .pattern-dark::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: url("/patterns/commerce.svg");
-  background-size: var(--pattern-size) var(--pattern-size);
+  background-image: var(--doodles);
+  background-size: 300px 300px, 360px 360px;
+  background-position: 0 0, 150px 120px;
   filter: brightness(2.6);
-  opacity: 0.09;
+  opacity: 0.07;
 }
 @keyframes float {
   0%, 100% { transform: translate3d(0, 0, 0); }
@@ -100,7 +159,6 @@
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
   }
 }
 @keyframes orbit {
@@ -186,10 +244,10 @@ body::after {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.45s var(--ease-smooth);
-  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), rgb(16 136 246 / 0.1), transparent 60%);
+  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), rgb(42 86 216 / 0.08), transparent 60%);
 }
 [data-spotlight="dark"]::after {
-  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.1), transparent 60%);
+  background: radial-gradient(28rem circle at var(--mx, 50%) var(--my, 50%), rgb(255 252 245 / 0.1), transparent 60%);
 }
 @media (hover: hover) {
   [data-hoverfx] [data-spotlight]:hover::after { opacity: 1; }
@@ -212,7 +270,7 @@ body::after {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(105deg, transparent 30%, rgb(255 255 255 / 0.32) 50%, transparent 70%);
+  background: linear-gradient(105deg, transparent 30%, rgb(255 252 245 / 0.32) 50%, transparent 70%);
   transform: translateX(-120%);
 }
 @media (hover: hover) {
@@ -240,68 +298,9 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .bot-eyes, .bot-sparkle { animation: none; }
 }
+:focus-visible { outline: 2px solid var(--color-brand-ink); outline-offset: 3px; }
+html:has([data-mobile-nav]) [data-bot-root] { display: none; }
 
-/* v4 type (2026-10-29 hero reference): bold sans titles in deep navy; the accent word
-   (.text-brand inside a title) switches to an italic serif in electric blue — like "Retention". */
-main :is(h1, h2):not(.font-sans),
-main [data-serif]:not(blockquote) {
-  font-family: var(--font-sans);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
-}
-main [data-serif]:not(blockquote) { font-weight: 700; letter-spacing: -0.03em; line-height: 1.12; }
-main blockquote[data-serif] {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  font-variation-settings: "SOFT" 30, "opsz" 48;
-  letter-spacing: -0.02em;
-}
-main :is(h1, h2, h3, [data-serif]) :is(.text-brand, .text-brand-500, .text-brand-700) {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 600;
-  font-variation-settings: "SOFT" 50, "opsz" 120;
-  letter-spacing: -0.025em;
-  /* solid colour: a background-clip gradient isn't painted on words that are mid-animation
-     (SplitText transforms them), which made accent words appear later than the rest */
-  background: none;
-  color: #1a7ff0;
-  padding-right: 0.08em;
-}
-.sky-frame {
-  background:
-    radial-gradient(60rem 22rem at 85% 8%, rgb(255 255 255 / 0.9), transparent 60%),
-    radial-gradient(40rem 14rem at 12% 30%, rgb(255 255 255 / 0.75), transparent 65%),
-    radial-gradient(50rem 18rem at 60% 62%, rgb(255 255 255 / 0.55), transparent 70%),
-    linear-gradient(180deg, #bcdcfb 0%, #d6eafd 28%, #ebf5fe 58%, #f8fbff 82%, #ffffff 100%);
-}
-
-@layer components {
-.eyebrow-line {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-brand-500);
-}
-.eyebrow-line::before {
-  content: "";
-  width: 1.5rem;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-}
-}
-
-/* Skio-style tonal brand: headings in a deep shade of the logo blue */
-main :is(h1, h2, h3, [data-serif]).text-ink { color: #13294b; }
-
-/* Accent words on dark/blue bands stay white (italic serif keeps the accent) */
-main .on-dark :is(h1, h2, h3, [data-serif]) :is(.text-brand, .text-brand-500, .text-brand-700) {
-  background: none;
-  color: #ffffff;
-}
+.hit-area { position: relative; }
+.hit-area::after { content: ""; position: absolute; inset: -6px -4px; }
+[data-paused] .animate-marquee, [data-paused] .motion-safe\:animate-review-scroll { animation-play-state: paused !important; }

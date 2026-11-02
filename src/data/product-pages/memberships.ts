@@ -23,7 +23,7 @@ export const membershipsPage: ProductPageData = {
         { product: "memberships", title: "Member discount applied", meta: "Members-only pricing" },
       ],
       description: "The Appstle Memberships plan editor, and the member portal on a phone listing two active memberships.",
-      stage: "bg-periwinkle",
+      stage: "bg-gradient-to-br from-lavender-200 via-lavender to-lavender-700",
     },
   },
   logos: { title: "We're trusted by some of the largest merchants on Shopify. You'll be in good company." },

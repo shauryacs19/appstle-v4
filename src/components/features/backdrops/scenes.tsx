@@ -60,7 +60,7 @@ export function Sparkles({ className }: { className?: string }) {
         <svg
           key={i}
           viewBox="0 0 24 24"
-          className="absolute text-[#5A3FC0]/30 motion-safe:animate-[twinkle_4s_ease-in-out_infinite]"
+          className="absolute text-blue-ink/25 motion-safe:animate-[twinkle_4s_ease-in-out_infinite]"
           style={{ left, top, width: size, height: size, animationDelay: `${-delay}s`, animationDuration: `${3.4 + (i % 3) * 0.9}s` }}
         >
           <path fill="currentColor" d="M12 0c.9 6.6 2.4 9.6 12 12-9.6 2.4-11.1 5.4-12 12-.9-6.6-2.4-9.6-12-12C9.6 9.6 11.1 6.6 12 0z" />
@@ -86,7 +86,7 @@ export function BundleRise({ className }: { className?: string }) {
       {pairs.map(([a, b, left, duration, at]) => (
         <div
           key={left}
-          className="absolute top-full flex items-center gap-1.5 text-brand-300/35 motion-safe:animate-[rise_22s_linear_infinite]"
+          className="absolute top-full flex items-center gap-1.5 text-blue-ink/20 motion-safe:animate-[rise_22s_linear_infinite]"
           style={{ left, animationDuration: `${duration}s`, animationDelay: `${-at}s` }}
         >
           <Glyph name={a} className="size-11" />
@@ -122,4 +122,38 @@ export function DeliveryLane({ className }: { className?: string }) {
       <Stop Icon={House} delay={1.4} className="right-0" />
     </div>
   );
+}
+
+const riseSlots: Array<[string, number, number]> = [
+  ["4%", 22, 2],
+  ["18%", 26, 15],
+  ["32%", 19, 8],
+  ["47%", 24, 20],
+  ["61%", 21, 4],
+  ["76%", 25, 12],
+  ["90%", 20, 17],
+];
+
+function GlyphRise({ glyphs, className }: { glyphs: DoodleName[]; className?: string }) {
+  return (
+    <div aria-hidden className={cn("pointer-events-none absolute inset-0 -z-10 overflow-hidden [container-type:size] motion-reduce:hidden", className)}>
+      {riseSlots.map(([left, duration, at], i) => (
+        <div
+          key={left}
+          className="absolute top-full text-blue-ink/20 motion-safe:animate-[rise_22s_linear_infinite]"
+          style={{ left, animationDuration: `${duration}s`, animationDelay: `${-at}s` }}
+        >
+          <Glyph name={glyphs[i % glyphs.length]} className="size-11" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function LoyaltyRise({ className }: { className?: string }) {
+  return <GlyphRise glyphs={["gift", "star", "heart", "crown"]} className={className} />;
+}
+
+export function PickupRise({ className }: { className?: string }) {
+  return <GlyphRise glyphs={["pin", "van", "clock", "parcel"]} className={className} />;
 }

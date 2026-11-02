@@ -176,7 +176,7 @@ export function AppstleBot() {
   const empty = messages.length === 0;
 
   return (
-    <div className="fixed right-4 bottom-4 z-[90] flex flex-col items-end sm:right-6 sm:bottom-6">
+    <div className="fixed right-4 bottom-4 z-[90] flex flex-col items-end sm:right-6 sm:bottom-6" data-bot-root="">
       <AnimatePresence>
         {open && (
           <motion.section
@@ -189,9 +189,9 @@ export function AppstleBot() {
             exit={{ opacity: 0, y: 12, scale: 0.97 }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             style={{ transformOrigin: "bottom right" }}
-            className="mb-3 flex h-[min(38rem,calc(100dvh-7rem))] w-[min(24.5rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.6rem] bg-white shadow-float ring-1 ring-canvas-line"
+            className="mb-3 flex h-[min(38rem,calc(100dvh-7rem))] w-[min(24.5rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.6rem] bg-white shadow-float ring-1 ring-line"
           >
-            <header className="relative flex items-center gap-3 overflow-hidden bg-[linear-gradient(135deg,#1088F6,#0A6FD1_60%,#0052A3)] px-4 py-3.5 text-white">
+            <header className="relative flex items-center gap-3 overflow-hidden bg-ink-deep px-4 py-3.5 text-white">
               <div aria-hidden className="pointer-events-none absolute -top-10 -right-6 size-32 rounded-full bg-white/15 blur-2xl" />
               <AppstleBotMark blink className="size-10 shrink-0 ring-1 ring-white/30" />
               <div className="min-w-0 flex-1">
@@ -220,12 +220,12 @@ export function AppstleBot() {
               </button>
             </header>
 
-            <div ref={list} className="relative flex-1 overflow-y-auto overscroll-contain bg-canvas px-4 py-4" aria-live="polite">
+            <div ref={list} className="relative flex-1 overflow-y-auto overscroll-contain bg-surface-2 px-4 py-4" aria-live="polite">
               <div aria-hidden className="pointer-events-none absolute inset-0 bg-[url('/patterns/commerce.svg')] [background-size:260px_260px] opacity-[0.07]" />
               <div className="relative grid gap-3">
                 {empty && (
                   <div className="grid gap-3">
-                    <div className="rounded-2xl rounded-tl-md bg-white p-3.5 text-[0.9rem] leading-relaxed text-ink-muted shadow-soft ring-1 ring-[#E1E9F3]">
+                    <div className="rounded-2xl rounded-tl-md bg-white p-3.5 text-[0.9rem] leading-relaxed text-ink-muted shadow-soft ring-1 ring-line">
                       <p className="font-semibold text-ink">Hi! I’m Appstle Bot 👋</p>
                       <p className="mt-1">Ask me anything about Appstle’s Shopify apps.</p>
                     </div>
@@ -244,7 +244,7 @@ export function AppstleBot() {
                         <div
                           className={cn(
                             "rounded-2xl rounded-tl-md bg-white px-3.5 py-2.5 text-[0.9rem] leading-relaxed text-ink-muted shadow-soft ring-1",
-                            m.error ? "ring-[#F5C2C2]" : "ring-[#E1E9F3]",
+                            m.error ? "ring-[#F5C2C2]" : "ring-line",
                           )}
                         >
                           {m.content ? <Markdown text={m.content} /> : <Typing />}
@@ -261,9 +261,9 @@ export function AppstleBot() {
                 e.preventDefault();
                 ask(input);
               }}
-              className="border-t border-[#E1E9F3] bg-white p-3"
+              className="border-t border-[#E7DDCC] bg-white p-3"
             >
-              <div className="flex items-end gap-2 rounded-2xl bg-canvas p-1.5 pl-3.5 ring-1 ring-canvas-line transition focus-within:bg-white focus-within:ring-brand/50">
+              <div className="flex items-end gap-2 rounded-2xl bg-[#F3ECDF] p-1.5 pl-3.5 ring-1 ring-line transition focus-within:bg-white focus-within:ring-brand/50">
                 <label htmlFor="bot-input" className="sr-only">
                   Ask Appstle Bot a question
                 </label>
@@ -292,7 +292,7 @@ export function AppstleBot() {
                   <ArrowUp className="size-4.5" strokeWidth={2.5} />
                 </button>
               </div>
-              <p className="mt-2 text-center text-[0.68rem] text-ink-subtle">
+              <p className="mt-2 text-center text-xs text-ink-subtle">
                 Preview only — not connected to an AI model yet.
               </p>
             </form>
@@ -309,7 +309,7 @@ export function AppstleBot() {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 8 }}
-              className="hidden rounded-full bg-white px-3.5 py-2 text-sm font-semibold text-ink shadow-float ring-1 ring-canvas-line sm:block"
+              className="hidden rounded-full bg-white px-3.5 py-2 text-sm font-semibold text-ink shadow-float ring-1 ring-line sm:block"
             >
               Questions? <span className="text-brand">Ask Appstle Bot</span>
             </motion.button>
@@ -321,7 +321,7 @@ export function AppstleBot() {
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
           aria-label={open ? "Close Appstle Bot" : "Open Appstle Bot — ask a question"}
-          className="group relative grid size-14 place-items-center rounded-[1.1rem] shadow-[0_12px_30px_-10px_rgb(1_119_242/0.6)] transition-transform duration-300 ease-[var(--ease-spring)] hover:-translate-y-0.5 hover:scale-105"
+          className="group relative grid size-14 place-items-center rounded-[1.1rem] transition-transform duration-300 ease-[var(--ease-spring)] hover:-translate-y-0.5 hover:scale-105"
         >
           {!open && <span aria-hidden className="absolute inset-0 rounded-[inherit] bg-brand/40 motion-safe:animate-[pulse-ring_2.6s_ease-out_infinite]" />}
           <AnimatePresence mode="wait" initial={false}>

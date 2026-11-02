@@ -22,7 +22,7 @@ export const aboutPage = {
   facts: [
     { value: "2021", label: "Founded" },
     { value: "Menlo Park", label: "Headquarters, California" },
-    { value: "40,000+", label: "Merchant partners (as on December 2024)" },
+    { value: "70,000+", label: "Merchant partners" },
     { value: "24x7x365", label: "Product & customer support" },
   ],
   founders: {

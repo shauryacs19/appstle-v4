@@ -78,7 +78,7 @@ export const testimonials: Testimonial[] = [
     logo: wickAndJane,
     product: "subscriptions",
     quote:
-      "I use this app for my first ever subscription service and I am blown away by how easy it is to use and how amazing their customer service is! … he even changed up the widget so it matched my theme colors!",
+      "I use this app for my first ever subscription service and I am blown away by how easy it is to use and how amazing their customer service is! … he even changed up the widget so it matched my theme colors!",
     source: HOME,
   },
   {
