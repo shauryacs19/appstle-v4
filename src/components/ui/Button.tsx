@@ -11,21 +11,12 @@ const base =
   "group/btn inline-flex select-none items-center justify-center gap-[0.3em] whitespace-nowrap rounded-[10px] font-normal [&_strong]:font-bold duration-300 hover:-translate-y-0.5 active:translate-y-px";
 
 const variants: Record<Variant, string> = {
-<<<<<<< HEAD
   primary: "btn-shine bg-brand-700 text-white hover:bg-brand-ink [&_.btn-arrow]:text-white/85",
   dark: "bg-brand-900 text-white hover:bg-brand-800 [&_.btn-arrow]:text-brand-300",
   secondary: "bg-[#fff] text-ink ring-1 ring-line hover:ring-ink/25 [&_.btn-arrow]:text-brand-700",
   ghost: "text-ink hover:bg-surface-2 [&_.btn-arrow]:text-brand",
   outlineLight: "text-white ring-1 ring-white/60 hover:bg-white/12 [&_.btn-arrow]:text-white/85",
   light: "btn-shine bg-white text-brand-ink hover:bg-brand-50 [&_.btn-arrow]:text-brand-500",
-=======
-  primary: "btn-shine bg-brand text-white hover:bg-brand-500 [&_.btn-arrow]:text-white/85",
-  dark: "bg-brand-900 text-white hover:bg-brand-800 [&_.btn-arrow]:text-brand-300",
-  secondary: "bg-brand-50 text-brand-ink hover:bg-brand-100 [&_.btn-arrow]:text-brand",
-  ghost: "text-ink hover:bg-surface-2 [&_.btn-arrow]:text-brand",
-  outlineLight: "text-white ring-1 ring-white/60 hover:bg-white/12 [&_.btn-arrow]:text-white/85",
-  light: "btn-shine bg-white text-brand hover:bg-brand-50 [&_.btn-arrow]:text-brand-500",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 };
 
 const sizes: Record<Size, string> = {

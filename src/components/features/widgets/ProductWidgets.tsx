@@ -8,11 +8,7 @@ import { cn } from "@/lib/cn";
 import { ease, spring } from "@/lib/motion";
 
 const shell =
-<<<<<<< HEAD
   "rounded-[1.15rem] bg-white ring-1 ring-line ";
-=======
-  "rounded-[1.15rem] bg-white ring-1 ring-[#D7E1EE] shadow-[0_1px_2px_rgb(6_43_82/0.05),0_18px_38px_-20px_rgb(6_43_82/0.3)]";
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 function useLive<T extends Element>() {
   const ref = useRef<T>(null);
@@ -191,11 +187,7 @@ export function MembershipCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-<<<<<<< HEAD
         "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white ring-1 ring-white/10 [container-type:inline-size]",
-=======
-        "relative overflow-hidden rounded-[1.15rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#1088F6_38%,#0A6FD1_72%,#0052A3_100%)] p-3.5 text-white shadow-[0_14px_32px_-20px_rgb(15_23_42/0.2)] ring-1 ring-white/10 [container-type:inline-size]",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         className,
       )}
     >
@@ -301,11 +293,7 @@ export function PickupCard({ className }: { className?: string }) {
       </div>
       <div className="mt-2.5 flex gap-1.5">
         {days.map((d, n) => (
-<<<<<<< HEAD
           <span key={d} className={cn("flex-1 rounded-lg py-1 text-center text-xs font-semibold", n === 0 ? "bg-ink text-white" : "text-ink-muted ring-1 ring-[#E6DCCB]")}>
-=======
-          <span key={d} className={cn("flex-1 rounded-lg py-1 text-center text-xs font-semibold", n === 0 ? "bg-ink text-white" : "text-ink-muted ring-1 ring-[#E1E8F1]")}>
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             {d}
           </span>
         ))}

@@ -2,10 +2,6 @@ import { ScrollArc } from "@/components/features/ScrollArc";
 import Image from "next/image";
 import { ArrowRight, CalendarDays, Headset, MapPin, Store, type LucideIcon } from "lucide-react";
 import { Doodles, type DoodleSpot } from "@/components/features/backdrops/Doodles";
-<<<<<<< HEAD
-=======
-import { ScrollLines } from "@/components/features/ScrollLines";
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { SmartLink } from "@/components/ui/SmartLink";
@@ -15,17 +11,10 @@ import { cn } from "@/lib/cn";
 import teamPhoto from "@/assets/home/hero-team.webp";
 
 const doodleSpots: DoodleSpot[] = [
-<<<<<<< HEAD
   { name: "sparkle", className: "right-[2%] -top-9 size-8 text-accent/55 lg:right-auto lg:left-[40%] lg:-top-3 lg:size-10", rotate: -10 },
   { name: "star", className: "hidden lg:block right-[1%] -top-14 size-9 text-ink/25", rotate: 12 },
   { name: "heart", className: "hidden lg:block left-[47%] -bottom-14 size-9 text-[#9AA3AE]", rotate: -8 },
   { name: "bolt", className: "hidden lg:block right-[1%] -bottom-15 size-10 text-azure/45", rotate: 6 },
-=======
-  { name: "sparkle", className: "right-[2%] -top-9 size-8 text-brand-400/55 lg:right-auto lg:left-[40%] lg:-top-3 lg:size-10", rotate: -10 },
-  { name: "star", className: "hidden lg:block right-[1%] -top-14 size-9 text-ink/25", rotate: 12 },
-  { name: "heart", className: "hidden lg:block left-[47%] -bottom-14 size-9 text-[#9AA3AE]", rotate: -8 },
-  { name: "bolt", className: "hidden lg:block right-[1%] -bottom-15 size-10 text-brand-500/45", rotate: 6 },
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 ];
 
 const offices = ["Menlo Park, CA", "British Columbia", "South Asia"];
@@ -35,7 +24,6 @@ const factIcons: LucideIcon[] = [CalendarDays, MapPin, Store, Headset];
 export function AboutSection() {
   const { hero, facts } = aboutPage;
   return (
-<<<<<<< HEAD
     <section id="about" aria-labelledby="about-title" className="section-card [--card-bg:#FCF8F1] [--card-line:#ECE3D4] [--accent:#1D4ED8] [--accent-tint:#EAF0FE] relative isolate scroll-mt-24 py-band">
       <ScrollArc side="left" color="var(--color-azure)" />
       <div className="relative mx-auto max-w-site px-5 sm:px-8 lg:px-10">
@@ -43,29 +31,13 @@ export function AboutSection() {
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="relative z-10 lg:col-span-7">
             <h2 id="about-title" className="text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-[3rem] lg:text-[3.4rem]">
-=======
-    <section id="about" aria-labelledby="about-title" className="relative isolate scroll-mt-24 overflow-x-clip bg-surface py-band">
-      <div className="relative mx-auto max-w-site px-5 sm:px-8 lg:px-10">
-        <Doodles autoplay spots={doodleSpots} />
-        <ScrollLines stops={[{ section: "#about", color: "#6FC0FA", line: { around: "[data-about-photo]" } }]} />
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="relative z-10 lg:col-span-7">
-            <Reveal>
-              <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#D7E1EE]">About Appstle</Eyebrow>
-            </Reveal>
-            <h2 id="about-title" className="mt-5 text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-[3rem] lg:text-[3.4rem]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               <SplitText>
                 Compelling apps at <span className="text-accent">compelling prices.</span>
               </SplitText>
             </h2>
             <Reveal delay={0.1}>
               <p className="mt-5 max-w-[36rem] text-lg leading-relaxed text-ink-muted">{hero.intro}</p>
-<<<<<<< HEAD
               <SmartLink href={links.about} className="hit-area group mt-4 inline-flex items-center gap-2 font-semibold text-accent hover:underline">
-=======
-              <SmartLink href={links.about} className="hit-area group mt-4 inline-flex items-center gap-2 font-semibold text-brand hover:text-brand-500">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 Read our story
                 <ArrowRight aria-hidden className="size-4 transition-transform group-hover:translate-x-1" />
               </SmartLink>
@@ -83,22 +55,14 @@ export function AboutSection() {
                     data-tilt="3"
                     className={cn(
                       "group relative isolate h-full overflow-hidden rounded-2xl p-3.5 shadow-soft transition-[translate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-float",
-<<<<<<< HEAD
                       blue ? "bg-blue-ink text-white ring-1 ring-white/10" : "bg-white ring-1 ring-line",
-=======
-                      blue ? "bg-[linear-gradient(150deg,#0A6FD1,#0058B0_70%,#003F7D)] text-white ring-1 ring-white/10" : "bg-white ring-1 ring-[#D7E1EE]",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                     )}
                   >
                     <span
                       aria-hidden
                       className={cn(
                         "grid size-7 place-items-center rounded-lg ring-1 transition-[rotate,scale] duration-500 ease-[var(--ease-spring)] group-hover:scale-110 group-hover:-rotate-8",
-<<<<<<< HEAD
                         blue ? "bg-red text-white ring-0" : "bg-powder text-blue-ink ring-0",
-=======
-                        blue ? "bg-white/14 text-white ring-white/15" : "bg-brand-50 text-brand-ink ring-brand/10",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                       )}
                     >
                       <Icon className="size-3.5" strokeWidth={2.2} />
@@ -128,15 +92,9 @@ export function AboutSection() {
                   <span
                     key={o}
                     style={{ rotate: `${[-3, 2, -1][i]}deg` }}
-<<<<<<< HEAD
                     className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-ink shadow-soft ring-1 ring-line backdrop-blur"
                   >
                     <MapPin aria-hidden className="size-3.5 text-red" />
-=======
-                    className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-ink shadow-soft ring-1 ring-[#D7E1EE] backdrop-blur"
-                  >
-                    <MapPin aria-hidden className="size-3.5 text-brand-ink" />
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                     {o}
                   </span>
                 ))}

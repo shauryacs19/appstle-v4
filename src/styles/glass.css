@@ -4,11 +4,7 @@
   --glass-tint: rgb(239 232 219 / 0.55);
   --glass-edge: rgb(255 252 245 / 0.85);
   --glass-blur: 18px;
-<<<<<<< HEAD
   --glass-shadow: inset 0 0 0 1px rgb(23 32 54 / 0.07);
-=======
-  --glass-shadow: inset 0 1px 0 rgb(255 255 255 / 0.9), 0 1px 2px rgb(6 43 82 / 0.04), 0 18px 40px -28px rgb(15 23 42 / 0.14);
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 }
 [data-glass] [data-panel]:is(.bg-white, .bg-surface, .bg-surface-2, .bg-cream-50, .bg-brand-50),
 /* cards: anything carrying the card / soft shadows */

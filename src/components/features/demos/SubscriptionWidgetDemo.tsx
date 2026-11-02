@@ -68,11 +68,7 @@ export function SubscriptionWidgetDemo({ onOpenPortal }: { onOpenPortal?: () => 
                     key={x.id}
                     className={cn(
                       "cursor-pointer rounded-full px-3.5 py-1.5 text-sm font-medium ring-1 transition has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand",
-<<<<<<< HEAD
                       freq === x.id ? "bg-blue-ink text-white ring-blue-ink" : "bg-white text-ink ring-ink/15 hover:ring-ink/30",
-=======
-                      freq === x.id ? "bg-brand-700 text-white ring-brand" : "bg-white text-ink ring-ink/15 hover:ring-ink/30",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                     )}
                   >
                     <input
@@ -90,11 +86,7 @@ export function SubscriptionWidgetDemo({ onOpenPortal }: { onOpenPortal?: () => 
             </fieldset>
             <div className="mt-4 rounded-2xl bg-ice p-3.5 text-sm text-ink ring-1 ring-powder">
               <p className="flex items-center gap-2 font-semibold">
-<<<<<<< HEAD
                 <Gift aria-hidden className="size-4 text-terracotta" /> Subscriber rewards
-=======
-                <Gift aria-hidden className="size-4 text-brand-ink" /> Subscriber rewards
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               </p>
               <p className="mt-1 text-ink-muted">After the 3rd order, get a free product.</p>
             </div>
@@ -170,11 +162,7 @@ function Option({
       </span>
       <span className="flex flex-1 flex-wrap items-center gap-x-2 gap-y-1 text-[0.95rem] font-semibold text-ink">
         {label}
-<<<<<<< HEAD
         {tag && <span className="rounded-full bg-red px-1.5 py-0.5 text-xs font-bold text-white">{tag}</span>}
-=======
-        {tag && <span className="rounded-full bg-brand-100 px-1.5 py-0.5 text-xs font-bold text-brand-800">{tag}</span>}
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       </span>
       <span className="flex flex-col items-end text-sm leading-tight">
         <span className="font-semibold text-ink">{price}</span>

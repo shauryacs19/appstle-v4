@@ -108,15 +108,9 @@ export function LoyaltyPointsDemo() {
                   onClick={() => change(a.points, `+${a.points}`)}
                   className="group flex w-full items-center gap-2 rounded-xl px-2.5 py-2.5 text-left ring-1 ring-ink/10 transition hover:bg-ice hover:ring-powder"
                 >
-<<<<<<< HEAD
                   <a.icon aria-hidden className="size-4 shrink-0 text-brand" />
                   <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium text-ink">{a.label}</span>
                   <span className="shrink-0 rounded-full bg-terracotta-50 px-1.5 py-0.5 text-xs font-bold text-terracotta">+{a.points}</span>
-=======
-                  <a.icon aria-hidden className="size-4 shrink-0 text-brand-700" />
-                  <span className="min-w-0 flex-1 truncate whitespace-nowrap text-sm font-medium text-ink">{a.label}</span>
-                  <span className="shrink-0 text-xs font-bold text-brand-700">+{a.points}</span>
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 </motion.button>
               </li>
             ))}

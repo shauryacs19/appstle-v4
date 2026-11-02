@@ -45,11 +45,7 @@ export function PartnerWall({ rows, className }: { rows: Partner[][]; className?
       <div aria-hidden className="pointer-events-none absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
         <div className="absolute -inset-12 -z-10 rounded-full bg-[radial-gradient(closest-side,#fff_55%,rgb(255_255_255/0.85)_70%,rgb(255_255_255/0)_100%)]" />
         <div className="absolute -inset-3 -z-10 rounded-[1.6rem] bg-cobalt/10 motion-safe:animate-[pulse-ring_2.8s_ease-out_infinite]" />
-<<<<<<< HEAD
         <div className="grid size-16 place-items-center rounded-2xl bg-white ring-1 ring-cobalt-200">
-=======
-        <div className="grid size-16 place-items-center rounded-2xl bg-white shadow-[0_14px_30px_-12px_rgb(36_87_230/0.55)] ring-1 ring-cobalt-200">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           <AppstleMark className="size-11 rounded-xl" />
         </div>
       </div>

@@ -1,7 +1,6 @@
 @theme {
   --gradient-brand: linear-gradient(135deg, #219bfb 0%, #0177f2 100%);
 
-<<<<<<< HEAD
   --color-brand-50: #EFF6FF;
   --color-brand-100: #DBEAFE;
   --color-brand-200: #BFDBFE;
@@ -23,28 +22,6 @@
   --color-ink-muted: #4f586c;
   --color-ink-subtle: #5a6276;
   --color-brand-ink: #1D4ED8;
-=======
-  --color-brand-50: #eef7fe;
-  --color-brand-100: #ceeffd;
-  --color-brand-200: #a6dbfb;
-  --color-brand-300: #6fc0fa;
-  --color-brand-400: #219bfb;
-  --color-brand-500: #0177f2;
-  --color-brand: #1088f6;
-  --color-brand-700: #0a6fd1;
-  --color-brand-800: #003f7d;
-  --color-brand-900: #062b52;
-
-  --color-surface: #ffffff;
-  --color-surface-2: #f3f7fc;
-  --color-line: #dfe7f1;
-
-  --color-ink: #2d2d2d;
-  --color-ink-700: #44494f;
-  --color-ink-muted: #5c636c;
-  --color-ink-subtle: #656c75;
-  --color-brand-ink: #0066ca;
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
   --text-xs: max(0.75rem, 12px);
 
@@ -83,19 +60,11 @@
   }
 }
 @theme {
-<<<<<<< HEAD
   --color-cream: #F3EFE8;
   --color-cream-50: #FFFFFF;
   --color-cream-100: #FBF9F5;
   --color-cream-200: #EFE8DC;
   --color-cream-300: #E0D3BE;
-=======
-  --color-cream: #f3f7fc;
-  --color-cream-50: #ffffff;
-  --color-cream-100: #f6f9fd;
-  --color-cream-200: #e6eef7;
-  --color-cream-300: #d3dfec;
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
   --color-cobalt: #2563EB;
   --color-cobalt-50: #EFF6FF;
@@ -108,15 +77,9 @@
   --color-cobalt-800: #1E40AF;
   --color-cobalt-900: #131c33;
 
-<<<<<<< HEAD
   --color-navy: #172036;
   --color-navy-800: #1e2945;
   --color-navy-700: #333d55;
-=======
-  --color-navy: #0b2545;
-  --color-navy-800: #12345e;
-  --color-navy-700: #2a4466;
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
   --color-coral: #ff8c69;
   --color-coral-50: #fff3ee;
@@ -138,7 +101,6 @@
   --color-blush-50: #fff3f6;
   --color-blush-100: #ffe5eb;
   --color-blush-700: #a8385a;
-<<<<<<< HEAD
   /* Ink & Ivory (2026-11-02): dark panels, section bands, quiet accents */
   --color-ink-deep: #121a2e;
   --color-ink-deep-2: #1a2440;
@@ -174,8 +136,6 @@
   --color-plum: #7C3AED;
   --color-plum-50: #F1EBFE;
   --color-plum-100: #E4D9FD;
-=======
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
   --color-sky: #09a9eb;
   --color-sky-50: #eef8fd;
   --color-sky-100: #d9f0fb;

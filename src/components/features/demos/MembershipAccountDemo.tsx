@@ -30,15 +30,9 @@ const reasons = [
 ] as const;
 
 const cardTone: Record<Status, string> = {
-<<<<<<< HEAD
   Active: "bg-powder ring-sky-blue",
   Paused: "bg-[linear-gradient(135deg,#FFF8EC_0%,#FFEFD2_100%)] ring-[#F5DDB0]",
   Cancelled: "bg-[linear-gradient(135deg,#F6F7F9_0%,#E6EAF0_100%)] ring-line",
-=======
-  Active: "bg-[linear-gradient(135deg,#F2F9FF_0%,#E2F2FE_55%,#CEEFFD_100%)] ring-[#CEEFFD]",
-  Paused: "bg-[linear-gradient(135deg,#FFF8EC_0%,#FFEFD2_100%)] ring-[#F5DDB0]",
-  Cancelled: "bg-[linear-gradient(135deg,#F6F7F9_0%,#E6EAF0_100%)] ring-[#DCE1E8]",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 };
 
 const PERIOD = 14;
@@ -87,7 +81,6 @@ export function MembershipAccountDemo() {
 
       <motion.div
         layout
-<<<<<<< HEAD
         className={cn("relative mt-4 overflow-hidden rounded-2xl p-4 text-ink ring-1 transition-[background] duration-500", cardTone[status])}
       >
         <span aria-hidden className="absolute -top-10 -right-8 size-36 rounded-full bg-sky-blue/70" />
@@ -97,17 +90,6 @@ export function MembershipAccountDemo() {
             <Crown aria-hidden className="size-5" />
           </span>
           <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold ring-1", status === "Active" ? "bg-white text-[var(--color-brand-700)] ring-[#CFE0FB]" : status === "Paused" ? "bg-white text-[#8A5A00] ring-[#F5DDB0]" : "bg-white text-ink-muted ring-line")}>{status}</span>
-=======
-        className={cn("relative mt-4 overflow-hidden rounded-2xl p-4 text-ink ring-1 shadow-[0_10px_24px_-18px_rgb(15_23_42/0.14)] transition-[background] duration-500", cardTone[status])}
-      >
-        <span aria-hidden className="absolute -top-10 -right-8 size-36 rounded-full bg-white/50" />
-        <span aria-hidden className="absolute -bottom-14 left-1/3 size-32 rounded-full bg-white/35" />
-        <div className="relative flex items-start justify-between gap-3">
-          <span className="grid size-10 place-items-center rounded-xl bg-white text-[var(--color-brand-700)] shadow-soft ring-1 ring-[#CEEFFD]">
-            <Crown aria-hidden className="size-5" />
-          </span>
-          <span className={cn("rounded-full px-2.5 py-1 text-xs font-semibold ring-1", status === "Active" ? "bg-white text-[var(--color-brand-700)] ring-[#CEEFFD]" : status === "Paused" ? "bg-white text-[#8A5A00] ring-[#F5DDB0]" : "bg-white text-ink-muted ring-[#DCE1E8]")}>{status}</span>
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         </div>
         <p className="relative mt-4 font-display text-xl leading-tight font-bold text-ink">2 Week Membership</p>
         <div className="relative mt-3 flex items-end justify-between gap-3 text-xs">
@@ -127,11 +109,7 @@ export function MembershipAccountDemo() {
           </span>
           <span>{status === "Cancelled" ? "Ends at period end" : `${PERIOD - ELAPSED} days left`}</span>
         </div>
-<<<<<<< HEAD
         <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-[#EAF1FD]">
-=======
-        <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-[#E2F2FE]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           <motion.div
             className={cn("h-full rounded-full", status === "Cancelled" ? "bg-ink-subtle" : "bg-[var(--color-brand-700)]")}
             initial={false}
@@ -143,11 +121,7 @@ export function MembershipAccountDemo() {
       {!cancelling ? (
         <>
           <LayoutGroup id="member-tabs">
-<<<<<<< HEAD
             <div role="tablist" aria-label="Membership" className="mt-4 grid grid-cols-4 gap-1 rounded-full bg-[#EFE8DB] p-1 ring-1 ring-line">
-=======
-            <div role="tablist" aria-label="Membership" className="mt-4 grid grid-cols-4 gap-1 rounded-full bg-[#F1F3F7] p-1 ring-1 ring-[#E1E6ED]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               {tabs.map((t) => {
                 const on = t.id === tab;
                 return (
@@ -180,11 +154,7 @@ export function MembershipAccountDemo() {
               {tab === "perks" && (
                 <ul className="grid grid-cols-3 gap-2">
                   {perks.map(({ icon: Icon, title, body }) => (
-<<<<<<< HEAD
                     <li key={title} className={cn("rounded-xl bg-[#EAF1FD] p-3 ring-1 ring-[#CFE0FB]", status === "Cancelled" && "opacity-60")}>
-=======
-                    <li key={title} className={cn("rounded-xl bg-[#EEF7FE] p-3 ring-1 ring-[#CEEFFD]", status === "Cancelled" && "opacity-60")}>
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                       <Icon aria-hidden className="size-4 text-[var(--color-brand-700)]" />
                       <p className="mt-2 text-sm font-semibold text-ink">{title}</p>
                       <p className="text-xs text-ink-muted">{body}</p>
@@ -197,31 +167,19 @@ export function MembershipAccountDemo() {
                 (status === "Cancelled" ? (
                   <p className="text-sm text-ink-muted">No renewals. This membership is cancelled.</p>
                 ) : (
-<<<<<<< HEAD
                   <ol className="relative grid gap-2 pl-5 before:absolute before:top-2 before:bottom-2 before:left-[5px] before:w-px before:bg-[#CFE0FB]">
-=======
-                  <ol className="relative grid gap-2 pl-5 before:absolute before:top-2 before:bottom-2 before:left-[5px] before:w-px before:bg-[#CEEFFD]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                     {renewals.map(({ i, date }) => {
                       const off = skipped.includes(i);
                       return (
                         <li key={i} className="relative flex items-center justify-between gap-3">
-<<<<<<< HEAD
                           <span className={cn("absolute top-1/2 -left-5 size-[11px] -translate-y-1/2 rounded-full ring-2 ring-white", off ? "bg-[#DACDB8]" : "bg-[var(--color-brand-700)]")} />
-=======
-                          <span className={cn("absolute top-1/2 -left-5 size-[11px] -translate-y-1/2 rounded-full ring-2 ring-white", off ? "bg-[#D3DFEC]" : "bg-[var(--color-brand-700)]")} />
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                           <span className={cn("text-sm text-ink", off && "text-ink-subtle line-through")}>
                             {date} <span className="text-ink-muted">· $24.00</span>
                           </span>
                           <button
                             type="button"
                             onClick={() => toggleSkip(i)}
-<<<<<<< HEAD
                             className="hit-area rounded-full px-2.5 py-1 text-xs font-semibold text-[var(--color-brand-700)] ring-1 ring-[var(--color-brand-700)]/25 hover:bg-[#EAF1FD]"
-=======
-                            className="hit-area rounded-full px-2.5 py-1 text-xs font-semibold text-[var(--color-brand-700)] ring-1 ring-[var(--color-brand-700)]/25 hover:bg-[#EEF7FE]"
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                           >
                             {off ? "Unskip" : "Skip"}
                           </button>
@@ -256,11 +214,7 @@ export function MembershipAccountDemo() {
           </AnimatePresence>
         </>
       ) : (
-<<<<<<< HEAD
         <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-4 min-h-[10.5rem] rounded-2xl bg-[#EAF1FD] p-3.5 ring-1 ring-[#CFE0FB]">
-=======
-        <motion.div initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-4 min-h-[10.5rem] rounded-2xl bg-[#F7FBFF] p-3.5 ring-1 ring-[#CEEFFD]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           {!r ? (
             <fieldset>
               <legend className="text-sm font-semibold text-ink">Sorry to see you go. What’s the reason?</legend>

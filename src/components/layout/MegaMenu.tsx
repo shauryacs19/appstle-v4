@@ -65,11 +65,7 @@ export function MegaMenu({ tone = "dark" }: { tone?: "dark" | "light" }) {
                   }
                 }}
                 className={cn(
-<<<<<<< HEAD
                   "inline-flex h-10 items-center gap-1 rounded-lg px-1.5 text-[0.95rem] font-semibold transition-colors xl:px-3.5 xl:text-[1.02rem]",
-=======
-                  "inline-flex h-11 items-center gap-1 rounded-lg px-2 text-[0.98rem] font-semibold transition-colors xl:px-4 xl:text-[1.05rem]",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                   tone === "light"
                     ? active ? "bg-white/20 text-white" : "text-white/90 hover:bg-white/12 hover:text-white"
                     : active ? "bg-surface text-ink" : "text-ink-700 hover:bg-surface hover:text-ink",
@@ -113,11 +109,7 @@ function MegaMenuPanel({ group, pathname, onNavigate, onBlurOut }: { group: NavG
             : "w-[min(34rem,calc(100vw-3rem))]",
       )}
     >
-<<<<<<< HEAD
       <div className="overflow-hidden rounded-xl bg-white ">
-=======
-      <div className="overflow-hidden rounded-xl bg-white shadow-[0_2px_6px_rgb(6_43_82/0.06),0_24px_48px_-20px_rgb(6_43_82/0.35)]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         <div className={cn("grid gap-2 p-2", withIcons ? "grid-cols-[1.6fr_1fr]" : "grid-cols-2")}>
           {group.columns.map((col, ci) => (
             <div key={col.title} className={cn("rounded-lg p-3", ci === 1 && "bg-surface-2")}>

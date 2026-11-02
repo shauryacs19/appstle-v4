@@ -12,13 +12,7 @@ export function FitDemos({ root = "#products" }: { root?: string }) {
     const desktop = window.matchMedia("(min-width: 1024px)");
     let timer = 0;
 
-<<<<<<< HEAD
     const apply = () => {
-=======
-    const fit = () => {
-      window.clearTimeout(timer);
-      timer = window.setTimeout(() => {
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         section.querySelectorAll<HTMLElement>("[data-fit-card]").forEach((card) => {
           const demo = card.querySelector<HTMLElement>("[data-fit-demo]");
           const stage = card.querySelector<HTMLElement>("[data-fit-stage]");

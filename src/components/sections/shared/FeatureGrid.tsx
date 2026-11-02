@@ -38,11 +38,7 @@ export function FeatureGrid({
               <StaggerItem as="li" key={f.title}>
                 <span
                   title={f.body}
-<<<<<<< HEAD
                   className="hover-pop inline-flex items-center gap-2 rounded-full bg-white py-2 pr-4 pl-2 text-[0.95rem] font-semibold text-ink shadow-soft ring-1 ring-line transition hover:ring-brand/40"
-=======
-                  className="hover-pop inline-flex items-center gap-2 rounded-full bg-white py-2 pr-4 pl-2 text-[0.95rem] font-semibold text-ink shadow-soft ring-1 ring-[#D7E1EE] transition hover:ring-brand/40"
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 >
                   <span className="grid size-8 place-items-center rounded-full bg-brand-50 text-brand">
                     <Icon aria-hidden className="size-4" />

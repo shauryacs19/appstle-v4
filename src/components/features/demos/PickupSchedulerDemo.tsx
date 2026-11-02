@@ -157,11 +157,7 @@ export function PickupSchedulerDemo() {
                     )}
                   >
                     {s}
-<<<<<<< HEAD
                     {full && <span className="rounded-full bg-terracotta-50 px-2 py-0.5 text-xs font-semibold text-terracotta">Full</span>}
-=======
-                    {full && <span className="rounded-full bg-line px-2 py-0.5 text-xs">Full</span>}
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                   </button>
                 );
               })}

@@ -7,11 +7,6 @@ import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 
 import { AppstleMark } from "@/components/brand/AppstleLogo";
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
-<<<<<<< HEAD
-=======
-import { ProductIcon } from "@/components/ui/ProductIcon";
-import { Eyebrow } from "@/components/ui/SectionHeading";
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import { SmartLink } from "@/components/ui/SmartLink";
 import { integrationGroups, integrations, shopifySurfaces, type Integration } from "@/data/integrations";
 import { links } from "@/data/links";
@@ -73,11 +68,7 @@ function Tile({ item, i, side, progress, still }: { item: TileItem; i: number; s
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.35, ease: ease.out }}
       className={cn(
-<<<<<<< HEAD
         "group/tile relative grid h-[3.9rem] place-items-center rounded-xl bg-white ring-1 ring-line transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:ring-brand/35",
-=======
-        "group/tile relative grid h-[3.9rem] place-items-center rounded-xl bg-white ring-1 ring-[#DCE5F0] shadow-[0_1px_2px_rgb(6_43_82/0.05)] transition-[box-shadow,translate] duration-300 hover:-translate-y-1 hover:shadow-[0_14px_26px_-14px_rgb(6_43_82/0.4)] hover:ring-brand/35",
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         !item.logo ? "w-auto px-3" : wide ? "w-[6.6rem]" : "w-[4.6rem]",
       )}
     >
@@ -120,21 +111,12 @@ function GroupCard({
         onPointerLeave={() => onHover(null)}
         className={cn(
           "relative h-full rounded-[1.4rem] bg-white p-4 ring-1 transition-[box-shadow,translate,--tw-ring-color] duration-500 sm:p-5",
-<<<<<<< HEAD
           active ? "-translate-y-1 shadow-card ring-brand/35" : "shadow-soft ring-line",
         )}
       >
         <div className="flex items-center gap-2.5">
           <span className={cn("grid shrink-0 place-items-center transition-colors duration-500", active ? "text-brand" : "text-blue-ink")}>
             <Icon aria-hidden className="size-5" strokeWidth={1.9} />
-=======
-          active ? "-translate-y-1 shadow-card ring-brand/35" : "shadow-soft ring-[#D7E1EE]",
-        )}
-      >
-        <div className="flex items-center gap-2.5">
-          <span className={cn("grid size-9 place-items-center rounded-xl transition-colors duration-500", active ? "bg-brand text-white" : "bg-brand-50 text-brand-ink")}>
-            <Icon aria-hidden className="size-[18px]" strokeWidth={2.1} />
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           </span>
           <div className="min-w-0">
             <h3 className="font-display text-[1.05rem] leading-tight font-bold text-ink">{group.title}</h3>
@@ -215,13 +197,7 @@ function Hub({ product, onSelect }: { product: ProductId | null; onSelect: (id: 
             >
               Show all apps
             </button>
-<<<<<<< HEAD
           ) : null}
-=======
-          ) : (
-            <span className="absolute top-full mt-2 font-display text-sm font-bold whitespace-nowrap text-ink">Appstle apps</span>
-          )}
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         </div>
       </div>
       <ul aria-label="Filter integrations by app" className="absolute inset-0">
@@ -244,18 +220,10 @@ function Hub({ product, onSelect }: { product: ProductId | null; onSelect: (id: 
                   title={`Show ${p.shortName} integrations`}
                   onClick={() => onSelect(on ? null : p.id)}
                   className={cn(
-<<<<<<< HEAD
                     "flex cursor-pointer items-center rounded-full px-3 py-1.5 ring-1 transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
                     on ? "bg-blue-ink ring-blue-ink" : "bg-white ring-stage-line hover:ring-brand/40",
                   )}
                 >
-=======
-                    "flex cursor-pointer items-center gap-1.5 rounded-full py-1 pr-2.5 pl-1 shadow-soft ring-1 transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand",
-                    on ? "bg-brand ring-brand" : "bg-white ring-[#D7E1EE] hover:ring-brand/40",
-                  )}
-                >
-                  <ProductIcon id={p.id} size="sm" className={cn("size-6 rounded-full", on && "bg-white/20 text-white ring-0")} />
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                   <span className={cn("text-xs font-semibold whitespace-nowrap", on ? "text-white" : "text-ink")}>{p.shortName.split(" &")[0]}</span>
                 </button>
               </div>
@@ -350,7 +318,6 @@ function useLinePaths(stage: RefObject<HTMLDivElement | null>, layoutKey: string
     };
   }, [layoutKey]);
   return { paths, drawn };
-<<<<<<< HEAD
 }
 
 /* On laptop and desktop the whole section (heading, ring, cards, buttons) scales as one piece so it
@@ -387,8 +354,6 @@ function useFitToScreen(box: RefObject<HTMLDivElement | null>) {
     };
   }, [box]);
   return zoom;
-=======
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 }
 
 export function ConnectedIntegrations() {
@@ -417,20 +382,10 @@ export function ConnectedIntegrations() {
   };
 
   return (
-<<<<<<< HEAD
     <section id="integrations" aria-labelledby="int-title" className="int-stage section-card [--card-bg:#FCF8F1] [--card-line:#ECE3D4] [--accent:#1E3A8A] [--accent-tint:#E6ECF8] relative py-band lg:py-10">
       <div ref={box} style={zoom === 1 ? undefined : { zoom }} className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 id="int-title" className="text-[2.3rem] leading-[1.02] font-bold tracking-[-0.04em] text-ink sm:text-[3.2rem] lg:text-[clamp(2.8rem,4vw,3.9rem)]">
-=======
-    <section id="integrations" aria-labelledby="int-title" className="int-stage relative overflow-x-clip py-band">
-      <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal className="flex justify-center">
-            <Eyebrow className="rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-[#D7E1EE]">Integrations</Eyebrow>
-          </Reveal>
-          <h2 id="int-title" className="mt-5 text-[2.3rem] leading-[1.02] font-bold tracking-[-0.04em] text-ink sm:text-[3.2rem] lg:text-[clamp(2.8rem,4vw,3.9rem)]">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             <SplitText delay={0.05}>
               Everything connects. <span className="text-accent">Your business grows.</span>
             </SplitText>
@@ -512,11 +467,7 @@ export function ConnectedIntegrations() {
             </SmartLink>
             <SmartLink
               href={links.contact}
-<<<<<<< HEAD
               className="inline-flex h-[46px] items-center rounded-[10px] bg-[#fff] px-[18px] font-semibold text-ink ring-1 ring-line transition-colors hover:ring-ink/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-=======
-              className="inline-flex h-[46px] items-center rounded-[10px] bg-navy px-[18px] font-semibold text-white transition-colors hover:bg-navy-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             >
               Request an integration
             </SmartLink>

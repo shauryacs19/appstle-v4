@@ -189,11 +189,7 @@ export function AppstleBot() {
             exit={{ opacity: 0, y: 12, scale: 0.97 }}
             transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
             style={{ transformOrigin: "bottom right" }}
-<<<<<<< HEAD
             className="mb-3 flex h-[min(38rem,calc(100dvh-7rem))] w-[min(24.5rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.6rem] bg-white shadow-float ring-1 ring-line"
-=======
-            className="mb-3 flex h-[min(38rem,calc(100dvh-7rem))] w-[min(24.5rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.6rem] bg-white shadow-float ring-1 ring-[#D7E1EE]"
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           >
             <header className="relative flex items-center gap-3 overflow-hidden bg-ink-deep px-4 py-3.5 text-white">
               <div aria-hidden className="pointer-events-none absolute -top-10 -right-6 size-32 rounded-full bg-white/15 blur-2xl" />
@@ -224,11 +220,7 @@ export function AppstleBot() {
               </button>
             </header>
 
-<<<<<<< HEAD
             <div ref={list} className="relative flex-1 overflow-y-auto overscroll-contain bg-surface-2 px-4 py-4" aria-live="polite">
-=======
-            <div ref={list} className="relative flex-1 overflow-y-auto overscroll-contain bg-[#F7F9FC] px-4 py-4" aria-live="polite">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               <div aria-hidden className="pointer-events-none absolute inset-0 bg-[url('/patterns/commerce.svg')] [background-size:260px_260px] opacity-[0.07]" />
               <div className="relative grid gap-3">
                 {empty && (
@@ -271,11 +263,7 @@ export function AppstleBot() {
               }}
               className="border-t border-[#E7DDCC] bg-white p-3"
             >
-<<<<<<< HEAD
               <div className="flex items-end gap-2 rounded-2xl bg-[#F3ECDF] p-1.5 pl-3.5 ring-1 ring-line transition focus-within:bg-white focus-within:ring-brand/50">
-=======
-              <div className="flex items-end gap-2 rounded-2xl bg-[#F3F7FC] p-1.5 pl-3.5 ring-1 ring-[#E1E9F3] transition focus-within:bg-white focus-within:ring-brand/50">
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 <label htmlFor="bot-input" className="sr-only">
                   Ask Appstle Bot a question
                 </label>
@@ -321,11 +309,7 @@ export function AppstleBot() {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 8 }}
-<<<<<<< HEAD
               className="hidden rounded-full bg-white px-3.5 py-2 text-sm font-semibold text-ink shadow-float ring-1 ring-line sm:block"
-=======
-              className="hidden rounded-full bg-white px-3.5 py-2 text-sm font-semibold text-ink shadow-float ring-1 ring-[#D7E1EE] sm:block"
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             >
               Questions? <span className="text-brand">Ask Appstle Bot</span>
             </motion.button>

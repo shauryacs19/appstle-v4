@@ -20,11 +20,7 @@ export const metadata: Metadata = {
   description: "Customer retention apps for Shopify: subscriptions, memberships, bundles, loyalty, pickup & delivery.",
 };
 
-<<<<<<< HEAD
 export const viewport: Viewport = { themeColor: "#F4EFE6", colorScheme: "light" };
-=======
-export const viewport: Viewport = { themeColor: "#FFFFFF", colorScheme: "light" };
->>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
