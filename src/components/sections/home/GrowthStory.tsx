@@ -18,7 +18,11 @@ function useOn() {
   return [ref, inView || reduce] as const;
 }
 
+<<<<<<< HEAD
 const mini = "rounded-[1rem] bg-[#fff] ring-1 ring-line ";
+=======
+const mini = "rounded-2xl bg-white ring-1 ring-[#D7E1EE] shadow-[0_14px_30px_-18px_rgb(6_43_82/0.35)]";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 function ReturnVisual() {
   const [ref, on] = useOn();
@@ -31,7 +35,11 @@ function ReturnVisual() {
         transition={{ duration: 0.8, ease: ease.out }}
       >
         <div className="flex items-center gap-2">
+<<<<<<< HEAD
           <span className="grid size-7 place-items-center rounded-lg bg-blue-ink text-white">
+=======
+          <span className="grid size-7 place-items-center rounded-lg bg-brand-700 text-white">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             <Bell className="size-3.5" />
           </span>
           <p className="text-[12px] font-semibold text-ink">Your rewards are waiting</p>
@@ -68,7 +76,11 @@ function RepeatVisual() {
     <div ref={ref} className={cn(mini, "relative h-44 p-3.5")}>
       <div className="flex items-center justify-between">
         <p className="text-[12px] font-semibold text-ink">Next delivery</p>
+<<<<<<< HEAD
         <span className="inline-flex items-center gap-1 rounded-full bg-ice px-2 py-0.5 text-xs font-semibold text-brand-700">
+=======
+        <span className="inline-flex items-center gap-1 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           <Repeat2 className="size-3" /> Every 4 weeks
         </span>
       </div>
@@ -90,7 +102,11 @@ function RepeatVisual() {
             animate={on ? { opacity: 1, x: 0 } : undefined}
             transition={{ duration: 0.6, delay: 0.25 + i * 0.4, ease: ease.out }}
           >
+<<<<<<< HEAD
             <span className={cn("grid size-[27px] place-items-center rounded-full ring-4 ring-white", i === 2 ? "bg-azure text-white" : i === 1 ? "bg-brand text-white" : "bg-blue-ink text-white")}>
+=======
+            <span className={cn("grid size-[27px] place-items-center rounded-full ring-4 ring-white", i === 2 ? "bg-[#22C55E] text-white" : "bg-brand-700 text-white")}>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               {i === 2 ? <Check className="size-3.5" strokeWidth={3} /> : <s.icon className="size-3.5" />}
             </span>
             <span className="text-xs font-medium text-ink">{s.label}</span>
@@ -116,7 +132,11 @@ function ValueVisual() {
         {bars.map((h, i) => (
           <div key={i} className="flex h-full flex-1 flex-col justify-end">
             <motion.div
+<<<<<<< HEAD
               className={cn("rounded-t-md", ["bg-powder", "bg-sky-blue", "bg-azure", "bg-brand", "bg-blue-ink"][i] ?? "bg-brand")}
+=======
+              className={cn("rounded-t-md", i === bars.length - 1 ? "bg-[linear-gradient(180deg,#219BFB,#0177F2)]" : "bg-brand-100")}
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               initial={{ height: "0%" }}
               animate={on ? { height: `${h * 100}%` } : undefined}
               transition={{ duration: 0.9, delay: 0.2 + i * 0.12, ease: ease.out }}
@@ -172,12 +192,23 @@ export function GrowthStory() {
   const line = useRef<HTMLDivElement>(null);
   const inView = useInView(line, { once: true, amount: 0.3 });
   return (
+<<<<<<< HEAD
     <section id="how-it-works" aria-labelledby="growth-title" className="section-card card-paper [--accent:#1E40AF] [--accent-tint:#E8EEFB] relative isolate py-band">
       <ScrollArc side="right" color="var(--color-orange)" />
       <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[42rem] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-3xl text-center">
           <h2 id="growth-title" className="text-[2.2rem] leading-[1.04] font-bold tracking-[-0.04em] text-ink sm:text-[3rem]">
+=======
+    <section id="how-it-works" aria-labelledby="growth-title" className="relative isolate overflow-x-clip bg-[#EEF6FE] py-band">
+      <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -z-10 size-[42rem] -translate-x-1/2 rounded-full bg-white/70 blur-3xl" />
+      <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal className="flex justify-center">
+            <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#CFE4F8]">How Appstle helps merchants grow</Eyebrow>
+          </Reveal>
+          <h2 id="growth-title" className="mt-5 text-[2.2rem] leading-[1.04] font-bold tracking-[-0.04em] text-ink sm:text-[3rem]">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             <SplitText>
               More customers who come back, <span className="text-accent">and keep coming back.</span>
             </SplitText>
@@ -196,6 +227,7 @@ export function GrowthStory() {
           <ol className="relative grid gap-5 lg:grid-cols-3 lg:gap-6">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.n} delay={0.12 * i} className="relative flex flex-col">
+<<<<<<< HEAD
                 <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full bg-blue-ink font-display text-sm font-bold text-white ring-4 ring-white transition-[scale,background-color,color] duration-500 ease-[var(--ease-spring)] [li:hover>&]:scale-115 [li:hover>&]:bg-orange">
                   {s.n}
                 </span>
@@ -203,13 +235,25 @@ export function GrowthStory() {
                   <div aria-hidden className="relative overflow-hidden rounded-[1.35rem] p-5 pt-10" style={stepStage[i]}>
                     <span className="absolute top-3 left-4 font-display text-[2.6rem] leading-none font-bold tracking-[-0.04em] text-white/20">{s.n}</span>
                     <div className="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]">{s.visual}</div>
+=======
+                <span className="relative z-10 mx-auto grid size-11 place-items-center rounded-full bg-white font-display text-sm font-bold text-brand-ink shadow-soft ring-1 ring-[#CFE4F8] transition-[scale,background-color,color] duration-500 ease-[var(--ease-spring)] [li:hover>&]:scale-115 [li:hover>&]:bg-brand [li:hover>&]:text-white">
+                  {s.n}
+                </span>
+                <div data-spotlight="" className="group mt-4 flex flex-1 flex-col overflow-hidden rounded-[1.75rem] bg-white/70 p-5 ring-1 ring-white backdrop-blur transition-[translate,box-shadow,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:bg-white hover:shadow-float sm:p-6">
+                  <div aria-hidden className="rounded-[1.35rem] bg-[linear-gradient(160deg,#F5FAFF,#E6F2FD)] p-4 transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.02]">
+                    {s.visual}
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                   </div>
                   <div className="flex flex-1 flex-col px-3 pb-3 sm:px-3.5">
                   <h3 className="mt-6 text-[1.35rem] leading-tight font-bold tracking-[-0.025em] text-ink">{s.title}</h3>
                   <p className="mt-2 leading-relaxed text-ink-muted">{s.body}</p>
                   <ul className="mt-auto flex flex-wrap gap-2 pt-5" aria-label="Apps that help">
                     {s.apps.map((id) => (
+<<<<<<< HEAD
                       <li key={id} className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white py-1 pr-3 pl-1 text-xs font-semibold text-ink ring-1 ring-line hover:ring-brand/40">
+=======
+                      <li key={id} className="hover-pop inline-flex items-center gap-1.5 rounded-full bg-white py-1 pr-3 pl-1 text-xs font-semibold text-ink ring-1 ring-[#D7E1EE] hover:ring-brand/40">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                         <ProductIcon id={id} size="sm" className="size-6 rounded-full" />
                         {productById[id].shortName}
                       </li>

@@ -6,11 +6,21 @@ import { SmartLink } from "@/components/ui/SmartLink";
 
 export function TrustStrip() {
   return (
+<<<<<<< HEAD
     <section id="trust" aria-labelledby="trust-title" className="section-card card-paper relative">
       <div className="mx-auto grid max-w-site items-center gap-5 px-5 py-8 sm:px-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-10 lg:px-10 lg:py-9">
         <h2 id="trust-title" className="text-center font-sans text-[0.95rem] leading-snug font-medium tracking-normal text-ink-muted lg:text-left">
             Trusted by <strong className="font-semibold text-ink">{proof.merchants.display}</strong> Shopify &amp; Shopify Plus brands
           </h2>
+=======
+    <section id="trust" aria-labelledby="trust-title" className="relative border-y border-line/80 bg-surface">
+      <div className="mx-auto grid max-w-site items-center gap-5 px-5 py-8 sm:px-8 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-10 lg:px-10 lg:py-9">
+        <Reveal>
+          <h2 id="trust-title" className="text-center font-sans text-[0.95rem] leading-snug font-medium tracking-normal text-ink-muted lg:text-left">
+            Trusted by <strong className="font-semibold text-ink">{proof.merchants.display}</strong> Shopify &amp; Shopify Plus brands
+          </h2>
+        </Reveal>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         <Marquee label="Merchants using Appstle" duration={70} className="min-w-0">
           {merchantLogos.map((m) => (
             <div key={m.name} className="flex h-12 w-36 shrink-0 items-center justify-center px-5 sm:w-40">
@@ -27,7 +37,7 @@ export function TrustStrip() {
       </div>
       <div className="border-t border-dashed border-line/90">
         <ul className="mx-auto flex max-w-site flex-wrap items-center justify-center gap-x-10 gap-y-3 px-5 py-4 sm:px-8" aria-label="As seen on">
-          <li className="eyebrow text-ink-subtle">As seen on</li>
+          <li className="font-display text-lg font-bold tracking-[-0.01em] text-ink">As seen on</li>
           {press.map((p) => (
             <li key={p.outlet}>
               <SmartLink href={p.href} aria-label={`Appstle on ${p.outlet}`} className="hit-area block rounded focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand">

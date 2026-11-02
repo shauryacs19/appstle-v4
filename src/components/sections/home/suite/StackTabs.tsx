@@ -2,6 +2,10 @@
 
 import { useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+<<<<<<< HEAD
+=======
+import { ProductIcon } from "@/components/ui/ProductIcon";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import type { ProductId } from "@/data/products";
 import { cn } from "@/lib/cn";
 
@@ -47,17 +51,29 @@ export function StackTabs({ panels }: { panels: { id: ProductId; label: string; 
               onClick={() => select(i)}
               onKeyDown={(e) => onKey(e, i)}
               className={cn(
+<<<<<<< HEAD
                 "inline-flex h-11 shrink-0 snap-start items-center gap-2 rounded-full px-4 py-1 text-[0.95rem] font-semibold ring-1 transition-colors",
                 on ? "bg-white text-navy ring-brand/40 shadow-soft" : "bg-white/60 text-ink-muted ring-line",
               )}
             >
+=======
+                "inline-flex h-11 shrink-0 snap-start items-center gap-2 rounded-full py-1 pr-4 pl-1.5 text-[0.95rem] font-semibold ring-1 transition-colors",
+                on ? "bg-white text-navy ring-brand/40 shadow-soft" : "bg-white/60 text-ink-muted ring-[#D7E1EE]",
+              )}
+            >
+              <ProductIcon id={p.id} size="sm" className={on ? p.accent : "bg-transparent ring-0 text-ink-muted"} />
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               {p.label}
             </button>
           );
         })}
       </div>
 
+<<<<<<< HEAD
       <Stagger className="mt-4 grid grid-cols-1 gap-5 sm:gap-6 lg:mt-12" interval={0.08} amount={0.05}>
+=======
+      <Stagger className="mt-4 grid grid-cols-1 gap-4 sm:gap-5 lg:mt-12" interval={0.08} amount={0.05}>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         {panels.map((p) => (
           <StaggerItem key={p.id} className={cn("max-lg:opacity-100! max-lg:transform-none!", p.id !== active && "max-lg:hidden")}>
             <div id={`stack-panel-${p.id}`} role="tabpanel" aria-labelledby={`stack-tab-${p.id}`}>

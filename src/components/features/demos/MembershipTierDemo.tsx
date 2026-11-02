@@ -78,7 +78,11 @@ export function MembershipTierDemo() {
                 {selected && (
                   <motion.span
                     layoutId="tier-pill"
+<<<<<<< HEAD
                     className="absolute inset-0 rounded-full bg-[#13264A] "
+=======
+                    className="absolute inset-0 rounded-full bg-[#13264A] shadow-[0_8px_18px_-8px_rgb(11_23_48/0.7)]"
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                     transition={{ type: "spring", stiffness: 420, damping: 32 }}
                   />
                 )}
@@ -123,7 +127,11 @@ export function MembershipTierDemo() {
               exit={{ opacity: 0, x: 12, transition: { duration: 0.15 } }}
               className="flex items-start gap-2.5 text-[0.92rem] text-ink"
             >
+<<<<<<< HEAD
               <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#EEE6D8]">
+=======
+              <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-[#EEF1F5]">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 <Check aria-hidden className="size-3 text-brand-ink" strokeWidth={3} />
               </span>
               {p}

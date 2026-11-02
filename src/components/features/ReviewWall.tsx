@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { PauseToggle } from "@/components/ui/PauseToggle";
+<<<<<<< HEAD
+=======
+import { productById } from "@/data/products";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import type { Testimonial } from "@/data/testimonials";
 
 export function ReviewWall({ items }: { items: Testimonial[] }) {
@@ -36,7 +40,11 @@ export function ReviewWall({ items }: { items: Testimonial[] }) {
 
 function ReviewCard({ t }: { t: Testimonial }) {
   return (
+<<<<<<< HEAD
     <figure className="flex w-[17rem] flex-col justify-between gap-4 rounded-[1.25rem] bg-white p-4 ring-1 ring-line transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
+=======
+    <figure className="flex w-[17rem] flex-col justify-between gap-4 rounded-[1.25rem] bg-white p-4 shadow-[0_1px_2px_rgb(6_43_82/0.05),0_12px_28px_-18px_rgb(6_43_82/0.3)] ring-1 ring-[#DCE5F0] transition-[translate,rotate,box-shadow] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1.5 hover:-rotate-1 hover:shadow-float hover:ring-brand/30 sm:w-[21rem] sm:p-5">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       <div className="flex flex-col gap-2">
         <span className="flex gap-0.5 text-[#FEC84B]" role="img" aria-label="Rated 5 out of 5">
           {Array.from({ length: 5 }, (_, i) => (
@@ -57,6 +65,10 @@ function ReviewCard({ t }: { t: Testimonial }) {
           <Image src={t.logo} alt="" sizes="44px" className="max-h-6 w-auto max-w-7 object-contain" />
         </span>
         <span className="min-w-0 flex-1 truncate text-[0.88rem] leading-tight font-semibold text-ink">{t.merchant}</span>
+<<<<<<< HEAD
+=======
+        <span className="shrink-0 rounded-full bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700">{productById[t.product].shortName}</span>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       </figcaption>
     </figure>
   );

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import type { CSSProperties, ReactNode } from "react";
+=======
+import type { ReactNode } from "react";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { BundleBuilderDemo } from "@/components/features/demos/BundleBuilderDemo";
@@ -11,20 +15,36 @@ import { Doodles, type DoodleSpot } from "@/components/features/backdrops/Doodle
 import { BundleRise, DeliveryLane, LoyaltyRise, PickupRise, RenewOrbit, Sparkles } from "@/components/features/backdrops/scenes";
 import { Stars } from "@/components/ui/Stars";
 import { ButtonLink } from "@/components/ui/Button";
+<<<<<<< HEAD
 import { AppstleMark } from "@/components/brand/AppstleLogo";
+=======
+import { ProductIcon } from "@/components/ui/ProductIcon";
+import { Eyebrow } from "@/components/ui/SectionHeading";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 import { suiteCopy } from "@/data/productCopy";
 import { productById, type ProductId } from "@/data/products";
 import { cn, formatNumber } from "@/lib/cn";
 import { SmartLink } from "@/components/ui/SmartLink";
+<<<<<<< HEAD
 import { SuiteViews } from "./suite/SuiteViews";
+=======
+import { StackTabs } from "./suite/StackTabs";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 type Tone = "light" | "mist" | "sky" | "navy";
 const tones: Record<Tone, { card: string; text: string; muted: string; frame: string; doodle: string; dark?: boolean }> = {
   light: {
+<<<<<<< HEAD
     card: "bg-white ring-1 ring-line hover:ring-brand/30",
     text: "text-ink",
     muted: "text-ink-muted",
     frame: "bg-[#F3ECDF] ring-line",
+=======
+    card: "bg-white ring-1 ring-[#D7E1EE] hover:ring-brand/30",
+    text: "text-ink",
+    muted: "text-ink-muted",
+    frame: "bg-[#F3F7FC] ring-[#E1E9F3]",
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
     doodle: "text-brand-400/40",
   },
   mist: {
@@ -42,7 +62,11 @@ const tones: Record<Tone, { card: string; text: string; muted: string; frame: st
     doodle: "text-brand-400/50",
   },
   navy: {
+<<<<<<< HEAD
     card: "bg-ink-deep ring-1 ring-white/5 hover:ring-white/15",
+=======
+    card: "bg-[linear-gradient(160deg,#13264A,#0B1730)] ring-1 ring-white/5 hover:ring-white/15",
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
     text: "text-white",
     muted: "text-white/72",
     frame: "bg-white/6 ring-white/10",
@@ -79,7 +103,11 @@ const doodleSpots: Record<ProductId, DoodleSpot[]> = {
   ],
 };
 
+<<<<<<< HEAD
 const confetti = ["#2A56D8", "#2A56D8", "#8EA7EF", "#DCE5FA", "#F2B55A", "#F2B55A", "#172036", "#FFFCF7"];
+=======
+const confetti = ["#1088F6", "#1088F6", "#6FC0FA", "#CEEFFD", "#F5B53F", "#F5B53F", "#0066CA", "#FFFFFF"];
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 const demo: Record<ProductId, ReactNode> = {
   subscriptions: (
@@ -104,6 +132,7 @@ const demo: Record<ProductId, ReactNode> = {
   ),
 };
 
+<<<<<<< HEAD
 /* Shapes in shades of blue (plus one red mark) layered behind each demo on the grey stage */
 const stageDecor: Record<ProductId, string[]> = {
   subscriptions: [
@@ -161,6 +190,8 @@ const demoStage: CSSProperties = {
   boxShadow: "inset 0 1px 0 rgb(255 255 255 / 0.9), inset 0 0 0 1px #D3DAE4",
 };
 
+=======
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 const stageScene: Partial<Record<ProductId, ReactNode>> = {
   memberships: <Sparkles />,
   bundles: <BundleRise />,
@@ -168,6 +199,7 @@ const stageScene: Partial<Record<ProductId, ReactNode>> = {
   pickup: <PickupRise />,
 };
 
+<<<<<<< HEAD
 /* every app gets the same widget box; FitDemos scales each demo to fill the same stage height */
 const demoWidth: Record<ProductId, string> = {
   subscriptions: "max-w-[27rem]",
@@ -175,6 +207,14 @@ const demoWidth: Record<ProductId, string> = {
   loyalty: "max-w-[27rem]",
   bundles: "max-w-[27rem]",
   pickup: "max-w-[27rem]",
+=======
+const demoWidth: Record<ProductId, string> = {
+  subscriptions: "max-w-sm",
+  memberships: "max-w-md",
+  loyalty: "max-w-lg",
+  bundles: "max-w-xl",
+  pickup: "max-w-md",
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 };
 
 function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Tone; wide?: boolean; flip?: boolean; className?: string }) {
@@ -183,7 +223,11 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
   const t = tones[tone];
   const dark = !!t.dark;
   const ctas = (
+<<<<<<< HEAD
     <div className="grid gap-2.5 sm:flex sm:flex-wrap sm:items-center max-sm:[&>a]:h-11">
+=======
+    <div className="grid gap-2 sm:flex sm:flex-wrap sm:items-center max-sm:[&>a]:h-11">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       <ButtonLink href={p.href} size="sm" variant={dark ? "light" : "primary"}>
         Learn <strong>more</strong>
       </ButtonLink>
@@ -192,7 +236,11 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
         size="sm"
         variant={dark ? "outlineLight" : "ghost"}
         arrow={false}
+<<<<<<< HEAD
         className={dark ? undefined : "ring-1 ring-stage-line hover:ring-brand/40"}
+=======
+        className={dark ? undefined : "ring-1 ring-[#D3DDEA] hover:ring-brand/40"}
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       >
         Install on <strong>Shopify</strong>
       </ButtonLink>
@@ -201,9 +249,22 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
   const head = (
     <div className="flex min-w-0 flex-col">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+<<<<<<< HEAD
         <AppstleMark className="size-10 shrink-0 rounded-xl" />
         <div className="min-w-0">
           <p className={cn("text-[0.95rem] font-semibold", t.text)}>{p.name}</p>
+=======
+        <ProductIcon
+          id={id}
+          size="md"
+          className={cn(
+            
+            dark ? "bg-white/12 text-white ring-white/15" : cn(p.accent.chip, p.accent.text, "ring-0"),
+          )}
+        />
+        <div className="min-w-0">
+          <p className={cn("text-[0.95rem] font-semibold", t.text)}>{p.shortName}</p>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           <SmartLink
             href={`${p.installHref}/reviews`}
             className={cn("hit-area inline-flex items-center gap-1.5 text-xs hover:underline", dark ? "text-white/70" : "text-ink-subtle")}
@@ -214,6 +275,7 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
           </SmartLink>
         </div>
       </div>
+<<<<<<< HEAD
       <h3 id={`app-${id}`} className={cn("mt-5 short:mt-3 font-bold tracking-[-0.03em] text-balance", t.text, wide ? "text-[1.6rem] leading-[1.08] sm:text-[1.9rem] short:text-[1.5rem]" : "text-[1.3rem] leading-[1.12] short:text-[1.15rem]")}>
         {copy.title}
       </h3>
@@ -230,16 +292,36 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
           ))}
         </div>
       )}
+=======
+      <h3 id={`app-${id}`} className={cn("mt-4 short:mt-3 font-bold tracking-[-0.03em] text-balance", t.text, wide ? "text-[1.6rem] leading-[1.08] sm:text-[1.9rem] short:text-[1.5rem]" : "text-[1.3rem] leading-[1.12] short:text-[1.15rem]")}>
+        {copy.title}
+      </h3>
+      <p className={cn("mt-2 text-[0.95rem] leading-relaxed short:mt-1 short:text-[0.875rem]", t.muted)}>{copy.intro}</p>
+    </div>
+  );
+  const stage = (
+    <div data-fit-stage="" className={cn("relative isolate flex min-h-0 flex-1 flex-col overflow-hidden rounded-[1.5rem] p-4 ring-1 sm:p-6 short:p-3.5", t.frame)}>
+      <div aria-hidden className={cn("absolute inset-0 -z-20 rounded-[inherit] opacity-40", dark ? "bg-dots" : "bg-dots-ink")} />
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       {stageScene[id]}
       <p
         className={cn(
           "absolute top-3 left-3 z-10 inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-semibold shadow-soft ring-1 backdrop-blur",
+<<<<<<< HEAD
           dark ? "bg-white/10 text-white/85 ring-white/15" : "bg-blue-ink text-white ring-blue-ink",
         )}
       >
         <span className="relative flex size-2">
           <span className="absolute inset-0 rounded-full bg-orange motion-safe:animate-[pulse-ring_2s_ease-out_infinite]" />
           <span className="relative size-2 rounded-full bg-orange" />
+=======
+          dark ? "bg-white/10 text-white/85 ring-white/15" : "bg-white/90 text-ink-muted ring-[#E1E9F3]",
+        )}
+      >
+        <span className="relative flex size-2">
+          <span className="absolute inset-0 rounded-full bg-[#22C55E] motion-safe:animate-[pulse-ring_2s_ease-out_infinite]" />
+          <span className="relative size-2 rounded-full bg-[#22C55E]" />
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         </span>
         Try it live
       </p>
@@ -254,16 +336,27 @@ function AppCard({ id, tone, wide, flip, className }: { id: ProductId; tone: Ton
       data-fit-card=""
       
       className={cn(
+<<<<<<< HEAD
         "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 sm:p-7 lg:p-8 short:p-5",
+=======
+        "group relative isolate flex h-full flex-col overflow-hidden rounded-[1.75rem] p-5 shadow-[0_1px_2px_rgb(15_23_42/0.04),0_10px_28px_-18px_rgb(15_23_42/0.12)] sm:p-6 short:p-4",
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         t.card,
         className,
       )}
     >
       {dark && <div aria-hidden className="absolute inset-0 -z-20 bg-dots opacity-30 [mask-image:linear-gradient(to_bottom,transparent,#000)]" />}
+<<<<<<< HEAD
       <Doodles autoplay spots={doodleSpots[id]} className={dark ? t.doodle : "text-azure opacity-40"} />
       {wide ? (
         <div className={cn("grid h-full gap-7 lg:gap-12", flip ? "lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]" : "lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]")}>
           <div className={cn("flex flex-col justify-center gap-8 lg:py-6", flip ? "lg:order-2 lg:pr-6" : "lg:pl-6")}>
+=======
+      <Doodles autoplay spots={doodleSpots[id]} className={t.doodle} />
+      {wide ? (
+        <div className={cn("grid h-full gap-6 lg:gap-8", flip ? "lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]" : "lg:grid-cols-[minmax(0,0.7fr)_minmax(0,1.3fr)]")}>
+          <div className={cn("flex flex-col justify-center gap-6", flip && "lg:order-2")}>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             {head}
             {ctas}
           </div>
@@ -284,6 +377,7 @@ const order: ProductId[] = ["subscriptions", "memberships", "loyalty", "bundles"
 
 export function RetentionStack() {
   return (
+<<<<<<< HEAD
     <section id="products" aria-labelledby="products-title" className="section-card card-paper [--accent:#1E40AF] [--accent-tint:#E8EEFB] relative scroll-mt-24 py-band">
       <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
         <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
@@ -291,6 +385,18 @@ export function RetentionStack() {
             <h2 id="products-title" className="text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-[3rem] lg:text-[3.4rem]">
               <SplitText>
                 Five apps. <span className="text-accent">One retention stack.</span>
+=======
+    <section id="products" aria-labelledby="products-title" className="relative scroll-mt-24 bg-[#F7F9FC] py-band">
+      <div className="mx-auto max-w-site px-5 sm:px-8 lg:px-10">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <Reveal>
+              <Eyebrow className="rounded-full bg-white px-3 py-1.5 ring-1 ring-[#D7E1EE]">The Appstle retention stack</Eyebrow>
+            </Reveal>
+            <h2 id="products-title" className="mt-5 text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] text-ink sm:text-[3rem] lg:text-[3.4rem]">
+              <SplitText>
+                Five apps. <span className="text-brand">One retention stack.</span>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               </SplitText>
             </h2>
           </div>
@@ -301,6 +407,7 @@ export function RetentionStack() {
           </Reveal>
         </div>
 
+<<<<<<< HEAD
         <SuiteViews
           panels={order.map((id, i) => ({
             id,
@@ -308,6 +415,17 @@ export function RetentionStack() {
             node: <AppCard id={id} tone="light" wide flip={i % 2 === 1} className="lg:h-[clamp(34rem,calc(100svh-8rem),42rem)]" />,
           }))}
         />
+=======
+        <StackTabs
+          panels={order.map((id, i) => ({
+            id,
+            label: productById[id].shortName,
+            accent: cn(productById[id].accent.chip, productById[id].accent.text, "ring-0"),
+            node: <AppCard id={id} tone="light" wide flip={i % 2 === 1} className="lg:min-h-[clamp(30rem,calc(100svh-10rem),36rem)]" />,
+          }))}
+        />
+        <p className="mt-6 text-center text-xs text-ink-subtle">Demos use illustrative values and don’t create orders or bookings. Ratings from the Shopify App Store.</p>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       </div>
     </section>
   );

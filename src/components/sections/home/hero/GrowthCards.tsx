@@ -10,7 +10,11 @@ import storePhoto from "@/assets/home/hero.webp";
 import shopifyLogo from "@/assets/brand/shopify-logo.webp";
 
 const shell =
+<<<<<<< HEAD
   "hero-card rounded-[1.15rem] bg-white ring-1 ring-line ";
+=======
+  "hero-card rounded-[1.15rem] bg-white ring-1 ring-[#D7E1EE] shadow-[0_1px_2px_rgb(6_43_82/0.05),0_18px_38px_-20px_rgb(6_43_82/0.3)]";
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 
 function useLive<T extends Element>() {
   const ref = useRef<T>(null);
@@ -33,7 +37,11 @@ function Count({ to, on, prefix = "", suffix = "", decimals = 0 }: { to: number;
 
 function SampleTag({ className }: { className?: string }) {
   return (
+<<<<<<< HEAD
     <span className={cn("rounded-full bg-surface-2 px-1.5 py-0.5 text-xs font-semibold tracking-wide text-ink-subtle uppercase ring-1 ring-line", className)}>
+=======
+    <span className={cn("rounded-full bg-surface-2 px-1.5 py-0.5 text-xs font-semibold tracking-wide text-ink-subtle uppercase ring-1 ring-[#E3EAF3]", className)}>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       Sample data
     </span>
   );
@@ -211,7 +219,11 @@ export function NotificationCard({ className }: { className?: string }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -10, scale: 0.97 }}
           transition={{ duration: 0.55, ease: ease.out }}
+<<<<<<< HEAD
           className="absolute inset-0 flex items-center gap-2.5 rounded-2xl bg-white/90 px-2.5 ring-1 ring-line backdrop-blur"
+=======
+          className="absolute inset-0 flex items-center gap-2.5 rounded-2xl bg-white/90 px-2.5 shadow-[0_14px_34px_-16px_rgb(6_43_82/0.35)] ring-1 ring-[#D7E1EE] backdrop-blur"
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         >
           <span className={cn("grid size-8 shrink-0 place-items-center rounded-[0.7rem] text-white", N.tone)}>
             <N.icon className="size-4" strokeWidth={2.2} />
@@ -225,7 +237,11 @@ export function NotificationCard({ className }: { className?: string }) {
           </div>
         </motion.div>
       </AnimatePresence>
+<<<<<<< HEAD
       <span className="absolute -top-1.5 -left-1.5 grid size-5 place-items-center rounded-full bg-white text-brand-ink shadow-soft ring-1 ring-line">
+=======
+      <span className="absolute -top-1.5 -left-1.5 grid size-5 place-items-center rounded-full bg-white text-brand-ink shadow-soft ring-1 ring-[#D7E1EE]">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         <Bell className="size-3" strokeWidth={2.4} />
       </span>
     </div>
@@ -267,7 +283,11 @@ export function RepeatRateCard({ className }: { className?: string }) {
           </p>
         </div>
       </div>
+<<<<<<< HEAD
       <div className="mt-2.5 flex items-center justify-between border-t border-[#ECE3D3] pt-2">
+=======
+      <div className="mt-2.5 flex items-center justify-between border-t border-[#EBF0F6] pt-2">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         <span className="text-xs text-ink-subtle">Retention · last 6 months</span>
         <SampleTag />
       </div>

@@ -24,6 +24,7 @@ export function Header() {
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.1, ease: ease.out }}
+<<<<<<< HEAD
       className="sticky top-0 z-50 h-[var(--header-h)] bg-transparent px-3 pt-3 sm:px-5 lg:px-6"
     >
       {/* V2's floating rounded bar */}
@@ -35,6 +36,18 @@ export function Header() {
       >
         <Link href="/" className="shrink-0 rounded-lg" aria-label="Appstle home">
           <AppstleLogo tone="dark" tagline={false} className="gap-3 [&>svg]:size-9 [&_.font-display]:text-[1.5rem] [&_.font-display]:text-logo" />
+=======
+      className={cn(
+        "sticky top-0 z-50 h-[var(--header-h)] border-b pt-3 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300",
+        scrolled
+          ? "border-line/70 bg-white/55 shadow-[0_8px_24px_-14px_rgb(6_43_82/0.3)] backdrop-blur-md backdrop-saturate-150"
+          : "border-transparent bg-transparent",
+      )}
+    >
+      <div className="flex h-[4.5rem] items-center justify-between gap-4 px-4 sm:px-6 lg:px-6 xl:px-12">
+        <Link href="/" className="shrink-0 rounded-lg" aria-label="Appstle home">
+          <AppstleLogo tone="dark" tagline={false} className="[&>svg]:size-10 [&_.font-display]:text-[1.55rem]" />
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         </Link>
 
         <MegaMenu />
@@ -45,7 +58,11 @@ export function Header() {
           </ButtonLink>
           <button
             type="button"
+<<<<<<< HEAD
             className={cn("inline-grid size-10 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-surface")}
+=======
+            className={cn("inline-grid size-11 place-items-center rounded-full ring-1 transition lg:hidden", "bg-white/60 text-ink ring-line hover:bg-brand-50 hover:text-brand")}
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             aria-label="Open menu"
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"

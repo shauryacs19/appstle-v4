@@ -12,7 +12,11 @@ import shopifyPlus from "@/assets/brand/shopify-plus.webp";
 
 export function Footer() {
   return (
+<<<<<<< HEAD
     <footer className="pattern-dark relative isolate mt-3 bg-[linear-gradient(170deg,#172036_0%,#121A2E_45%,#0C1222_100%)] text-white" aria-labelledby="footer-title">
+=======
+    <footer className="pattern-dark relative isolate mt-3 bg-[linear-gradient(160deg,#0B1220_0%,#05080F_55%,#000000_100%)] text-white" aria-labelledby="footer-title">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       <FooterDoodles />
       <h2 id="footer-title" className="sr-only">
         Site footer
@@ -59,7 +63,11 @@ export function Footer() {
                     <li key={l.href + l.label}>
                       <SmartLink
                         href={l.href}
+<<<<<<< HEAD
                         className="text-[0.92rem] break-words text-white/80 transition hover:text-[#FDBA74] hover:underline hover:underline-offset-4"
+=======
+                        className="text-[0.92rem] break-words text-white/80 transition hover:text-white hover:underline hover:underline-offset-4"
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                       >
                         {l.label}
                       </SmartLink>

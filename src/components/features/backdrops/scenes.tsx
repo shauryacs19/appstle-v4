@@ -140,7 +140,11 @@ function GlyphRise({ glyphs, className }: { glyphs: DoodleName[]; className?: st
       {riseSlots.map(([left, duration, at], i) => (
         <div
           key={left}
+<<<<<<< HEAD
           className="absolute top-full text-blue-ink/20 motion-safe:animate-[rise_22s_linear_infinite]"
+=======
+          className="absolute top-full text-brand-300/35 motion-safe:animate-[rise_22s_linear_infinite]"
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           style={{ left, animationDuration: `${duration}s`, animationDelay: `${-at}s` }}
         >
           <Glyph name={glyphs[i % glyphs.length]} className="size-11" />

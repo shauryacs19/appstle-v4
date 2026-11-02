@@ -8,6 +8,7 @@ import { proof } from "@/data/site";
 
 export function ClosingCta() {
   return (
+<<<<<<< HEAD
     <section aria-labelledby="cta-title" className="px-3 sm:px-5 lg:px-6">
       <Reveal className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-blue-ink text-white sm:rounded-[2.5rem]">
         <div aria-hidden className="absolute top-1/2 -right-24 -z-10 size-[34rem] -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(42_86_216/0.5),transparent)]" />
@@ -17,6 +18,18 @@ export function ClosingCta() {
               Ready to grow your <span className="text-[#FDBA74]">Shopify store?</span>
             </h2>
             <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/80">
+=======
+    <section aria-labelledby="cta-title" className="bg-[#F7F9FC] px-3 pb-band sm:px-5 lg:px-6">
+      <Reveal className="relative isolate mx-auto max-w-site overflow-clip rounded-[2rem] bg-[linear-gradient(140deg,#0A6FD1_0%,#0066CA_45%,#0052A3_100%)] text-white shadow-[0_30px_70px_-30px_rgb(1_82_163/0.7)] sm:rounded-[2.5rem]">
+        <div aria-hidden className="absolute inset-0 -z-10 bg-dots opacity-25 [mask-image:radial-gradient(ellipse_at_right,#000,transparent_65%)]" />
+        <div aria-hidden className="absolute -bottom-32 -left-32 -z-10 size-96 rounded-full border-[40px] border-white/6" />
+        <div className="grid items-center gap-10 px-6 py-12 sm:px-10 sm:py-14 lg:grid-cols-12 lg:px-14 lg:py-16">
+          <div className="lg:col-span-7">
+            <h2 id="cta-title" className="text-[2.3rem] leading-[1.03] font-bold tracking-[-0.04em] sm:text-[3.2rem]">
+              Ready to grow your Shopify store?
+            </h2>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-white/92">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
               Join {proof.merchants.display} Shopify and Shopify Plus brands building repeat business with Appstle — or partner with us to bring Appstle to your clients.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -35,7 +48,11 @@ export function ClosingCta() {
             </svg>
             <div className="absolute inset-0 grid place-items-center">
               <span className="absolute size-24 animate-[pulse-ring_3.2s_var(--ease-smooth)_infinite] rounded-[1.8rem] bg-white/20" />
+<<<<<<< HEAD
               <AppstleMark className="relative size-20 rounded-[1.5rem] ring-4 ring-white/25 transition-[scale,rotate] duration-700 ease-[var(--ease-spring)] hover:scale-110 hover:rotate-6" />
+=======
+              <AppstleMark className="relative size-20 rounded-[1.5rem] shadow-[0_18px_40px_-12px_rgb(0_0_0/0.4)] ring-4 ring-white/25 transition-[scale,rotate] duration-700 ease-[var(--ease-spring)] hover:scale-110 hover:rotate-6" />
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
             </div>
             {products.map((p, i) => {
               const a = (-90 + (360 / products.length) * i) * (Math.PI / 180);

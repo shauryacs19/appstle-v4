@@ -115,7 +115,11 @@ export function SupportChatPhone({ className }: { className?: string }) {
         <span className="absolute top-[26%] -left-[3px] h-11 w-[3px] rounded-l-sm bg-[#2D3754]" />
         <span className="absolute top-[22%] -right-[3px] h-14 w-[3px] rounded-r-sm bg-[#2D3754]" />
 
+<<<<<<< HEAD
         <div className="relative flex h-full flex-col overflow-hidden rounded-[1.95rem] bg-[#fff] font-sans">
+=======
+        <div className="relative flex h-full flex-col overflow-hidden rounded-[1.95rem] bg-surface-2 font-sans">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
           <div className="relative flex h-8 shrink-0 items-center justify-between bg-white px-5 pt-1 text-xs font-semibold text-ink">
             <span>9:41</span>
             <span className="absolute top-[7px] left-1/2 h-[18px] w-[60px] -translate-x-1/2 rounded-full bg-[#05070E]" />
@@ -171,7 +175,11 @@ export function SupportChatPhone({ className }: { className?: string }) {
                   ) : (
                     <div className="mr-auto max-w-[88%]">
                       {m.label && <p className="mb-0.5 ml-1 text-xs font-semibold text-ink-subtle">{m.label}</p>}
+<<<<<<< HEAD
                       <div className="rounded-[1rem] rounded-bl-[0.35rem] bg-white px-2.5 py-1.5 text-ink ring-1 ring-ink/6">
+=======
+                      <div className="rounded-[1rem] rounded-bl-[0.35rem] bg-white px-2.5 py-1.5 text-ink shadow-[0_2px_5px_-3px_rgb(32_43_69/0.3)] ring-1 ring-ink/6">
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                         {m.body}
                       </div>
                     </div>

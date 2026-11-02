@@ -54,7 +54,11 @@ export function ProductOverview({ product, data }: { product: Product & { id: st
               {shot ? (
                 <figure
                   data-spotlight=""
+<<<<<<< HEAD
                   className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-[linear-gradient(170deg,#FBF7F0,#E7F2FD)] ring-1 ring-[#D7E7F8] transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-card"
+=======
+                  className="group flex h-full flex-col overflow-hidden rounded-[1.5rem] bg-[linear-gradient(170deg,#F5FAFF,#E7F2FD)] ring-1 ring-[#D7E7F8] transition duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:shadow-card"
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
                 >
                   <div className="relative h-56 overflow-hidden px-5 pt-5 sm:h-64 short:h-48">
                     <Image

@@ -7,10 +7,17 @@ import { DemoBadge } from "@/components/ui/Badges";
 import { cn } from "@/lib/cn";
 
 const items = [
+<<<<<<< HEAD
   { id: "cleanser", name: "Custom Cleanser", price: 29, color: "#CFE0FB", cap: "#14275C" },
   { id: "mask", name: "Shampoo Scalp Mask", price: 48, color: "#8CB8F7", cap: "#2A56D8" },
   { id: "moisturizer", name: "Face Moisturizer", price: 36, color: "#EAF1FD", cap: "#B4472A" },
   { id: "oil", name: "Body Oil", price: 24, color: "#3F7BEA", cap: "#14275C" },
+=======
+  { id: "cleanser", name: "Custom Cleanser", price: 29, color: "#CEEFFD", cap: "#0052A3" },
+  { id: "mask", name: "Shampoo Scalp Mask", price: 48, color: "#A6DBFB", cap: "#0066CA" },
+  { id: "moisturizer", name: "Face Moisturizer", price: 36, color: "#CEEFFD", cap: "#0052A3" },
+  { id: "oil", name: "Body Oil", price: 24, color: "#EEF7FE", cap: "#0066CA" },
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 ] as const;
 type ItemId = (typeof items)[number]["id"];
 

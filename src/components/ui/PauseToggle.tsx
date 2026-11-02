@@ -18,7 +18,11 @@ export function PauseToggle({ label, className }: { label: string; className?: s
         setPaused(!paused);
       }}
       className={cn(
+<<<<<<< HEAD
         "inline-grid size-8 place-items-center rounded-full bg-white/90 text-ink-muted shadow-soft ring-1 ring-line transition-colors hover:text-ink motion-reduce:hidden",
+=======
+        "inline-grid size-8 place-items-center rounded-full bg-white/90 text-ink-muted shadow-soft ring-1 ring-[#D7E1EE] transition-colors hover:text-ink motion-reduce:hidden",
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
         className,
       )}
     >

@@ -6,7 +6,11 @@
 @custom-variant short (@media (min-width: 1024px) and (max-height: 820px));
 
 :root {
+<<<<<<< HEAD
   --header-h: 5.5rem;
+=======
+  --header-h: 5.25rem;
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 }
 
 @layer base {
@@ -56,6 +60,7 @@
     text-transform: uppercase;
   }
 }
+<<<<<<< HEAD
 /* Background system (2026-11-02): V2's engineering grid only behind the hero (commerce-hero.css).
    Everything after it sits on ivory scattered with small static line doodles, like a chat wallpaper,
    and each section is its own rounded card on top of that. */
@@ -76,8 +81,14 @@
   flex-direction: column;
   gap: var(--card-gap);
   padding-bottom: var(--card-gap);
+=======
+:root { --pattern-alpha: 0.1; --pattern-size: 300px; }
+.home-pattern > section {
+  position: relative;
+  isolation: isolate;
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
 }
-.home-pattern::before {
+.home-pattern > section:not(.int-stage)::before {
   content: "";
   position: absolute;
   inset: 0;

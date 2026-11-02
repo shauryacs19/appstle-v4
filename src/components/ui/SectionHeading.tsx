@@ -3,9 +3,15 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SplitText } from "@/components/motion/SplitText";
 import { cn } from "@/lib/cn";
 
+<<<<<<< HEAD
 export function Eyebrow({ children, className, dot = "bg-orange" }: { children: ReactNode; className?: string; dot?: string }) {
   return (
     <p className={cn("eyebrow inline-flex items-center gap-2 text-accent", className)}>
+=======
+export function Eyebrow({ children, className, dot = "bg-brand-400" }: { children: ReactNode; className?: string; dot?: string }) {
+  return (
+    <p className={cn("eyebrow inline-flex items-center gap-2 text-brand-ink", className)}>
+>>>>>>> e4cf854e1d32c74826e1ca2f330ce2815e88eb91
       <span aria-hidden className={cn("size-1.5 rounded-full", dot)} />
       {children}
     </p>
